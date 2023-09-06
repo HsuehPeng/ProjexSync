@@ -1,0 +1,9 @@
+# For more information about this configuration visit
+# https://github.com/fastlane/scan#scanfile
+
+project "ProjexSync/ProjexSync.xcodeproj"
+scheme "ProjexSync"
+sdk "iphonesimulator"
+device "iPhone 14"
+prelaunch_simulator true
+disable_package_automatic_updates true
