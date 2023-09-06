@@ -9,5 +9,8 @@ import XCTest
 @testable import ProjexSync
 
 final class ProjexSyncTests: XCTestCase {
-
+	
+	func test_app_CITest() {
+		XCTAssertEqual(2*2, 4)
+	}
 }
