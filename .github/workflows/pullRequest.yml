@@ -13,7 +13,7 @@ jobs:
   
       - name: Ruby setup
         uses: ruby/setup-ruby@v1
-	with:
+	      with:
           ruby-version: 2.7.2 # omit if .ruby-version file exists in project, or replace with your team’s supported ruby version
           bundler-cache: true
   
