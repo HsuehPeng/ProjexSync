@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "969C79DA-F2C2-448E-A0E3-07784FF91F4A",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:ProjexSync.xcodeproj",
+          "identifier" : "B843CBF82AA85EBF00C5DC1E",
+          "name" : "ProjexSync"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ProjexSync.xcodeproj",
+        "identifier" : "B843CC0E2AA85EC000C5DC1E",
+        "name" : "ProjexSyncTests"
+      }
+    }
+  ],
+  "version" : 1
+}
