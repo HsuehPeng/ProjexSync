@@ -9,6 +9,17 @@ import XCTest
 import ProjexSync
 
 final class EmailPasswordAuthServiceTests: XCTestCase {
+	func test_login_getCorrectEmailAndPassword() {
+		let email = "Email"
+		let password = "Password"
+		let (sut, authClient) = makeSut(email: email, password: password)
+		
+		sut.login { _ in }
+		
+		XCTAssertEqual(authClient.receivedInfo.first?.email, email)
+		XCTAssertEqual(authClient.receivedInfo.first?.password, password)
+	}
+	
 	func test_login_completeWithLoginError() {
 		let (sut, authClient) = makeSut()
 		let expectedError: EmailPasswordAuthService.Error = .login
@@ -28,9 +39,9 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut() -> (EmailPasswordAuthService, EmailPasswordAuthClientSpy) {
+	private func makeSut(email: String = "", password: String = "") -> (EmailPasswordAuthService, EmailPasswordAuthClientSpy) {
 		let authClient = EmailPasswordAuthClientSpy()
-		let sut = EmailPasswordAuthService(authClient: authClient, email: "", password: "")
+		let sut = EmailPasswordAuthService(authClient: authClient, email: email, password: password)
 		
 		trackForMemoryleaks(authClient)
 		trackForMemoryleaks(sut)
@@ -51,15 +62,16 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 	}
 	
 	private class EmailPasswordAuthClientSpy: EmailPasswordAuthClient {
-		enum ReceivedMessage: Equatable {
-			case login
+		struct ReceivedInfo {
+			let email: String
+			let password: String
 		}
 		
-		private(set) var receivedMessages = [ReceivedMessage]()
+		private(set) var receivedInfo = [ReceivedInfo]()
 		private var loginCompletions = [LoginCompletion]()
 		
 		func login(email: String, password: String, completion: @escaping LoginCompletion) {
-			receivedMessages.append(.login)
+			receivedInfo.append(ReceivedInfo(email: email, password: password))
 			loginCompletions.append(completion)
 		}
 		
