@@ -8,6 +8,6 @@
 import XCTest
 @testable import ProjexSync
 
-final class ProjexSyncTests: XCTestCase {
+final class FirebaseAuthServiceTests: XCTestCase {
 
 }

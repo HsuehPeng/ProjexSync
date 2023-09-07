@@ -12,7 +12,7 @@
 		B843CC012AA85EBF00C5DC1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* ViewController.swift */; };
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
-		B843CC142AA85EC000C5DC1E /* ProjexSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC132AA85EC000C5DC1E /* ProjexSyncTests.swift */; };
+		B843CC142AA85EC000C5DC1E /* FirebaseAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC132AA85EC000C5DC1E /* FirebaseAuthServiceTests.swift */; };
 		B8C1EEFB2AA9AE1A004ECCF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */; };
 		B8C1EEFE2AA9B257004ECCF2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EEFD2AA9B257004ECCF2 /* FirebaseAuth */; };
 		B8C1EF002AA9B257004ECCF2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EEFF2AA9B257004ECCF2 /* FirebaseCrashlytics */; };
@@ -40,7 +40,7 @@
 		B843CC082AA85EC000C5DC1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B843CC0A2AA85EC000C5DC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B843CC132AA85EC000C5DC1E /* ProjexSyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjexSyncTests.swift; sourceTree = "<group>"; };
+		B843CC132AA85EC000C5DC1E /* FirebaseAuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthServiceTests.swift; sourceTree = "<group>"; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
 		B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +89,7 @@
 		B843CBFB2AA85EBF00C5DC1E /* ProjexSync */ = {
 			isa = PBXGroup;
 			children = (
+				B8C1EF072AA9BADF004ECCF2 /* Login */,
 				B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */,
 				B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */,
 				B843CC002AA85EBF00C5DC1E /* ViewController.swift */,
@@ -104,9 +105,16 @@
 			isa = PBXGroup;
 			children = (
 				B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */,
-				B843CC132AA85EC000C5DC1E /* ProjexSyncTests.swift */,
+				B843CC132AA85EC000C5DC1E /* FirebaseAuthServiceTests.swift */,
 			);
 			path = ProjexSyncTests;
+			sourceTree = "<group>";
+		};
+		B8C1EF072AA9BADF004ECCF2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B843CC142AA85EC000C5DC1E /* ProjexSyncTests.swift in Sources */,
+				B843CC142AA85EC000C5DC1E /* FirebaseAuthServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +450,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjexSync.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ProjexSync";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjexSync.app/ProjexSync";
 			};
 			name = Debug;
 		};
@@ -462,7 +470,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjexSync.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ProjexSync";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjexSync.app/ProjexSync";
 			};
 			name = Release;
 		};
