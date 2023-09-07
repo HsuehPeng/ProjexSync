@@ -11,31 +11,19 @@ import ProjexSync
 final class EmailPasswordAuthServiceTests: XCTestCase {
 	func test_login_completeWithLoginError() {
 		let (sut, authClient) = makeSut()
-		let exp = expectation(description: "Wait for login completion")
 		let expectedError: EmailPasswordAuthService.Error = .login
-		
-		sut.login { receivedError in
-			XCTAssertEqual(receivedError as? EmailPasswordAuthService.Error, expectedError)
-			exp.fulfill()
+
+		expect(sut, toCompleteWith: expectedError) {
+			authClient.completeLoginWithError(with: expectedError)
 		}
-		
-		authClient.completeLoginWithError(with: expectedError)
-		
-		wait(for: [exp], timeout: 1.0)
 	}
 	
 	func test_login_completeWithLoginWithoutError() {
 		let (sut, authClient) = makeSut()
-		let exp = expectation(description: "Wait for login completion")
 		
-		sut.login { receivedError in
-			XCTAssertNil(receivedError)
-			exp.fulfill()
+		expect(sut, toCompleteWith: nil) {
+			authClient.completeLoginWithSuccess()
 		}
-		
-		authClient.completeLoginWithSuccess()
-		
-		wait(for: [exp], timeout: 1.0)
 	}
 	
 	// MARK: - Helpers
@@ -48,6 +36,18 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 		trackForMemoryleaks(sut)
 
 		return (sut, authClient)
+	}
+	
+	private func expect(_ sut: EmailPasswordAuthService, toCompleteWith expectedResult: Error?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+		let exp = expectation(description: "Wait for login completion")
+		
+		sut.login { receivedError in
+			XCTAssertEqual(receivedError as? EmailPasswordAuthService.Error, expectedResult as? EmailPasswordAuthService.Error, file: file, line: line)
+			exp.fulfill()
+		}
+		
+		action()
+		wait(for: [exp], timeout: 1.0)
 	}
 	
 	private class EmailPasswordAuthClientSpy: EmailPasswordAuthClient {
