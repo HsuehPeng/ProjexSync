@@ -36,6 +36,10 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 	private func makeSut() -> (EmailPasswordAuthService, EmailPasswordAuthClientSpy) {
 		let authClient = EmailPasswordAuthClientSpy()
 		let sut = EmailPasswordAuthService(authClient: authClient, email: "", password: "")
+		
+		trackForMemoryleaks(authClient)
+		trackForMemoryleaks(sut)
+
 		return (sut, authClient)
 	}
 	
