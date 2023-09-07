@@ -21,8 +21,8 @@ public class EmailPasswordAuthService: AuthService {
 			switch result {
 			case .failure:
 				completion(Error.login)
-			default:
-				break
+			case .success:
+				completion(nil)
 			}
 		}
 	}

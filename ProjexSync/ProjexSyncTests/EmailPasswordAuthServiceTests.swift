@@ -11,7 +11,7 @@ import ProjexSync
 final class EmailPasswordAuthServiceTests: XCTestCase {
 	func test_login_completeWithLoginError() {
 		let (sut, authClient) = makeSut()
-		let exp = expectation(description: "Wait for load completion")
+		let exp = expectation(description: "Wait for login completion")
 		let expectedError: EmailPasswordAuthService.Error = .login
 		
 		sut.login { receivedError in
@@ -20,6 +20,20 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 		}
 		
 		authClient.completeLoginWithError(with: expectedError)
+		
+		wait(for: [exp], timeout: 1.0)
+	}
+	
+	func test_login_completeWithLoginWithoutError() {
+		let (sut, authClient) = makeSut()
+		let exp = expectation(description: "Wait for login completion")
+		
+		sut.login { receivedError in
+			XCTAssertNil(receivedError)
+			exp.fulfill()
+		}
+		
+		authClient.completeLoginWithSuccess()
 		
 		wait(for: [exp], timeout: 1.0)
 	}
@@ -51,6 +65,10 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 		
 		func completeLoginWithError(with error: Error, at index: Int = 0) {
 			loginCompletions[index](.failure(error))
+		}
+		
+		func completeLoginWithSuccess(at index: Int = 0) {
+			loginCompletions[index](.success(true))
 		}
 	}
 }
