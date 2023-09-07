@@ -7,7 +7,7 @@
 
 import FirebaseAuth
 
-public class EmailPasswordAuthService: AuthService {
+public class EmailPasswordLoginService: LoginService {
 	private let authClient: EmailPasswordAuthClient
 	private let email: String
 	private let password: String

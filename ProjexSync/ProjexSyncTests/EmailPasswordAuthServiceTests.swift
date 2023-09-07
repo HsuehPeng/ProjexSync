@@ -22,7 +22,7 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 	
 	func test_login_completeWithLoginError() {
 		let (sut, authClient) = makeSut()
-		let expectedError: EmailPasswordAuthService.Error = .login
+		let expectedError: EmailPasswordLoginService.Error = .login
 
 		expect(sut, toCompleteWith: expectedError) {
 			authClient.completeLoginWithError(with: expectedError)
@@ -39,9 +39,9 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(email: String = "", password: String = "") -> (EmailPasswordAuthService, EmailPasswordAuthClientSpy) {
+	private func makeSut(email: String = "", password: String = "") -> (EmailPasswordLoginService, EmailPasswordAuthClientSpy) {
 		let authClient = EmailPasswordAuthClientSpy()
-		let sut = EmailPasswordAuthService(authClient: authClient, email: email, password: password)
+		let sut = EmailPasswordLoginService(authClient: authClient, email: email, password: password)
 		
 		trackForMemoryleaks(authClient)
 		trackForMemoryleaks(sut)
@@ -49,11 +49,11 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 		return (sut, authClient)
 	}
 	
-	private func expect(_ sut: EmailPasswordAuthService, toCompleteWith expectedResult: Error?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+	private func expect(_ sut: EmailPasswordLoginService, toCompleteWith expectedResult: Error?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
 		let exp = expectation(description: "Wait for login completion")
 		
 		sut.login { receivedError in
-			XCTAssertEqual(receivedError as? EmailPasswordAuthService.Error, expectedResult as? EmailPasswordAuthService.Error, file: file, line: line)
+			XCTAssertEqual(receivedError as? EmailPasswordLoginService.Error, expectedResult as? EmailPasswordLoginService.Error, file: file, line: line)
 			exp.fulfill()
 		}
 		
