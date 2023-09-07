@@ -12,21 +12,14 @@ final class EmailPasswordAuthServiceTests: XCTestCase {
 	func test_login_completeWithLoginError() {
 		let (sut, authClient) = makeSut()
 		let exp = expectation(description: "Wait for load completion")
-
-		let loginError = EmailPasswordAuthService.Error.login
-		let expectedResult: EmailPasswordAuthService.Result = .failure(loginError)
+		let expectedError: EmailPasswordAuthService.Error = .login
 		
-		sut.login { receivedResult in
-			switch (expectedResult, receivedResult) {
-			case let (.failure(receivedError as EmailPasswordAuthService.Error), .failure(expectedError as EmailPasswordAuthService.Error)):
-				XCTAssertEqual(receivedError, expectedError)
-			default:
-				XCTFail("Expected result \(expectedResult), got \(receivedResult) instead")
-			}
+		sut.login { receivedError in
+			XCTAssertEqual(receivedError as? EmailPasswordAuthService.Error, expectedError)
 			exp.fulfill()
 		}
 		
-		authClient.completeLoginWithError(with: loginError)
+		authClient.completeLoginWithError(with: expectedError)
 		
 		wait(for: [exp], timeout: 1.0)
 	}

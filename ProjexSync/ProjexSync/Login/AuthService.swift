@@ -6,8 +6,7 @@
 //
 
 public protocol AuthService {
-	typealias LoginResult = Swift.Result<Bool, Error>
-	typealias LoginCompletion = (LoginResult) -> Void
+	typealias LoginCompletion = (Error?) -> Void
 	
 	func login(completion: @escaping LoginCompletion)
 }

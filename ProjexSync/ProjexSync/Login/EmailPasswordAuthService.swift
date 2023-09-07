@@ -11,18 +11,16 @@ public class EmailPasswordAuthService: AuthService {
 	private let authClient: EmailPasswordAuthClient
 	private let email: String
 	private let password: String
-	
-	public typealias Result = AuthService.LoginResult
-	
+		
 	public enum Error: Swift.Error {
 		case login
 	}
 	
-	public func login(completion: @escaping (Result) -> Void) {
+	public func login(completion: @escaping LoginCompletion) {
 		authClient.login(email: email, password: password) { result in
 			switch result {
-			case .failure(let error):
-				completion(.failure(error))
+			case .failure:
+				completion(Error.login)
 			default:
 				break
 			}
