@@ -7,20 +7,6 @@
 
 import FirebaseAuth
 
-public protocol AuthService {
-	typealias LoginResult = Swift.Result<Bool, Error>
-	typealias LoginCompletion = (LoginResult) -> Void
-	
-	func login(completion: @escaping LoginCompletion)
-}
-
-public protocol EmailPasswordAuthClient {
-	typealias LoginResult = Swift.Result<Bool, Error>
-	typealias LoginCompletion = (LoginResult) -> Void
-	
-	func login(email: String, password: String, completion: @escaping LoginCompletion)
-}
-
 public class EmailPasswordAuthService: AuthService {
 	private let authClient: EmailPasswordAuthClient
 	private let email: String

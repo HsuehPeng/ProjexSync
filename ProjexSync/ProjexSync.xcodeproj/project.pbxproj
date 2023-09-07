@@ -20,6 +20,8 @@
 		B8C1EF042AA9B257004ECCF2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EF032AA9B257004ECCF2 /* FirebaseFirestoreSwift */; };
 		B8C1EF062AA9B257004ECCF2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EF052AA9B257004ECCF2 /* FirebaseStorage */; };
 		B8C1EF092AA9C618004ECCF2 /* EmailPasswordAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF082AA9C618004ECCF2 /* EmailPasswordAuthService.swift */; };
+		B8C1EF0B2AA9E38F004ECCF2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0A2AA9E38F004ECCF2 /* AuthService.swift */; };
+		B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0C2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
 		B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8C1EF082AA9C618004ECCF2 /* EmailPasswordAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordAuthService.swift; sourceTree = "<group>"; };
+		B8C1EF0A2AA9E38F004ECCF2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		B8C1EF0C2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordAuthClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		B8C1EF072AA9BADF004ECCF2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B8C1EF0C2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift */,
+				B8C1EF0A2AA9E38F004ECCF2 /* AuthService.swift */,
 				B8C1EF082AA9C618004ECCF2 /* EmailPasswordAuthService.swift */,
 			);
 			path = Login;
@@ -233,7 +239,9 @@
 			files = (
 				B8C1EF092AA9C618004ECCF2 /* EmailPasswordAuthService.swift in Sources */,
 				B843CC012AA85EBF00C5DC1E /* ViewController.swift in Sources */,
+				B8C1EF0B2AA9E38F004ECCF2 /* AuthService.swift in Sources */,
 				B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */,
+				B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */,
 				B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
