@@ -99,8 +99,7 @@
 		B843CBFB2AA85EBF00C5DC1E /* ProjexSync */ = {
 			isa = PBXGroup;
 			children = (
-				B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */,
-				B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */,
+				B8C1EF152AAB18DE004ECCF2 /* Base */,
 				B8C1EF072AA9BADF004ECCF2 /* LoginModule */,
 				B843CC002AA85EBF00C5DC1E /* ViewController.swift */,
 				B843CC052AA85EC000C5DC1E /* Assets.xcassets */,
@@ -146,6 +145,15 @@
 				B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */,
 			);
 			path = EmailPassword;
+			sourceTree = "<group>";
+		};
+		B8C1EF152AAB18DE004ECCF2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */,
+				B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
