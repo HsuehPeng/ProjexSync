@@ -25,6 +25,9 @@ DerivedData/
 ## Obj-C/Swift specific
 *.hmap
 
+## Firebase service .plist file
+GoogleService-Info.plist
+
 ## App packaging
 *.ipa
 *.dSYM.zip

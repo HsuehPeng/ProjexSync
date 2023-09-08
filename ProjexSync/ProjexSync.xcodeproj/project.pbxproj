@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */; };
 		B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */; };
-		B843CC012AA85EBF00C5DC1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* ViewController.swift */; };
+		B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */; };
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
 		B843CC142AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */; };
@@ -24,6 +24,8 @@
 		B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0C2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift */; };
 		B8C1EF102AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0F2AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift */; };
 		B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */; };
+		B8C1EF1A2AAB1E3F004ECCF2 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF192AAB1E3F004ECCF2 /* LoginInteractor.swift */; };
+		B8C1EF1C2AAB1E55004ECCF2 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF1B2AAB1E55004ECCF2 /* LoginPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,7 @@
 		B843CBF92AA85EBF00C5DC1E /* ProjexSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjexSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B843CC002AA85EBF00C5DC1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B843CC052AA85EC000C5DC1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B843CC082AA85EC000C5DC1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B843CC0A2AA85EC000C5DC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +55,8 @@
 		B8C1EF0C2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordAuthClient.swift; sourceTree = "<group>"; };
 		B8C1EF0F2AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+EmailPasswordAuthClient.swift"; sourceTree = "<group>"; };
+		B8C1EF192AAB1E3F004ECCF2 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		B8C1EF1B2AAB1E55004ECCF2 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,14 +103,9 @@
 		B843CBFB2AA85EBF00C5DC1E /* ProjexSync */ = {
 			isa = PBXGroup;
 			children = (
-				B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */,
-				B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */,
-				B8C1EF072AA9BADF004ECCF2 /* LoginModule */,
-				B843CC002AA85EBF00C5DC1E /* ViewController.swift */,
-				B843CC052AA85EC000C5DC1E /* Assets.xcassets */,
-				B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */,
-				B843CC0A2AA85EC000C5DC1E /* Info.plist */,
-				B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */,
+				B8C1EF1E2AAB1FB6004ECCF2 /* FrameWorks */,
+				B8C1EF172AAB1C9A004ECCF2 /* Base */,
+				B8C1EF162AAB1C5D004ECCF2 /* Domain */,
 			);
 			path = ProjexSync;
 			sourceTree = "<group>";
@@ -121,13 +120,12 @@
 			path = ProjexSyncTests;
 			sourceTree = "<group>";
 		};
-		B8C1EF072AA9BADF004ECCF2 /* LoginModule */ = {
+		B8C1EF072AA9BADF004ECCF2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */,
-				B8C1EF132AAB0167004ECCF2 /* EmailPassword */,
+				B8C1EF182AAB1D59004ECCF2 /* Scenes */,
 			);
-			path = LoginModule;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		B8C1EF0E2AA9E3FB004ECCF2 /* Helpers */ = {
@@ -146,6 +144,54 @@
 				B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */,
 			);
 			path = EmailPassword;
+			sourceTree = "<group>";
+		};
+		B8C1EF162AAB1C5D004ECCF2 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B8C1EF072AA9BADF004ECCF2 /* Login */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		B8C1EF172AAB1C9A004ECCF2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */,
+				B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */,
+				B843CC052AA85EC000C5DC1E /* Assets.xcassets */,
+				B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */,
+				B843CC0A2AA85EC000C5DC1E /* Info.plist */,
+				B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B8C1EF182AAB1D59004ECCF2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */,
+				B8C1EF192AAB1E3F004ECCF2 /* LoginInteractor.swift */,
+				B8C1EF1B2AAB1E55004ECCF2 /* LoginPresenter.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		B8C1EF1E2AAB1FB6004ECCF2 /* FrameWorks */ = {
+			isa = PBXGroup;
+			children = (
+				B8C1EF1F2AAB1FD1004ECCF2 /* Login */,
+			);
+			path = FrameWorks;
+			sourceTree = "<group>";
+		};
+		B8C1EF1F2AAB1FD1004ECCF2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */,
+				B8C1EF132AAB0167004ECCF2 /* EmailPassword */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,8 +307,10 @@
 			files = (
 				B8C1EF092AA9C618004ECCF2 /* EmailPasswordLoginService.swift in Sources */,
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
-				B843CC012AA85EBF00C5DC1E /* ViewController.swift in Sources */,
+				B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */,
+				B8C1EF1C2AAB1E55004ECCF2 /* LoginPresenter.swift in Sources */,
 				B8C1EF0B2AA9E38F004ECCF2 /* LoginService.swift in Sources */,
+				B8C1EF1A2AAB1E3F004ECCF2 /* LoginInteractor.swift in Sources */,
 				B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */,
 				B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */,
 				B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */,
