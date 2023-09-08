@@ -26,6 +26,7 @@
 		B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */; };
 		B8C1EF1A2AAB1E3F004ECCF2 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF192AAB1E3F004ECCF2 /* LoginInteractor.swift */; };
 		B8C1EF1C2AAB1E55004ECCF2 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF1B2AAB1E55004ECCF2 /* LoginPresenter.swift */; };
+		B8C1EF232AAB408E004ECCF2 /* LoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF222AAB408E004ECCF2 /* LoginSceneFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+EmailPasswordAuthClient.swift"; sourceTree = "<group>"; };
 		B8C1EF192AAB1E3F004ECCF2 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		B8C1EF1B2AAB1E55004ECCF2 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		B8C1EF222AAB408E004ECCF2 /* LoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		B843CBFB2AA85EBF00C5DC1E /* ProjexSync */ = {
 			isa = PBXGroup;
 			children = (
+				B843CC0A2AA85EC000C5DC1E /* Info.plist */,
 				B8C1EF1E2AAB1FB6004ECCF2 /* FrameWorks */,
 				B8C1EF172AAB1C9A004ECCF2 /* Base */,
 				B8C1EF162AAB1C5D004ECCF2 /* Domain */,
@@ -123,6 +126,7 @@
 		B8C1EF072AA9BADF004ECCF2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B8C1EF222AAB408E004ECCF2 /* LoginSceneFactory.swift */,
 				B8C1EF182AAB1D59004ECCF2 /* Scenes */,
 			);
 			path = Login;
@@ -161,7 +165,6 @@
 				B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */,
 				B843CC052AA85EC000C5DC1E /* Assets.xcassets */,
 				B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */,
-				B843CC0A2AA85EC000C5DC1E /* Info.plist */,
 				B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */,
 			);
 			path = Base;
@@ -308,6 +311,7 @@
 				B8C1EF092AA9C618004ECCF2 /* EmailPasswordLoginService.swift in Sources */,
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
 				B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */,
+				B8C1EF232AAB408E004ECCF2 /* LoginSceneFactory.swift in Sources */,
 				B8C1EF1C2AAB1E55004ECCF2 /* LoginPresenter.swift in Sources */,
 				B8C1EF0B2AA9E38F004ECCF2 /* LoginService.swift in Sources */,
 				B8C1EF1A2AAB1E3F004ECCF2 /* LoginInteractor.swift in Sources */,
