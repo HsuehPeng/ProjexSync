@@ -5,8 +5,6 @@
 //  Created by Hsueh Peng Tseng on 2023/9/7.
 //
 
-import FirebaseAuth
-
 public class EmailPasswordLoginService: LoginService {
 	private let authClient: EmailPasswordAuthClient
 	private let email: String
