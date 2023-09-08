@@ -118,7 +118,8 @@
 			children = (
 				B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */,
 				B8C1EF0E2AA9E3FB004ECCF2 /* Helpers */,
-				B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */,
+				B8C1EF242AAB4258004ECCF2 /* FrameWorks */,
+				B8C1EF262AAB42A0004ECCF2 /* Domain */,
 			);
 			path = ProjexSyncTests;
 			sourceTree = "<group>";
@@ -193,6 +194,37 @@
 			children = (
 				B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */,
 				B8C1EF132AAB0167004ECCF2 /* EmailPassword */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B8C1EF242AAB4258004ECCF2 /* FrameWorks */ = {
+			isa = PBXGroup;
+			children = (
+				B8C1EF252AAB428C004ECCF2 /* Login */,
+			);
+			path = FrameWorks;
+			sourceTree = "<group>";
+		};
+		B8C1EF252AAB428C004ECCF2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B8C1EF262AAB42A0004ECCF2 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B8C1EF272AAB42AD004ECCF2 /* Login */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		B8C1EF272AAB42AD004ECCF2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Login;
 			sourceTree = "<group>";
