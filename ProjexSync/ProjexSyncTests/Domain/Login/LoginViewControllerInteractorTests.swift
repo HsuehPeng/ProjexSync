@@ -30,15 +30,37 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		
 		sut.login()
 		
-		loginService.completeLogin(with: nil)
+		loginService.completeLoginWithSuccess()
 		
 		XCTAssertEqual(presenter.isIndicatorLoading, false)
 	}
 	
+	func test_login_presenterShowLoginInSuccessWhenLoginSuccess() {
+		let (sut, presenter, loginService) = makeSut()
+		
+		sut.login()
+		
+		loginService.completeLoginWithSuccess()
+		
+		XCTAssertEqual(presenter.showLoginSuccessCallCount, 1)
+	}
+	
+	func test_login_presenterShowLoginFailureWhenLoginFail() {
+		let (sut, presenter, loginService) = makeSut()
+		
+		sut.login()
+		
+		let loginError = NSError(domain: "", code: 1)
+		
+		loginService.completeLoginWithError(error: loginError)
+		
+		XCTAssertEqual(presenter.showLoginFailureCallCount, 1)
+	}
+	
 	// MARK: - Helpers
 	
-	private func makeSut() -> (LoginInteractor, LoginViewControllerPresenterMock, LoginServiceMock) {
-		let presenter = LoginViewControllerPresenterMock()
+	private func makeSut() -> (LoginInteractor, LoginViewControllerPresenterSpy, LoginServiceMock) {
+		let presenter = LoginViewControllerPresenterSpy()
 		let loginService = LoginServiceMock()
 		let sut = LoginInteractor(presenter: presenter, loginService: loginService)
 		
@@ -49,15 +71,17 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		return (sut, presenter, loginService)
 	}
 	
-	private final class LoginViewControllerPresenterMock: LoginViewControllerPresentationLogic {
+	private final class LoginViewControllerPresenterSpy: LoginViewControllerPresentationLogic {
 		var isIndicatorLoading = false
+		var showLoginSuccessCallCount = 0
+		var showLoginFailureCallCount = 0
 		
 		func showLoginFailure() {
-			
+			showLoginFailureCallCount += 1
 		}
 		
 		func showLoginSuccess() {
-			
+			showLoginSuccessCallCount += 1
 		}
 		
 		func showLoginLoadingIndicator(isLoading: Bool) {
@@ -74,7 +98,15 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 			loginCompletions.append(completion)
 		}
 		
-		func completeLogin(with result: Error?, at index: Int = 0) {
+		func completeLoginWithSuccess(at index: Int = 0) {
+			completeLogin(with: nil, at: index)
+		}
+		
+		func completeLoginWithError(error: Error, at index: Int = 0) {
+			completeLogin(with: error, at: index)
+		}
+		
+		private func completeLogin(with result: Error?, at index: Int = 0) {
 			loginCompletions[index](result)
 		}
 	}
