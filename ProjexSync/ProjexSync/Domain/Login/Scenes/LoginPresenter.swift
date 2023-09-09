@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol LoginViewControllerPresentationLogic: AnyObject {
+	func showLoginFailure(viewModel: LoginFailureViewModel)
+	func showLoginSuccess(viewModel: LoginSuccessViewModel)
+}
+
 class LoginPresenter {
-	
+
 }

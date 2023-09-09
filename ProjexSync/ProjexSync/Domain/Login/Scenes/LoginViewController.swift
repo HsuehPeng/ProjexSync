@@ -7,13 +7,27 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LoginViewControllerDisplayLogic: AnyObject {}
 
+class LoginViewController: UIViewController {
+//	let interactor: LoginViewControllerBusinessLogic
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .red
+		view.backgroundColor = .white
 	}
+	
+//	init(interactor: LoginViewControllerBusinessLogic) {
+//		self.interactor = interactor
+//		super.init(nibName: nil, bundle: nil)
+//	}
+//
+//	required init?(coder: NSCoder) {
+//		fatalError("init(coder:) has not been implemented")
+//	}
+}
 
-
+extension LoginViewController: LoginViewControllerDisplayLogic {
+	
 }
 

@@ -13,6 +13,8 @@
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
 		B843CC142AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */; };
+		B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */; };
+		B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */; };
 		B8C1EEFB2AA9AE1A004ECCF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */; };
 		B8C1EEFE2AA9B257004ECCF2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EEFD2AA9B257004ECCF2 /* FirebaseAuth */; };
 		B8C1EF002AA9B257004ECCF2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EEFF2AA9B257004ECCF2 /* FirebaseCrashlytics */; };
@@ -27,6 +29,8 @@
 		B8C1EF1A2AAB1E3F004ECCF2 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF192AAB1E3F004ECCF2 /* LoginInteractor.swift */; };
 		B8C1EF1C2AAB1E55004ECCF2 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF1B2AAB1E55004ECCF2 /* LoginPresenter.swift */; };
 		B8C1EF232AAB408E004ECCF2 /* LoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF222AAB408E004ECCF2 /* LoginSceneFactory.swift */; };
+		B8C1EF2A2AAB4349004ECCF2 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF292AAB4349004ECCF2 /* RootTabBarController.swift */; };
+		B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF2B2AAB4442004ECCF2 /* RootTabBarRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,8 @@
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordAuthServiceTests.swift; sourceTree = "<group>"; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
+		B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerInteractorTests.swift; sourceTree = "<group>"; };
 		B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8C1EF082AA9C618004ECCF2 /* EmailPasswordLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordLoginService.swift; sourceTree = "<group>"; };
 		B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -59,6 +65,8 @@
 		B8C1EF192AAB1E3F004ECCF2 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		B8C1EF1B2AAB1E55004ECCF2 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		B8C1EF222AAB408E004ECCF2 /* LoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFactory.swift; sourceTree = "<group>"; };
+		B8C1EF292AAB4349004ECCF2 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		B8C1EF2B2AAB4442004ECCF2 /* RootTabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,14 @@
 			path = ProjexSyncTests;
 			sourceTree = "<group>";
 		};
+		B89D47142AAC44B4008AAB2E /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
 		B8C1EF072AA9BADF004ECCF2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +170,8 @@
 		B8C1EF162AAB1C5D004ECCF2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				B8C1EF282AAB4324004ECCF2 /* RootTabBar */,
+				B89D47142AAC44B4008AAB2E /* HomePage */,
 				B8C1EF072AA9BADF004ECCF2 /* Login */,
 			);
 			path = Domain;
@@ -225,8 +243,18 @@
 		B8C1EF272AAB42AD004ECCF2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		B8C1EF282AAB4324004ECCF2 /* RootTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B8C1EF292AAB4349004ECCF2 /* RootTabBarController.swift */,
+				B8C1EF2B2AAB4442004ECCF2 /* RootTabBarRouter.swift */,
+			);
+			path = RootTabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,14 +370,17 @@
 			files = (
 				B8C1EF092AA9C618004ECCF2 /* EmailPasswordLoginService.swift in Sources */,
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
+				B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */,
 				B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */,
 				B8C1EF232AAB408E004ECCF2 /* LoginSceneFactory.swift in Sources */,
 				B8C1EF1C2AAB1E55004ECCF2 /* LoginPresenter.swift in Sources */,
 				B8C1EF0B2AA9E38F004ECCF2 /* LoginService.swift in Sources */,
+				B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */,
 				B8C1EF1A2AAB1E3F004ECCF2 /* LoginInteractor.swift in Sources */,
 				B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */,
 				B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */,
 				B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */,
+				B8C1EF2A2AAB4349004ECCF2 /* RootTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +390,7 @@
 			files = (
 				B843CC142AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift in Sources */,
 				B8C1EF102AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

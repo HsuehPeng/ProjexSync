@@ -15,8 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 
 		let window = UIWindow(windowScene: windowScene)
+		let rootTabBarViewController = RootTabBarController(viewControllers: [UINavigationController(rootViewController: HomePageViewController())])
 		let loginSceneFactory = LoginSceneFactory()
-		window.rootViewController = loginSceneFactory.makeLoginScene()
+		let rootTabBarRouter = RootTabBarRouter(loginSceneFactory: loginSceneFactory)
+		rootTabBarViewController.router = rootTabBarRouter
+		rootTabBarRouter.source = rootTabBarViewController
+
+		window.rootViewController = rootTabBarViewController
 		self.window = window
 		window.makeKeyAndVisible()
 	}
