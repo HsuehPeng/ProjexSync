@@ -57,6 +57,14 @@ class LoginViewController: UIViewController {
 		return textField
 	}()
 	
+	let loadingIndicator: UIActivityIndicatorView = {
+		let view = UIActivityIndicatorView(style: .large)
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.hidesWhenStopped = true
+		view.color = .black
+		return view
+	}()
+	
 	// MARK: - LifeCycle
 	
 	override func viewDidLoad() {
@@ -102,6 +110,7 @@ extension LoginViewController {
 		view.addSubview(emailTextField)
 		view.addSubview(passwordTextField)
 		view.addSubview(signInButton)
+		view.addSubview(loadingIndicator)
 		
 		NSLayoutConstraint.activate([
 			welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 76),
@@ -134,6 +143,11 @@ extension LoginViewController {
 			signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
 			signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
 			signInButton.heightAnchor.constraint(equalToConstant: 56)
+		])
+		
+		NSLayoutConstraint.activate([
+			loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 		])
 	}
 }
