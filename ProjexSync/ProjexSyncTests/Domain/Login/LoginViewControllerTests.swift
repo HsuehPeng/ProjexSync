@@ -56,8 +56,8 @@ final class LoginViewControllerTests: XCTestCase {
 		let sut = LoginViewController(interactor: interactor)
 		sut.router = router
 		
-		trackForMemoryleaks(interactor)
-		trackForMemoryleaks(sut)
+		trackForMemoryleaks(interactor, file: file, line: line)
+		trackForMemoryleaks(sut, file: file, line: line)
 
 		return (sut, interactor, router)
 	}
@@ -84,6 +84,10 @@ final class LoginViewControllerTests: XCTestCase {
 		
 		func showLoginSuccessView() {
 			messages.append(.showLoginSuccessView)
+		}
+		
+		func dismiss() {
+			
 		}
 	}
 	

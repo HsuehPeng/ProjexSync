@@ -13,11 +13,6 @@ protocol LoginViewControllerDisplayLogic: AnyObject {
 	func loginLoadingIndicator(shouldShow: Bool)
 }
 
-protocol LoginViewControllerRoutingLogic: AnyObject {
-	func showLoginFailureView(viewModel: String)
-	func showLoginSuccessView()
-}
-
 class LoginViewController: UIViewController {
 	let interactor: LoginViewControllerBusinessLogic
 	var router: LoginViewControllerRoutingLogic?

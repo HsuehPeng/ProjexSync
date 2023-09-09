@@ -13,6 +13,12 @@ class LoginSceneFactory {
 		let loginService = EmailPasswordLoginService(authClient: Auth.auth(), email: "", password: "")
 		let presenter = LoginViewControllerPresenter()
 		let interactor = LoginViewControllerInteractor(presenter: presenter, loginService: loginService)
-		return LoginViewController(interactor: interactor)
+		let loginViewController = LoginViewController(interactor: interactor)
+		let router = LoginViewControllerRouter()
+		loginViewController.router = router
+		router.sourceView = loginViewController
+		presenter.viewController = loginViewController
+
+		return loginViewController
 	}
 }

@@ -44,8 +44,8 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 		let loginViewControllerMock = LoginViewControllerSpy()
 		sut.viewController = loginViewControllerMock
 		
-		trackForMemoryleaks(sut)
-		trackForMemoryleaks(loginViewControllerMock)
+		trackForMemoryleaks(sut, file: file, line: line)
+		trackForMemoryleaks(loginViewControllerMock, file: file, line: line)
 		
 		return (sut, loginViewControllerMock)
 	}
