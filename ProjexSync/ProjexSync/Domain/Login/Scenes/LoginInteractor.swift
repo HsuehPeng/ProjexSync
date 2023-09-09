@@ -21,14 +21,6 @@ class LoginInteractor {
 	}
 }
 
-struct LoginFailureViewModel {
-	
-}
-
-struct LoginSuccessViewModel {
-	
-}
-
 extension LoginInteractor: LoginViewControllerBusinessLogic {
 	func login() {
 		presenter.showLoginLoadingIndicator(isLoading: true)
