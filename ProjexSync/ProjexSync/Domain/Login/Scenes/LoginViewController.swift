@@ -99,7 +99,7 @@ extension LoginViewController: LoginViewControllerDisplayLogic {
 	}
 	
 	func showLoginSuccessView() {
-		
+		router?.showLoginSuccessView()
 	}
 	
 	func loginLoadingIndicator(shouldShow: Bool) {

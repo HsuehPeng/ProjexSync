@@ -27,6 +27,15 @@ final class LoginViewControllerTests: XCTestCase {
 		XCTAssertEqual(expectedMessage, router.messages)
 	}
 	
+	func test_showLoginSuccessView_routerDidShowSuccessView() {
+		let (sut, _, router) = makeSut()
+		
+		let expectedMessage: [LoginViewControllerRouterMock.Message] = [.showLoginSuccessView]
+		sut.showLoginSuccessView()
+		
+		XCTAssertEqual(expectedMessage, router.messages)
+	}
+	
 	// MARK: - helpers
 	
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewController, LoginViewControllerInteractorMock, LoginViewControllerRouterMock) {
