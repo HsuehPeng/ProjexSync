@@ -16,9 +16,53 @@ protocol LoginViewControllerDisplayLogic: AnyObject {
 class LoginViewController: UIViewController {
 //	let interactor: LoginViewControllerBusinessLogic
 	
+	// MARK: - UI Elements
+	
+	let welcomeLabel: UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "Hi, Welcome Back!"
+		label.textAlignment = .center
+		return label
+	}()
+	
+	let signinTitleLabel: UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "Sign In"
+		label.textAlignment = .center
+		return label
+	}()
+	
+	lazy var signInButton: UIButton = {
+		let button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.addTarget(self, action: #selector(didTapSignInButton), for: .touchUpInside)
+		button.setTitle("Sign In", for: .normal)
+		button.backgroundColor = .red
+		return button
+	}()
+	
+	let emailTextField: UITextField = {
+		let textField = UITextField()
+		textField.translatesAutoresizingMaskIntoConstraints = false
+		textField.placeholder = "Enter your email address"
+		return textField
+	}()
+	
+	let passwordTextField: UITextField = {
+		let textField = UITextField()
+		textField.translatesAutoresizingMaskIntoConstraints = false
+		textField.placeholder = "Enter your password"
+		return textField
+	}()
+	
+	// MARK: - LifeCycle
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .white
+		configureLayout()
 	}
 	
 //	init(interactor: LoginViewControllerBusinessLogic) {
@@ -29,6 +73,10 @@ class LoginViewController: UIViewController {
 //	required init?(coder: NSCoder) {
 //		fatalError("init(coder:) has not been implemented")
 //	}
+	
+	@objc func didTapSignInButton() {
+		
+	}
 }
 
 extension LoginViewController: LoginViewControllerDisplayLogic {
@@ -42,6 +90,51 @@ extension LoginViewController: LoginViewControllerDisplayLogic {
 	
 	func loginLoadingIndicator(shouldShow: Bool) {
 		
+	}
+}
+
+// MARK: - Layout
+
+extension LoginViewController {
+	private func configureLayout() {
+		view.addSubview(welcomeLabel)
+		view.addSubview(signinTitleLabel)
+		view.addSubview(emailTextField)
+		view.addSubview(passwordTextField)
+		view.addSubview(signInButton)
+		
+		NSLayoutConstraint.activate([
+			welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 76),
+			welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 62),
+			welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -62),
+		])
+		
+		NSLayoutConstraint.activate([
+			signinTitleLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 8),
+			signinTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 62),
+			signinTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -62),
+		])
+		
+		NSLayoutConstraint.activate([
+			emailTextField.topAnchor.constraint(equalTo: signinTitleLabel.bottomAnchor, constant: 151),
+			emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+			emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+			emailTextField.heightAnchor.constraint(equalToConstant: 52)
+		])
+		
+		NSLayoutConstraint.activate([
+			passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 46),
+			passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+			passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+			passwordTextField.heightAnchor.constraint(equalToConstant: 52)
+		])
+		
+		NSLayoutConstraint.activate([
+			signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 32),
+			signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+			signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+			signInButton.heightAnchor.constraint(equalToConstant: 56)
+		])
 	}
 }
 
