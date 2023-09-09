@@ -8,8 +8,9 @@
 import Foundation
 
 protocol LoginViewControllerPresentationLogic: AnyObject {
-	func showLoginFailure(viewModel: LoginFailureViewModel)
-	func showLoginSuccess(viewModel: LoginSuccessViewModel)
+	func showLoginFailure()
+	func showLoginSuccess()
+	func showLoginLoadingIndicator(isLoading: Bool)
 }
 
 class LoginPresenter {

@@ -17,6 +17,14 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		XCTAssertEqual(loginService.loginCallCount, 1)
 	}
 	
+	func test_login_presenterShowLoginIndicatorWhenLoginNotFinish() {
+		let (sut, presenter, _) = makeSut()
+		
+		sut.login()
+		
+		XCTAssertEqual(presenter.isIndicatorLoading, true)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut() -> (LoginInteractor, LoginViewControllerPresenterMock, LoginServiceMock) {
@@ -24,16 +32,26 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		let loginService = LoginServiceMock()
 		let sut = LoginInteractor(presenter: presenter, loginService: loginService)
 		
+		trackForMemoryleaks(presenter)
+		trackForMemoryleaks(loginService)
+		trackForMemoryleaks(sut)
+
 		return (sut, presenter, loginService)
 	}
 	
 	private final class LoginViewControllerPresenterMock: LoginViewControllerPresentationLogic {
-		func showLoginFailure(viewModel: LoginFailureViewModel) {
+		var isIndicatorLoading = false
+		
+		func showLoginFailure() {
 			
 		}
 		
-		func showLoginSuccess(viewModel: LoginSuccessViewModel) {
+		func showLoginSuccess() {
 			
+		}
+		
+		func showLoginLoadingIndicator(isLoading: Bool) {
+			isIndicatorLoading = isLoading
 		}
 	}
 	

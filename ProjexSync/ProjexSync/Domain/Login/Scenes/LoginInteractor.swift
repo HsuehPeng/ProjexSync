@@ -31,14 +31,18 @@ struct LoginSuccessViewModel {
 
 extension LoginInteractor: LoginViewControllerBusinessLogic {
 	func login() {
+		presenter.showLoginLoadingIndicator(isLoading: true)
+		
 		loginService.login { [weak self] error in
 			guard let self = self else { return }
 			
 			if let _ = error {
-				self.presenter.showLoginFailure(viewModel: LoginFailureViewModel())
+				self.presenter.showLoginFailure()
 			} else {
-				self.presenter.showLoginSuccess(viewModel: LoginSuccessViewModel())
+				self.presenter.showLoginSuccess()
 			}
+			
+			self.presenter.showLoginLoadingIndicator(isLoading: false)
 		}
 	}
 }
