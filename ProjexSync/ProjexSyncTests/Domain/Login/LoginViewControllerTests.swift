@@ -10,23 +10,35 @@ import XCTest
 
 final class LoginViewControllerTests: XCTestCase {
 	func test_didTapSignInButton_interactorCallsLogin() {
-		let (sut, interactor) = makeSut()
+		let (sut, interactor, _) = makeSut()
 		
 		sut.signInButton.simulateTap()
 		
 		XCTAssertEqual(interactor.loginCallCount, 1)
 	}
 	
+	func test_showLoginFailureView_routerDidShowFailureView() {
+		let (sut, _, router) = makeSut()
+		
+		let viewModel = "Failure"
+		let expectedMessage: [LoginViewControllerRouterMock.Message] = [.showLoginFailureView(viewModel)]
+		sut.showLoginFailureView(viewModel: viewModel)
+		
+		XCTAssertEqual(expectedMessage, router.messages)
+	}
+	
 	// MARK: - helpers
 	
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewController, LoginViewControllerInteractorMock) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewController, LoginViewControllerInteractorMock, LoginViewControllerRouterMock) {
 		let interactor = LoginViewControllerInteractorMock()
+		let router = LoginViewControllerRouterMock()
 		let sut = LoginViewController(interactor: interactor)
+		sut.router = router
 		
 		trackForMemoryleaks(interactor)
 		trackForMemoryleaks(sut)
 
-		return (sut, interactor)
+		return (sut, interactor, router)
 	}
 	
 	private final class LoginViewControllerInteractorMock: LoginViewControllerBusinessLogic {
@@ -34,6 +46,23 @@ final class LoginViewControllerTests: XCTestCase {
 		
 		func login() {
 			loginCallCount += 1
+		}
+	}
+	
+	private final class LoginViewControllerRouterMock: LoginViewControllerRoutingLogic {
+		enum Message: Equatable {
+			case showLoginFailureView(String)
+			case showLoginSuccessView
+		}
+		
+		var messages = [Message]()
+		
+		func showLoginFailureView(viewModel: String) {
+			messages.append(.showLoginFailureView(viewModel))
+		}
+		
+		func showLoginSuccessView() {
+			messages.append(.showLoginSuccessView)
 		}
 	}
 	
