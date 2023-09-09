@@ -11,7 +11,7 @@ protocol LoginViewControllerBusinessLogic: AnyObject {
 	func login()
 }
 
-class LoginInteractor {
+class LoginViewControllerInteractor {
 	let presenter: LoginViewControllerPresentationLogic
 	let loginService: LoginService
 	
@@ -21,7 +21,7 @@ class LoginInteractor {
 	}
 }
 
-extension LoginInteractor: LoginViewControllerBusinessLogic {
+extension LoginViewControllerInteractor: LoginViewControllerBusinessLogic {
 	func login() {
 		presenter.showLoginLoadingIndicator(isLoading: true)
 		

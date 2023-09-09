@@ -13,6 +13,6 @@ protocol LoginViewControllerPresentationLogic: AnyObject {
 	func showLoginLoadingIndicator(isLoading: Bool)
 }
 
-class LoginPresenter {
+class LoginViewControllerPresenter {
 
 }
