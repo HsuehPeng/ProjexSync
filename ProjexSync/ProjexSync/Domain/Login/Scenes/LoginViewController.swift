@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginViewControllerDisplayLogic: AnyObject {
 	func showLoginFailureView(viewModel: String)
+	func showLoginSuccessView() 
 }
 
 class LoginViewController: UIViewController {
@@ -34,5 +35,8 @@ extension LoginViewController: LoginViewControllerDisplayLogic {
 		
 	}
 	
+	func showLoginSuccessView() {
+		
+	}
 }
 

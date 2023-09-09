@@ -21,7 +21,7 @@ class LoginViewControllerPresenter: LoginViewControllerPresentationLogic {
 	}
 	
 	func showLoginSuccess() {
-		
+		viewController?.showLoginSuccessView()
 	}
 	
 	func showLoginLoadingIndicator(isLoading: Bool) {

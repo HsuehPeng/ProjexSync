@@ -19,6 +19,15 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 		XCTAssertEqual(expectedResult, loginViewController.messages)
 	}
 	
+	func test_showLoginFailure_loginViewShowSuccessData() {
+		let (sut, loginViewController) = makeSut()
+		
+		let expectedResult = [LoginViewControllerSpy.Message.showLoginSuccessView]
+		sut.showLoginSuccess()
+		
+		XCTAssertEqual(expectedResult, loginViewController.messages)
+	}
+	 
 	// MARK: - Helpers
 	
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerPresenter, LoginViewControllerSpy) {
@@ -35,6 +44,7 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 	private final class LoginViewControllerSpy: LoginViewControllerDisplayLogic {
 		enum Message: Equatable {
 			case showLoginFailureView(String)
+			case showLoginSuccessView
 		}
 		
 		var messages = [Message]()
@@ -43,5 +53,8 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 			messages.append(.showLoginFailureView(viewModel))
 		}
 		
+		func showLoginSuccessView() {
+			messages.append(.showLoginSuccessView)
+		}
 	}
 }
