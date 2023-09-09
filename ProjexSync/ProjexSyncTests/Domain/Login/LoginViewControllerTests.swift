@@ -36,6 +36,18 @@ final class LoginViewControllerTests: XCTestCase {
 		XCTAssertEqual(expectedMessage, router.messages)
 	}
 	
+	func test_loginLoadingIndicator_loadingIndicatorShouldStartAnimatingWhenAsked() {
+		let (sut, _, _) = makeSut()
+		let isAnimating = true
+		let notAnimating = false
+		
+		sut.loginLoadingIndicator(shouldShow: isAnimating)
+		XCTAssertEqual(sut.loadingIndicator.isAnimating, isAnimating)
+		
+		sut.loginLoadingIndicator(shouldShow: notAnimating)
+		XCTAssertEqual(sut.loadingIndicator.isAnimating, notAnimating)
+	}
+	
 	// MARK: - helpers
 	
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewController, LoginViewControllerInteractorMock, LoginViewControllerRouterMock) {

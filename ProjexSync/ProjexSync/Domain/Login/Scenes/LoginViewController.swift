@@ -103,7 +103,7 @@ extension LoginViewController: LoginViewControllerDisplayLogic {
 	}
 	
 	func loginLoadingIndicator(shouldShow: Bool) {
-		
+		shouldShow ? loadingIndicator.startAnimating() : loadingIndicator.stopAnimating()
 	}
 }
 
