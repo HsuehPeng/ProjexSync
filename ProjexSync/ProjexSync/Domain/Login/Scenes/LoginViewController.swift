@@ -14,7 +14,7 @@ protocol LoginViewControllerDisplayLogic: AnyObject {
 }
 
 class LoginViewController: UIViewController {
-//	let interactor: LoginViewControllerBusinessLogic
+	let interactor: LoginViewControllerBusinessLogic
 	
 	// MARK: - UI Elements
 	
@@ -73,17 +73,17 @@ class LoginViewController: UIViewController {
 		configureLayout()
 	}
 	
-//	init(interactor: LoginViewControllerBusinessLogic) {
-//		self.interactor = interactor
-//		super.init(nibName: nil, bundle: nil)
-//	}
-//
-//	required init?(coder: NSCoder) {
-//		fatalError("init(coder:) has not been implemented")
-//	}
+	init(interactor: LoginViewControllerBusinessLogic) {
+		self.interactor = interactor
+		super.init(nibName: nil, bundle: nil)
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 	
 	@objc func didTapSignInButton() {
-		
+		interactor.login()
 	}
 }
 

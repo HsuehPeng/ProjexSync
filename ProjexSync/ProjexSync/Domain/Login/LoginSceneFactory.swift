@@ -6,9 +6,13 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class LoginSceneFactory {
 	func makeLoginScene() -> LoginViewController {
-		return LoginViewController()
+		let loginService = EmailPasswordLoginService(authClient: Auth.auth(), email: "", password: "")
+		let presenter = LoginViewControllerPresenter()
+		let interactor = LoginViewControllerInteractor(presenter: presenter, loginService: loginService)
+		return LoginViewController(interactor: interactor)
 	}
 }
