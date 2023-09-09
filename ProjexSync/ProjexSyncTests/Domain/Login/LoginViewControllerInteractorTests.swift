@@ -59,14 +59,14 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut() -> (LoginViewControllerInteractor, LoginViewControllerPresenterSpy, LoginServiceMock) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerInteractor, LoginViewControllerPresenterSpy, LoginServiceMock) {
 		let presenter = LoginViewControllerPresenterSpy()
 		let loginService = LoginServiceMock()
 		let sut = LoginViewControllerInteractor(presenter: presenter, loginService: loginService)
 		
-		trackForMemoryleaks(presenter)
-		trackForMemoryleaks(loginService)
-		trackForMemoryleaks(sut)
+		trackForMemoryleaks(presenter, file: file, line: line)
+		trackForMemoryleaks(loginService, file: file, line: line)
+		trackForMemoryleaks(sut, file: file, line: line)
 
 		return (sut, presenter, loginService)
 	}
