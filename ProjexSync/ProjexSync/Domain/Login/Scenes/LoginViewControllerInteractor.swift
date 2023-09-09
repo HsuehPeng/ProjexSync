@@ -23,7 +23,7 @@ class LoginViewControllerInteractor {
 
 extension LoginViewControllerInteractor: LoginViewControllerBusinessLogic {
 	func login() {
-		presenter.showLoginLoadingIndicator(isLoading: true)
+		presenter.loginLoadingIndicator(isLoading: true)
 		
 		loginService.login { [weak self] error in
 			guard let self = self else { return }
@@ -34,7 +34,7 @@ extension LoginViewControllerInteractor: LoginViewControllerBusinessLogic {
 				self.presenter.showLoginSuccess()
 			}
 			
-			self.presenter.showLoginLoadingIndicator(isLoading: false)
+			self.presenter.loginLoadingIndicator(isLoading: false)
 		}
 	}
 }

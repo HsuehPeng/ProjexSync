@@ -84,7 +84,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 			showLoginSuccessCallCount += 1
 		}
 		
-		func showLoginLoadingIndicator(isLoading: Bool) {
+		func loginLoadingIndicator(isLoading: Bool) {
 			isIndicatorLoading = isLoading
 		}
 	}

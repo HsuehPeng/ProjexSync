@@ -10,7 +10,7 @@ import Foundation
 protocol LoginViewControllerPresentationLogic: AnyObject {
 	func showLoginFailure(message: String)
 	func showLoginSuccess()
-	func showLoginLoadingIndicator(isLoading: Bool)
+	func loginLoadingIndicator(isLoading: Bool)
 }
 
 class LoginViewControllerPresenter: LoginViewControllerPresentationLogic {
@@ -24,8 +24,8 @@ class LoginViewControllerPresenter: LoginViewControllerPresentationLogic {
 		viewController?.showLoginSuccessView()
 	}
 	
-	func showLoginLoadingIndicator(isLoading: Bool) {
-		
+	func loginLoadingIndicator(isLoading: Bool) {
+		viewController?.loginLoadingIndicator(shouldShow: isLoading)
 	}
 	
 	

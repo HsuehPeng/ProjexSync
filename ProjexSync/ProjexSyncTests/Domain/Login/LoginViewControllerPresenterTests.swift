@@ -27,6 +27,15 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 		
 		XCTAssertEqual(expectedResult, loginViewController.messages)
 	}
+	
+	func test_loginLoadingIndicator_loginViewShowLoadingIndicator() {
+		let (sut, loginViewController) = makeSut()
+		
+		let expectedResult = [LoginViewControllerSpy.Message.loginLoadingIndicator(true)]
+		sut.loginLoadingIndicator(isLoading: true)
+		
+		XCTAssertEqual(expectedResult, loginViewController.messages)
+	}
 	 
 	// MARK: - Helpers
 	
@@ -45,8 +54,10 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 		enum Message: Equatable {
 			case showLoginFailureView(String)
 			case showLoginSuccessView
+			case loginLoadingIndicator(Bool)
 		}
 		
+		var loadingIndicatorIsLoading: Bool = false
 		var messages = [Message]()
 		
 		func showLoginFailureView(viewModel: String) {
@@ -55,6 +66,10 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 		
 		func showLoginSuccessView() {
 			messages.append(.showLoginSuccessView)
+		}
+		
+		func loginLoadingIndicator(shouldShow: Bool) {
+			messages.append(.loginLoadingIndicator(shouldShow))
 		}
 	}
 }
