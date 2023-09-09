@@ -76,7 +76,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		var showLoginSuccessCallCount = 0
 		var showLoginFailureCallCount = 0
 		
-		func showLoginFailure() {
+		func showLoginFailure(message: String) {
 			showLoginFailureCallCount += 1
 		}
 		

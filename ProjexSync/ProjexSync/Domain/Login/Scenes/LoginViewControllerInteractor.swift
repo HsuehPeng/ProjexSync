@@ -28,8 +28,8 @@ extension LoginViewControllerInteractor: LoginViewControllerBusinessLogic {
 		loginService.login { [weak self] error in
 			guard let self = self else { return }
 			
-			if let _ = error {
-				self.presenter.showLoginFailure()
+			if let error = error {
+				self.presenter.showLoginFailure(message: error.localizedDescription)
 			} else {
 				self.presenter.showLoginSuccess()
 			}

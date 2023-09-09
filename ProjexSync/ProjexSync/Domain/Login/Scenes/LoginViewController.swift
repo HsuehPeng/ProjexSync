@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol LoginViewControllerDisplayLogic: AnyObject {}
+protocol LoginViewControllerDisplayLogic: AnyObject {
+	func showLoginFailureView(viewModel: String)
+}
 
 class LoginViewController: UIViewController {
 //	let interactor: LoginViewControllerBusinessLogic
@@ -28,6 +30,9 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewControllerDisplayLogic {
+	func showLoginFailureView(viewModel: String) {
+		
+	}
 	
 }
 

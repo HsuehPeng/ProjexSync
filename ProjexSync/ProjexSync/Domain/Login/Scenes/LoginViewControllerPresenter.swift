@@ -8,11 +8,25 @@
 import Foundation
 
 protocol LoginViewControllerPresentationLogic: AnyObject {
-	func showLoginFailure()
+	func showLoginFailure(message: String)
 	func showLoginSuccess()
 	func showLoginLoadingIndicator(isLoading: Bool)
 }
 
-class LoginViewControllerPresenter {
-
+class LoginViewControllerPresenter: LoginViewControllerPresentationLogic {
+	weak var viewController: LoginViewControllerDisplayLogic?
+	
+	func showLoginFailure(message: String) {
+		viewController?.showLoginFailureView(viewModel: message)
+	}
+	
+	func showLoginSuccess() {
+		
+	}
+	
+	func showLoginLoadingIndicator(isLoading: Bool) {
+		
+	}
+	
+	
 }
