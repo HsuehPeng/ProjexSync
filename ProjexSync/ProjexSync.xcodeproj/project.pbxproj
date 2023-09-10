@@ -12,7 +12,6 @@
 		B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */; };
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
-		B843CC142AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */; };
 		B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */; };
 		B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */; };
 		B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */; };
@@ -23,9 +22,7 @@
 		B8C1EF022AA9B257004ECCF2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EF012AA9B257004ECCF2 /* FirebaseFirestore */; };
 		B8C1EF042AA9B257004ECCF2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EF032AA9B257004ECCF2 /* FirebaseFirestoreSwift */; };
 		B8C1EF062AA9B257004ECCF2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EF052AA9B257004ECCF2 /* FirebaseStorage */; };
-		B8C1EF092AA9C618004ECCF2 /* EmailPasswordLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF082AA9C618004ECCF2 /* EmailPasswordLoginService.swift */; };
-		B8C1EF0B2AA9E38F004ECCF2 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */; };
-		B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0C2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift */; };
+		B8C1EF0D2AA9E39F004ECCF2 /* EmailLoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0C2AA9E39F004ECCF2 /* EmailLoginClient.swift */; };
 		B8C1EF102AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0F2AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift */; };
 		B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */; };
 		B8C1EF1A2AAB1E3F004ECCF2 /* LoginViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF192AAB1E3F004ECCF2 /* LoginViewControllerInteractor.swift */; };
@@ -57,16 +54,13 @@
 		B843CC082AA85EC000C5DC1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B843CC0A2AA85EC000C5DC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordAuthServiceTests.swift; sourceTree = "<group>"; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
 		B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerRouter.swift; sourceTree = "<group>"; };
 		B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerInteractorTests.swift; sourceTree = "<group>"; };
 		B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerPresenterTests.swift; sourceTree = "<group>"; };
 		B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B8C1EF082AA9C618004ECCF2 /* EmailPasswordLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordLoginService.swift; sourceTree = "<group>"; };
-		B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		B8C1EF0C2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordAuthClient.swift; sourceTree = "<group>"; };
+		B8C1EF0C2AA9E39F004ECCF2 /* EmailLoginClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginClient.swift; sourceTree = "<group>"; };
 		B8C1EF0F2AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+EmailPasswordAuthClient.swift"; sourceTree = "<group>"; };
 		B8C1EF192AAB1E3F004ECCF2 /* LoginViewControllerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerInteractor.swift; sourceTree = "<group>"; };
@@ -172,8 +166,7 @@
 		B8C1EF132AAB0167004ECCF2 /* EmailPassword */ = {
 			isa = PBXGroup;
 			children = (
-				B8C1EF0C2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift */,
-				B8C1EF082AA9C618004ECCF2 /* EmailPasswordLoginService.swift */,
+				B8C1EF0C2AA9E39F004ECCF2 /* EmailLoginClient.swift */,
 				B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */,
 			);
 			path = EmailPassword;
@@ -223,7 +216,6 @@
 		B8C1EF1F2AAB1FD1004ECCF2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */,
 				B8C1EF132AAB0167004ECCF2 /* EmailPassword */,
 			);
 			path = Login;
@@ -232,17 +224,8 @@
 		B8C1EF242AAB4258004ECCF2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
-				B8C1EF252AAB428C004ECCF2 /* Login */,
 			);
 			path = FrameWorks;
-			sourceTree = "<group>";
-		};
-		B8C1EF252AAB428C004ECCF2 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		B8C1EF262AAB42A0004ECCF2 /* Domain */ = {
@@ -383,18 +366,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C1EF092AA9C618004ECCF2 /* EmailPasswordLoginService.swift in Sources */,
 				B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */,
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
 				B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */,
 				B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */,
 				B8C1EF232AAB408E004ECCF2 /* LoginSceneFactory.swift in Sources */,
 				B8C1EF1C2AAB1E55004ECCF2 /* LoginViewControllerPresenter.swift in Sources */,
-				B8C1EF0B2AA9E38F004ECCF2 /* LoginService.swift in Sources */,
 				B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */,
 				B8C1EF1A2AAB1E3F004ECCF2 /* LoginViewControllerInteractor.swift in Sources */,
 				B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */,
-				B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */,
+				B8C1EF0D2AA9E39F004ECCF2 /* EmailLoginClient.swift in Sources */,
 				B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */,
 				B8C1EF2A2AAB4349004ECCF2 /* RootTabBarController.swift in Sources */,
 			);
@@ -404,7 +385,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B843CC142AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift in Sources */,
 				B8F2985A2AAC90100069026A /* UIControl+TestHelpers.swift in Sources */,
 				B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */,
 				B8C1EF102AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift in Sources */,

@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
 	}
 	
 	@objc func didTapSignInButton() {
-		interactor.login()
+		interactor.loginWith(email: emailTextField.text, password: passwordTextField.text)
 	}
 }
 

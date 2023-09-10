@@ -8,30 +8,31 @@
 import Foundation
 
 protocol LoginViewControllerBusinessLogic: AnyObject {
-	func login()
+	func loginWith(email: String?, password: String?)
 }
 
 class LoginViewControllerInteractor {
 	let presenter: LoginViewControllerPresentationLogic
-	let loginService: LoginService
+	let loginClient: EmailLoginClient
 	
-	init(presenter: LoginViewControllerPresentationLogic, loginService: LoginService) {
+	init(presenter: LoginViewControllerPresentationLogic, loginClient: EmailLoginClient) {
 		self.presenter = presenter
-		self.loginService = loginService
+		self.loginClient = loginClient
 	}
 }
 
 extension LoginViewControllerInteractor: LoginViewControllerBusinessLogic {
-	func login() {
+	func loginWith(email: String?, password: String?) {
 		presenter.loginLoadingIndicator(isLoading: true)
 		
-		loginService.login { [weak self] error in
+		loginClient.login(email: email ?? "", password: password ?? "") { [weak self] result in
 			guard let self = self else { return }
 			
-			if let error = error {
-				self.presenter.showLoginFailure(message: error.localizedDescription)
-			} else {
+			switch result {
+			case .success:
 				self.presenter.showLoginSuccess()
+			case .failure(let error):
+				self.presenter.showLoginFailure(message: error.localizedDescription)
 			}
 			
 			self.presenter.loginLoadingIndicator(isLoading: false)

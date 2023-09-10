@@ -65,7 +65,7 @@ final class LoginViewControllerTests: XCTestCase {
 	private final class LoginViewControllerInteractorMock: LoginViewControllerBusinessLogic {
 		var loginCallCount = 0
 		
-		func login() {
+		func loginWith(email: String?, password: String?) {
 			loginCallCount += 1
 		}
 	}
