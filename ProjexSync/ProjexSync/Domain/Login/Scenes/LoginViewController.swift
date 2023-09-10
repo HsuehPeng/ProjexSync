@@ -14,7 +14,7 @@ protocol LoginViewControllerDisplayLogic: AnyObject {
 }
 
 class LoginViewController: UIViewController {
-	let interactor: LoginViewControllerBusinessLogic
+	private let interactor: LoginViewControllerBusinessLogic
 	var router: LoginViewControllerRoutingLogic?
 	
 	// MARK: - UI Elements

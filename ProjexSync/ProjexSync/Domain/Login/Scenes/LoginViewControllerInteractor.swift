@@ -12,8 +12,8 @@ protocol LoginViewControllerBusinessLogic: AnyObject {
 }
 
 class LoginViewControllerInteractor {
-	let presenter: LoginViewControllerPresentationLogic
-	let loginClient: EmailLoginClient
+	private let presenter: LoginViewControllerPresentationLogic
+	private let loginClient: EmailLoginClient
 	
 	init(presenter: LoginViewControllerPresentationLogic, loginClient: EmailLoginClient) {
 		self.presenter = presenter
