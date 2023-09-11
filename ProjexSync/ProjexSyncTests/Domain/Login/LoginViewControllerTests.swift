@@ -21,7 +21,7 @@ final class LoginViewControllerTests: XCTestCase {
 		let (sut, _, router) = makeSut()
 		
 		let viewModel = "Failure"
-		let expectedMessage: [LoginViewControllerRouterMock.Message] = [.showLoginFailureView(viewModel)]
+		let expectedMessage: [LoginViewControllerRouterSpy.Message] = [.showLoginFailureView(viewModel)]
 		sut.showLoginFailureView(viewModel: viewModel)
 		
 		XCTAssertEqual(expectedMessage, router.messages)
@@ -30,7 +30,7 @@ final class LoginViewControllerTests: XCTestCase {
 	func test_showLoginSuccessView_routerDidShowSuccessView() {
 		let (sut, _, router) = makeSut()
 		
-		let expectedMessage: [LoginViewControllerRouterMock.Message] = [.showLoginSuccessView]
+		let expectedMessage: [LoginViewControllerRouterSpy.Message] = [.showLoginSuccessView]
 		sut.showLoginSuccessView()
 		
 		XCTAssertEqual(expectedMessage, router.messages)
@@ -50,9 +50,9 @@ final class LoginViewControllerTests: XCTestCase {
 	
 	// MARK: - helpers
 	
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewController, LoginViewControllerInteractorMock, LoginViewControllerRouterMock) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewController, LoginViewControllerInteractorMock, LoginViewControllerRouterSpy) {
 		let interactor = LoginViewControllerInteractorMock()
-		let router = LoginViewControllerRouterMock()
+		let router = LoginViewControllerRouterSpy()
 		let sut = LoginViewController(interactor: interactor)
 		sut.router = router
 		
@@ -70,7 +70,7 @@ final class LoginViewControllerTests: XCTestCase {
 		}
 	}
 	
-	private final class LoginViewControllerRouterMock: LoginViewControllerRoutingLogic {
+	private final class LoginViewControllerRouterSpy: LoginViewControllerRoutingLogic {
 		enum Message: Equatable {
 			case showLoginFailureView(String)
 			case showLoginSuccessView
