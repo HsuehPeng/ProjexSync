@@ -13,7 +13,9 @@
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
 		B843CC142AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */; };
-		B890857B2AAF064200F7AE4D /* UIColor+ColorConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890857A2AAF064200F7AE4D /* UIColor+ColorConstant.swift */; };
+		B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890857A2AAF064200F7AE4D /* ColorConstants.swift */; };
+		B890857D2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */; };
+		B890857F2AAF0C4000F7AE4D /* FontConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890857E2AAF0C4000F7AE4D /* FontConstants.swift */; };
 		B8C1EEFB2AA9AE1A004ECCF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */; };
 		B8C1EEFE2AA9B257004ECCF2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EEFD2AA9B257004ECCF2 /* FirebaseAuth */; };
 		B8C1EF002AA9B257004ECCF2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EEFF2AA9B257004ECCF2 /* FirebaseCrashlytics */; };
@@ -50,7 +52,9 @@
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordAuthServiceTests.swift; sourceTree = "<group>"; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
-		B890857A2AAF064200F7AE4D /* UIColor+ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorConstant.swift"; sourceTree = "<group>"; };
+		B890857A2AAF064200F7AE4D /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
+		B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		B890857E2AAF0C4000F7AE4D /* FontConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConstants.swift; sourceTree = "<group>"; };
 		B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8C1EF082AA9C618004ECCF2 /* EmailPasswordLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordLoginService.swift; sourceTree = "<group>"; };
 		B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -126,7 +130,8 @@
 		B89085792AAF061300F7AE4D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B890857A2AAF064200F7AE4D /* UIColor+ColorConstant.swift */,
+				B890857A2AAF064200F7AE4D /* ColorConstants.swift */,
+				B890857E2AAF0C4000F7AE4D /* FontConstants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */,
 				B843CC0A2AA85EC000C5DC1E /* Info.plist */,
 				B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */,
+				B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 				B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */,
 				B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */,
 				B8C1EEFB2AA9AE1A004ECCF2 /* GoogleService-Info.plist in Resources */,
+				B890857D2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +332,8 @@
 				B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */,
 				B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */,
 				B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */,
-				B890857B2AAF064200F7AE4D /* UIColor+ColorConstant.swift in Sources */,
+				B890857F2AAF0C4000F7AE4D /* FontConstants.swift in Sources */,
+				B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
