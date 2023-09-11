@@ -13,6 +13,7 @@
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
 		B843CC142AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */; };
+		B890857B2AAF064200F7AE4D /* UIColor+ColorConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890857A2AAF064200F7AE4D /* UIColor+ColorConstant.swift */; };
 		B8C1EEFB2AA9AE1A004ECCF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */; };
 		B8C1EEFE2AA9B257004ECCF2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EEFD2AA9B257004ECCF2 /* FirebaseAuth */; };
 		B8C1EF002AA9B257004ECCF2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EEFF2AA9B257004ECCF2 /* FirebaseCrashlytics */; };
@@ -49,6 +50,7 @@
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordAuthServiceTests.swift; sourceTree = "<group>"; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
+		B890857A2AAF064200F7AE4D /* UIColor+ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorConstant.swift"; sourceTree = "<group>"; };
 		B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8C1EF082AA9C618004ECCF2 /* EmailPasswordLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordLoginService.swift; sourceTree = "<group>"; };
 		B8C1EF0A2AA9E38F004ECCF2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		B843CBFB2AA85EBF00C5DC1E /* ProjexSync */ = {
 			isa = PBXGroup;
 			children = (
+				B89085792AAF061300F7AE4D /* Common */,
 				B8C1EF1E2AAB1FB6004ECCF2 /* FrameWorks */,
 				B8C1EF172AAB1C9A004ECCF2 /* Base */,
 				B8C1EF162AAB1C5D004ECCF2 /* Domain */,
@@ -118,6 +121,14 @@
 				B843CC132AA85EC000C5DC1E /* EmailPasswordAuthServiceTests.swift */,
 			);
 			path = ProjexSyncTests;
+			sourceTree = "<group>";
+		};
+		B89085792AAF061300F7AE4D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B890857A2AAF064200F7AE4D /* UIColor+ColorConstant.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		B8C1EF072AA9BADF004ECCF2 /* Login */ = {
@@ -314,6 +325,7 @@
 				B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */,
 				B8C1EF0D2AA9E39F004ECCF2 /* EmailPasswordAuthClient.swift in Sources */,
 				B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */,
+				B890857B2AAF064200F7AE4D /* UIColor+ColorConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
