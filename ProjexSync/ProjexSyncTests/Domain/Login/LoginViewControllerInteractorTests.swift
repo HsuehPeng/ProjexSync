@@ -9,12 +9,12 @@ import XCTest
 @testable import ProjexSync
 
 final class LoginViewControllerInteractorTests: XCTestCase {
-	func test_login_loginServiceDidCall() {
-		let (sut, _, loginService) = makeSut()
+	func test_login_loginClientDidCall() {
+		let (sut, _, loginClient) = makeSut()
 		
 		sut.loginWith(email: anyEmail(), password: anyPassword())
 		
-		XCTAssertEqual(loginService.loginCallCount, 1)
+		XCTAssertEqual(loginClient.loginCallCount, 1)
 	}
 	
 	func test_login_presenterShowLoginIndicatorWhenLoginNotFinish() {
@@ -26,33 +26,33 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	}
 	
 	func test_login_presenterHideShowLoginIndicatorWhenLoginFinish() {
-		let (sut, presenter, loginService) = makeSut()
+		let (sut, presenter, loginClient) = makeSut()
 		
 		sut.loginWith(email: anyEmail(), password: anyPassword())
 
-		loginService.completeLoginSuccess()
+		loginClient.completeLoginSuccess()
 		
 		XCTAssertEqual(presenter.isIndicatorLoading, false)
 	}
 	
 	func test_login_presenterShowLoginInSuccessWhenLoginSuccess() {
-		let (sut, presenter, loginService) = makeSut()
+		let (sut, presenter, loginClient) = makeSut()
 		
 		sut.loginWith(email: anyEmail(), password: anyPassword())
 
-		loginService.completeLoginSuccess()
+		loginClient.completeLoginSuccess()
 		
 		XCTAssertEqual(presenter.showLoginSuccessCallCount, 1)
 	}
 	
 	func test_login_presenterShowLoginFailureWhenLoginFail() {
-		let (sut, presenter, loginService) = makeSut()
+		let (sut, presenter, loginClient) = makeSut()
 		
 		sut.loginWith(email: anyEmail(), password: anyPassword())
 
 		let loginError = NSError(domain: "", code: 1)
 		
-		loginService.completeLoginFailure(with: loginError)
+		loginClient.completeLoginFailure(with: loginError)
 		
 		XCTAssertEqual(presenter.showLoginFailureCallCount, 1)
 	}
