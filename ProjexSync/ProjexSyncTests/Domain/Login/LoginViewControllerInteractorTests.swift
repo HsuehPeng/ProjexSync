@@ -57,6 +57,19 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		XCTAssertEqual(presenter.showLoginFailureCallCount, 1)
 	}
 	
+	func test_login_loginClientDoesnotCallLoginWhenInteractorIsDeallocated() {
+		let presenter = LoginViewControllerPresenterMock()
+		let emailLoginClient = EmailLoginClientSpy()
+		var sut: LoginViewControllerInteractor? = LoginViewControllerInteractor(presenter: presenter, loginClient: emailLoginClient)
+
+		sut?.loginWith(email: anyEmail(), password: anyPassword())
+		sut = nil
+		emailLoginClient.completeLoginSuccess()
+		
+		XCTAssertEqual(presenter.showLoginFailureCallCount, 0)
+		XCTAssertEqual(presenter.showLoginSuccessCallCount, 0)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerInteractor, LoginViewControllerPresenterMock, EmailLoginClientSpy) {
