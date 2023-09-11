@@ -59,9 +59,9 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerInteractor, LoginViewControllerPresenterSpy, EmailLoginClientMock) {
-		let presenter = LoginViewControllerPresenterSpy()
-		let emailLoginClient = EmailLoginClientMock()
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerInteractor, LoginViewControllerPresenterMock, EmailLoginClientSpy) {
+		let presenter = LoginViewControllerPresenterMock()
+		let emailLoginClient = EmailLoginClientSpy()
 		let sut = LoginViewControllerInteractor(presenter: presenter, loginClient: emailLoginClient)
 		
 		trackForMemoryleaks(presenter, file: file, line: line)
@@ -79,7 +79,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		return "AnyPassword"
 	}
 	
-	private final class LoginViewControllerPresenterSpy: LoginViewControllerPresentationLogic {
+	private final class LoginViewControllerPresenterMock: LoginViewControllerPresentationLogic {
 		var isIndicatorLoading = false
 		var showLoginSuccessCallCount = 0
 		var showLoginFailureCallCount = 0
@@ -97,7 +97,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		}
 	}
 	
-	private final class EmailLoginClientMock: EmailLoginClient {
+	private final class EmailLoginClientSpy: EmailLoginClient {
 		var loginCallCount = 0
 		var loginCompletions: [LoginCompletion] = []
 		
