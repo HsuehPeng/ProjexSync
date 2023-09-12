@@ -38,8 +38,8 @@ class LoginViewController: UIViewController {
 		return label
 	}()
 	
-	let emailTextField: InputTextField = {
-		let textField = InputTextField(placeHolder: "Enter your email address")
+	let emailTextField: BaseTextField = {
+		let textField = BaseTextField(placeHolder: "Enter your email address")
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
@@ -53,8 +53,8 @@ class LoginViewController: UIViewController {
 		return label
 	}()
 	
-	let passwordTextField: UITextField = {
-		let textField = InputTextField(placeHolder: "Enter your password")
+	let passwordTextField: HidableTextField = {
+		let textField = HidableTextField(placeHolder: "Enter your password")
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
