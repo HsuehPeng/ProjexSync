@@ -14,7 +14,6 @@ class HidableTextField: BaseTextField {
 		view.setImage(UIImage(systemName: "eye.slash.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
 		view.setImage(UIImage(systemName: "eye.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .selected)
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.isEnabled = false
 		view.addTarget(self, action: #selector(didTapHideButton), for: .touchUpInside)
 		return view
 	}()
@@ -22,7 +21,7 @@ class HidableTextField: BaseTextField {
 	override func configure() {
 		super.configure()
 		
-		isSecureTextEntry = true
+		reset()
 		rightView = hideButton
 		rightViewMode = .always
 	}
@@ -53,8 +52,14 @@ class HidableTextField: BaseTextField {
 	}
 	
 	override func resignFirstResponder() -> Bool {
-		hideButton.isEnabled = false
+		reset()
 		return super.resignFirstResponder()
+	}
+	
+	private func reset() {
+		hideButton.isEnabled = false
+		hideButton.isSelected = false
+		isSecureTextEntry = true
 	}
 
 }
