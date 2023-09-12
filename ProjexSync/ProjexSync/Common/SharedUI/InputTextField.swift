@@ -8,6 +8,9 @@
 import UIKit
 
 class InputTextField: UITextField {
+	private let padding: CGFloat = 16
+	private let cornerRadius: CGFloat = 24
+	
 	convenience init(placeHolder: String) {
 		self.init()
 		
@@ -21,7 +24,15 @@ class InputTextField: UITextField {
 	}
 	
 	private func configure() {
-		layer.cornerRadius = 24
+		layer.cornerRadius = cornerRadius
 		backgroundColor = ColorConstants.secondary
+	}
+	
+	override func textRect(forBounds bounds: CGRect) -> CGRect {
+		return bounds.insetBy(dx: padding, dy: 0)
+	}
+	
+	override func editingRect(forBounds bounds: CGRect) -> CGRect {
+		return bounds.insetBy(dx: padding, dy: 0)
 	}
 }

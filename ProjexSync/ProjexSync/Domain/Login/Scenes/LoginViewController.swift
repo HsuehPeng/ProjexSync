@@ -19,20 +19,44 @@ class LoginViewController: UIViewController {
 	
 	// MARK: - UI Elements
 	
-	let welcomeLabel: UILabel = {
-		let label = UILabel()
-		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Hi, Welcome Back!"
-		label.textAlignment = .center
-		return label
-	}()
-	
 	let signinTitleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Sign In"
 		label.textAlignment = .center
+		label.font = FontConstants.BODY_XL_BOLD
+		label.textColor = ColorConstants.additionalBlack
 		return label
+	}()
+	
+	let emailAddressLabel: UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "Email Address"
+		label.font = FontConstants.BODY_M_MEDIUM
+		label.textColor = ColorConstants.grayscale70
+		return label
+	}()
+	
+	let emailTextField: InputTextField = {
+		let textField = InputTextField(placeHolder: "Enter your email address")
+		textField.translatesAutoresizingMaskIntoConstraints = false
+		return textField
+	}()
+	
+	let passwordLabel: UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "Password"
+		label.font = FontConstants.BODY_M_MEDIUM
+		label.textColor = ColorConstants.grayscale70
+		return label
+	}()
+	
+	let passwordTextField: UITextField = {
+		let textField = InputTextField(placeHolder: "Enter your password")
+		textField.translatesAutoresizingMaskIntoConstraints = false
+		return textField
 	}()
 	
 	lazy var signInButton: UIButton = {
@@ -42,20 +66,6 @@ class LoginViewController: UIViewController {
 		button.setTitle("Sign In", for: .normal)
 		button.backgroundColor = .red
 		return button
-	}()
-	
-	let emailTextField: UITextField = {
-		let textField = UITextField()
-		textField.translatesAutoresizingMaskIntoConstraints = false
-		textField.placeholder = "Enter your email address"
-		return textField
-	}()
-	
-	let passwordTextField: UITextField = {
-		let textField = UITextField()
-		textField.translatesAutoresizingMaskIntoConstraints = false
-		textField.placeholder = "Enter your password"
-		return textField
 	}()
 	
 	let loadingIndicator: UIActivityIndicatorView = {
@@ -106,34 +116,40 @@ extension LoginViewController: LoginViewControllerDisplayLogic {
 
 extension LoginViewController {
 	private func configureLayout() {
-		view.addSubview(welcomeLabel)
 		view.addSubview(signinTitleLabel)
+		view.addSubview(emailAddressLabel)
 		view.addSubview(emailTextField)
+		view.addSubview(passwordLabel)
 		view.addSubview(passwordTextField)
 		view.addSubview(signInButton)
 		view.addSubview(loadingIndicator)
 		
 		NSLayoutConstraint.activate([
-			welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 76),
-			welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 62),
-			welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -62),
+			signinTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),
+			signinTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 		])
 		
 		NSLayoutConstraint.activate([
-			signinTitleLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 8),
-			signinTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 62),
-			signinTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -62),
+			emailAddressLabel.topAnchor.constraint(equalTo: signinTitleLabel.bottomAnchor, constant: 43),
+			emailAddressLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+			emailAddressLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
 		])
 		
 		NSLayoutConstraint.activate([
-			emailTextField.topAnchor.constraint(equalTo: signinTitleLabel.bottomAnchor, constant: 151),
+			emailTextField.topAnchor.constraint(equalTo: emailAddressLabel.bottomAnchor, constant: 8),
 			emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
 			emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
 			emailTextField.heightAnchor.constraint(equalToConstant: 52)
 		])
 		
 		NSLayoutConstraint.activate([
-			passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 46),
+			passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
+			passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+			passwordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+		])
+		
+		NSLayoutConstraint.activate([
+			passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 8),
 			passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
 			passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
 			passwordTextField.heightAnchor.constraint(equalToConstant: 52)
