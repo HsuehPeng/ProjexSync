@@ -19,6 +19,7 @@
 		B89085A32AB05CA200F7AE4D /* HidableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085A22AB05CA200F7AE4D /* HidableTextField.swift */; };
 		B89085A52AB05CB600F7AE4D /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085A42AB05CB600F7AE4D /* BaseTextField.swift */; };
 		B89085A72AB07F0100F7AE4D /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085A62AB07F0100F7AE4D /* PrimaryButton.swift */; };
+		B89085AB2AB088BB00F7AE4D /* ProjexSyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */; };
 		B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */; };
 		B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */; };
 		B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */; };
@@ -68,6 +69,7 @@
 		B89085A22AB05CA200F7AE4D /* HidableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidableTextField.swift; sourceTree = "<group>"; };
 		B89085A42AB05CB600F7AE4D /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		B89085A62AB07F0100F7AE4D /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjexSyncButton.swift; sourceTree = "<group>"; };
 		B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerInteractorTests.swift; sourceTree = "<group>"; };
 		B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerPresenterTests.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				B89085A42AB05CB600F7AE4D /* BaseTextField.swift */,
 				B89085A22AB05CA200F7AE4D /* HidableTextField.swift */,
 				B89085A62AB07F0100F7AE4D /* PrimaryButton.swift */,
+				B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */,
 			);
 			path = SharedUI;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
 				B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */,
 				B89085A32AB05CA200F7AE4D /* HidableTextField.swift in Sources */,
+				B89085AB2AB088BB00F7AE4D /* ProjexSyncButton.swift in Sources */,
 				B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */,
 				B8C1EF232AAB408E004ECCF2 /* LoginSceneFactory.swift in Sources */,
 				B8C1EF1C2AAB1E55004ECCF2 /* LoginViewControllerPresenter.swift in Sources */,

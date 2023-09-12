@@ -59,13 +59,58 @@ class LoginViewController: UIViewController {
 		return textField
 	}()
 	
-	lazy var signInButton: UIButton = {
-		let button = UIButton()
+	lazy var signInButton: ProjexSyncButton = {
+		let button = ProjexSyncButton(type: .primary, size: .large)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.addTarget(self, action: #selector(didTapSignInButton), for: .touchUpInside)
 		button.setTitle("Sign In", for: .normal)
-		button.backgroundColor = .red
 		return button
+	}()
+	
+	lazy var firstLineView = makeLineView()
+	
+	let continueWithLabel: UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "Or continue with"
+		label.font = FontConstants.BODY_M_SEMIBOLD
+		label.textColor = ColorConstants.additionalGray
+		return label
+	}()
+	
+	lazy var secondLineView = makeLineView()
+	
+	let continueWithHStack: UIStackView = {
+		let view = UIStackView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.axis = .horizontal
+		view.spacing = 12
+		view.alignment = .center
+		return view
+	}()
+	
+	let noAccountLabel: UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "Don’t have an account?"
+		label.font = FontConstants.BODY_L_SEMIBOLD
+		label.textColor = ColorConstants.textGrey
+		return label
+	}()
+	
+	let signUpButton: ProjexSyncButton = {
+		let button = ProjexSyncButton(type: .tertiary, size: .large)
+		button.setTitle("Sign Up", for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+	}()
+	
+	let signUpHsStack: UIStackView = {
+		let view = UIStackView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.axis = .horizontal
+		view.spacing = 2
+		return view
 	}()
 	
 	let loadingIndicator: UIActivityIndicatorView = {
@@ -122,15 +167,17 @@ extension LoginViewController {
 		view.addSubview(passwordLabel)
 		view.addSubview(passwordTextField)
 		view.addSubview(signInButton)
+		view.addSubview(continueWithHStack)
+		view.addSubview(signUpHsStack)
 		view.addSubview(loadingIndicator)
 		
 		NSLayoutConstraint.activate([
-			signinTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),
+			signinTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
 			signinTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 		])
 		
 		NSLayoutConstraint.activate([
-			emailAddressLabel.topAnchor.constraint(equalTo: signinTitleLabel.bottomAnchor, constant: 43),
+			emailAddressLabel.topAnchor.constraint(equalTo: signinTitleLabel.bottomAnchor, constant: 60),
 			emailAddressLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
 			emailAddressLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
 		])
@@ -163,9 +210,44 @@ extension LoginViewController {
 		])
 		
 		NSLayoutConstraint.activate([
+			firstLineView.widthAnchor.constraint(equalToConstant: 62),
+			firstLineView.heightAnchor.constraint(equalToConstant: 1)
+		])
+		
+		NSLayoutConstraint.activate([
+			secondLineView.widthAnchor.constraint(equalToConstant: 62),
+			secondLineView.heightAnchor.constraint(equalToConstant: 1)
+		])
+		
+		continueWithHStack.addArrangedSubview(firstLineView)
+		continueWithHStack.addArrangedSubview(continueWithLabel)
+		continueWithHStack.addArrangedSubview(secondLineView)
+		NSLayoutConstraint.activate([
+			continueWithHStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			continueWithHStack.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 32),
+			continueWithHStack.heightAnchor.constraint(equalToConstant: 22)
+		])
+		
+		signUpHsStack.addArrangedSubview(noAccountLabel)
+		signUpHsStack.addArrangedSubview(signUpButton)
+		NSLayoutConstraint.activate([
+			signUpHsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			signUpHsStack.topAnchor.constraint(equalTo: continueWithHStack.bottomAnchor, constant: 32),
+			signUpHsStack.heightAnchor.constraint(equalToConstant: 24)
+		])
+		
+		NSLayoutConstraint.activate([
 			loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 		])
+		
+	}
+	
+	private func makeLineView() -> UIView {
+		let view = UIView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.backgroundColor = ColorConstants.additionalGray
+		return view
 	}
 }
 
