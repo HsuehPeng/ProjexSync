@@ -20,6 +20,8 @@
 		B89085A52AB05CB600F7AE4D /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085A42AB05CB600F7AE4D /* BaseTextField.swift */; };
 		B89085A72AB07F0100F7AE4D /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085A62AB07F0100F7AE4D /* PrimaryButton.swift */; };
 		B89085AB2AB088BB00F7AE4D /* ProjexSyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */; };
+		B89085AD2AB093F800F7AE4D /* ProgrammaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AC2AB093F800F7AE4D /* ProgrammaticView.swift */; };
+		B89085AF2AB0945800F7AE4D /* LoginViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AE2AB0945800F7AE4D /* LoginViewControllerView.swift */; };
 		B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */; };
 		B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */; };
 		B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */; };
@@ -70,6 +72,8 @@
 		B89085A42AB05CB600F7AE4D /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		B89085A62AB07F0100F7AE4D /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjexSyncButton.swift; sourceTree = "<group>"; };
+		B89085AC2AB093F800F7AE4D /* ProgrammaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticView.swift; sourceTree = "<group>"; };
+		B89085AE2AB0945800F7AE4D /* LoginViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerView.swift; sourceTree = "<group>"; };
 		B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerInteractorTests.swift; sourceTree = "<group>"; };
 		B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerPresenterTests.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				B89085A22AB05CA200F7AE4D /* HidableTextField.swift */,
 				B89085A62AB07F0100F7AE4D /* PrimaryButton.swift */,
 				B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */,
+				B89085AC2AB093F800F7AE4D /* ProgrammaticView.swift */,
 			);
 			path = SharedUI;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				B8C1EF222AAB408E004ECCF2 /* LoginSceneFactory.swift */,
+				B89085AE2AB0945800F7AE4D /* LoginViewControllerView.swift */,
 				B8C1EF182AAB1D59004ECCF2 /* Scenes */,
 			);
 			path = Login;
@@ -419,9 +425,11 @@
 				B89085A52AB05CB600F7AE4D /* BaseTextField.swift in Sources */,
 				B8C1EF0D2AA9E39F004ECCF2 /* EmailLoginClient.swift in Sources */,
 				B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */,
+				B89085AF2AB0945800F7AE4D /* LoginViewControllerView.swift in Sources */,
 				B8C1EF2A2AAB4349004ECCF2 /* RootTabBarController.swift in Sources */,
 				B890857F2AAF0C4000F7AE4D /* FontConstants.swift in Sources */,
 				B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */,
+				B89085AD2AB093F800F7AE4D /* ProgrammaticView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
