@@ -168,13 +168,21 @@
 		B89085802AAF117E00F7AE4D /* SharedUI */ = {
 			isa = PBXGroup;
 			children = (
-				B89085A42AB05CB600F7AE4D /* BaseTextField.swift */,
-				B89085A22AB05CA200F7AE4D /* HidableTextField.swift */,
+				B89085EB2AB2EF3E00F7AE4D /* TextField */,
 				B89085A62AB07F0100F7AE4D /* PrimaryButton.swift */,
 				B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */,
 				B89085AC2AB093F800F7AE4D /* ProgrammaticView.swift */,
 			);
 			path = SharedUI;
+			sourceTree = "<group>";
+		};
+		B89085EB2AB2EF3E00F7AE4D /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				B89085A42AB05CB600F7AE4D /* BaseTextField.swift */,
+				B89085A22AB05CA200F7AE4D /* HidableTextField.swift */,
+			);
+			path = TextField;
 			sourceTree = "<group>";
 		};
 		B89D47142AAC44B4008AAB2E /* HomePage */ = {

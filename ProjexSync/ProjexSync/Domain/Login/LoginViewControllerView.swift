@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginViewControllerView: ProgrammaticView {	
+final class LoginViewControllerView: ProgrammaticView {
 	let signinTitleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +89,11 @@ final class LoginViewControllerView: ProgrammaticView {
 	
 	override func configure() {
 		backgroundColor = .white
+		emailTextField.delegate = self
+		passwordTextField.delegate = self
+		
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapSelf))
+		addGestureRecognizer(tapGestureRecognizer)
 	}
 	
 	override func setupConstraint() {
@@ -102,7 +107,7 @@ final class LoginViewControllerView: ProgrammaticView {
 		addSubview(loadingIndicator)
 		
 		NSLayoutConstraint.activate([
-			signinTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 70),
+			signinTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 72),
 			signinTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
 		])
 		
@@ -153,4 +158,37 @@ final class LoginViewControllerView: ProgrammaticView {
 		])
 	}
 	
+	@objc func didTapSelf() {
+		endEditing(true)
+	}
+}
+
+extension LoginViewControllerView: UITextFieldDelegate {
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		guard let textField = textField as? BaseTextField else { return true }
+		let currentText = textField.text ?? ""
+		let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
+		
+		if updatedText.isEmpty {
+			textField.setEmptyUI()
+		} else {
+			textField.setFilledUI()
+		}
+		
+		return true
+	}
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		switch textField {
+		case emailTextField:
+			emailTextField.resignFirstResponder()
+			passwordTextField.becomeFirstResponder()
+		case passwordTextField:
+			passwordTextField.resignFirstResponder()
+		default:
+			break
+		}
+		
+		return true
+	}
 }

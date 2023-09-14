@@ -47,4 +47,16 @@ class BaseTextField: UITextField {
 	override func editingRect(forBounds bounds: CGRect) -> CGRect {
 		return bounds.inset(by: inputEdgeInset)
 	}
+	
+	func setFilledUI() {
+		backgroundColor = ColorConstants.additionalWhite
+		layer.borderWidth = 1
+		layer.borderColor = ColorConstants.primary.cgColor
+	}
+	
+	func setEmptyUI() {
+		backgroundColor = ColorConstants.secondary
+		layer.borderWidth = 0
+		layer.borderColor = UIColor.clear.cgColor
+	}
 }

@@ -46,20 +46,19 @@ class HidableTextField: BaseTextField {
 		isSecureTextEntry.toggle()
 	}
 	
-	override func becomeFirstResponder() -> Bool {
-		hideButton.isEnabled = true
-		return super.becomeFirstResponder()
-	}
-	
-	override func resignFirstResponder() -> Bool {
-		reset()
-		return super.resignFirstResponder()
-	}
-	
 	private func reset() {
 		hideButton.isEnabled = false
 		hideButton.isSelected = false
 		isSecureTextEntry = true
 	}
-
+	
+	override func setEmptyUI() {
+		super.setEmptyUI()
+		hideButton.isEnabled = false
+	}
+	
+	override func setFilledUI() {
+		super.setFilledUI()
+		hideButton.isEnabled = true
+	}
 }
