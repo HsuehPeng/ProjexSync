@@ -8,6 +8,12 @@
 import UIKit
 
 final class LoginViewControllerView: ProgrammaticView {
+	let scrollView: UIScrollView = {
+		let scrollView = UIScrollView()
+		scrollView.translatesAutoresizingMaskIntoConstraints = false
+		return scrollView
+	}()
+	
 	let signinTitleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -87,6 +93,10 @@ final class LoginViewControllerView: ProgrammaticView {
 		return view
 	}()
 	
+	deinit {
+		NotificationCenter.default.removeObserver(self)
+	}
+	
 	override func configure() {
 		backgroundColor = .white
 		emailTextField.delegate = self
@@ -94,62 +104,77 @@ final class LoginViewControllerView: ProgrammaticView {
 		
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapSelf))
 		addGestureRecognizer(tapGestureRecognizer)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
 	}
 	
 	override func setupConstraint() {
-		addSubview(signinTitleLabel)
-		addSubview(emailAddressLabel)
-		addSubview(emailTextField)
-		addSubview(passwordLabel)
-		addSubview(passwordTextField)
-		addSubview(signInButton)
-		addSubview(signUpHsStack)
+		addSubview(scrollView)
+		scrollView.addSubview(signinTitleLabel)
+		scrollView.addSubview(emailAddressLabel)
+		scrollView.addSubview(emailTextField)
+		scrollView.addSubview(passwordLabel)
+		scrollView.addSubview(passwordTextField)
+		scrollView.addSubview(signInButton)
+		scrollView.addSubview(signUpHsStack)
 		addSubview(loadingIndicator)
 		
 		NSLayoutConstraint.activate([
-			signinTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 72),
-			signinTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+			scrollView.topAnchor.constraint(equalTo: topAnchor),
+			scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+		])
+		
+		NSLayoutConstraint.activate([
+			signinTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 72),
+			signinTitleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+			signinTitleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+			signinTitleLabel.widthAnchor.constraint(equalTo: widthAnchor)
 		])
 		
 		NSLayoutConstraint.activate([
 			emailAddressLabel.topAnchor.constraint(equalTo: signinTitleLabel.bottomAnchor, constant: 60),
-			emailAddressLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-			emailAddressLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+			emailAddressLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
+			emailAddressLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
 		])
 		
 		NSLayoutConstraint.activate([
 			emailTextField.topAnchor.constraint(equalTo: emailAddressLabel.bottomAnchor, constant: 8),
-			emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-			emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+			emailTextField.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
+			emailTextField.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
 			emailTextField.heightAnchor.constraint(equalToConstant: 52)
 		])
 		
 		NSLayoutConstraint.activate([
 			passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
-			passwordLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-			passwordLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+			passwordLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
+			passwordLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
 		])
 		
 		NSLayoutConstraint.activate([
 			passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 8),
-			passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-			passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+			passwordTextField.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
+			passwordTextField.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
 			passwordTextField.heightAnchor.constraint(equalToConstant: 52)
 		])
 		
 		NSLayoutConstraint.activate([
 			signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 32),
-			signInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-			signInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+			signInButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
+			signInButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
 			signInButton.heightAnchor.constraint(equalToConstant: 56)
 		])
 		
 		signUpHsStack.addArrangedSubview(noAccountLabel)
 		signUpHsStack.addArrangedSubview(signUpButton)
 		NSLayoutConstraint.activate([
-			signUpHsStack.centerXAnchor.constraint(equalTo: centerXAnchor),
 			signUpHsStack.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 32),
-			signUpHsStack.heightAnchor.constraint(equalToConstant: 24)
+			signUpHsStack.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+			signUpHsStack.heightAnchor.constraint(equalToConstant: 24),
+			signUpHsStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -16)
 		])
 		
 		NSLayoutConstraint.activate([
@@ -157,9 +182,37 @@ final class LoginViewControllerView: ProgrammaticView {
 			loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
 		])
 	}
+
+	@objc func keyboardWillShow(_ notification: Notification) {
+		if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+			scrollView.contentInset.bottom = keyboardFrame.height
+			scrollView.verticalScrollIndicatorInsets.bottom = keyboardFrame.height
+			
+			if let activeTextField = findActiveTextField() {
+				let textFieldFrame = activeTextField.convert(activeTextField.bounds, to: scrollView)
+				if !scrollView.bounds.contains(textFieldFrame) {
+					scrollView.scrollRectToVisible(textFieldFrame, animated: true)
+				}
+			}
+		}
+	}
+	
+	@objc func keyboardWillHide(_ notification: Notification) {
+		scrollView.contentInset = .zero
+		scrollView.scrollIndicatorInsets = .zero
+	}
 	
 	@objc func didTapSelf() {
 		endEditing(true)
+	}
+	
+	private func findActiveTextField() -> UITextField? {
+		if emailTextField.isFirstResponder {
+			return emailTextField
+		} else if passwordTextField.isFirstResponder {
+			return passwordTextField
+		}
+		return nil
 	}
 }
 
