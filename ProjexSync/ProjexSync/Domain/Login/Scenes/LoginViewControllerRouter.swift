@@ -17,13 +17,13 @@ class LoginViewControllerRouter: LoginViewControllerRoutingLogic {
 	weak var sourceView: UIViewController?
 	
 	func showLoginFailureView(viewModel: String) {
-		let action = UIAlertAction(title: "OK", style: .destructive) { _ in
-			self.dismiss()
-		}
-		let alertController
-			= UIAlertController(title: "Login Failure",
-								message: viewModel,
-								preferredStyle: .alert)
+		let action = UIAlertAction(title: "OK", style: .default)
+		let alertController = UIAlertController(
+			title: "Login Failure",
+			message: viewModel,
+			preferredStyle: .alert
+		)
+		
 		alertController.addAction(action)
 		sourceView?.present(alertController, animated: true)
 	}
@@ -32,10 +32,12 @@ class LoginViewControllerRouter: LoginViewControllerRoutingLogic {
 		let action = UIAlertAction(title: "OK", style: .cancel) { _ in
 			self.dismiss()
 		}
-		let alertController
-			= UIAlertController(title: "Login Success",
-								message: nil,
-								preferredStyle: .alert)
+		let alertController = UIAlertController(
+			title: "Login Success",
+			message: nil,
+			preferredStyle: .alert
+		)
+		
 		alertController.addAction(action)
 		sourceView?.present(alertController, animated: true)
 	}

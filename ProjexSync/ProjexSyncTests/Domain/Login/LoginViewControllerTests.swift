@@ -12,7 +12,7 @@ final class LoginViewControllerTests: XCTestCase {
 	func test_didTapSignInButton_interactorCallsLogin() {
 		let (sut, interactor, _) = makeSut()
 		
-		sut.signInButton.simulateTap()
+		sut.didTapSignInButton()
 		
 		XCTAssertEqual(interactor.loginCallCount, 1)
 	}
@@ -42,10 +42,10 @@ final class LoginViewControllerTests: XCTestCase {
 		let notAnimating = false
 		
 		sut.loginLoadingIndicator(shouldShow: isAnimating)
-		XCTAssertEqual(sut.loadingIndicator.isAnimating, isAnimating)
+		XCTAssertEqual(sut.contentView.loadingIndicator.isAnimating, isAnimating)
 		
 		sut.loginLoadingIndicator(shouldShow: notAnimating)
-		XCTAssertEqual(sut.loadingIndicator.isAnimating, notAnimating)
+		XCTAssertEqual(sut.contentView.loadingIndicator.isAnimating, notAnimating)
 	}
 	
 	// MARK: - helpers
