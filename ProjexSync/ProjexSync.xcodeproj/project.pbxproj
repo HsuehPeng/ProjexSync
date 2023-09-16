@@ -22,6 +22,7 @@
 		B89085AB2AB088BB00F7AE4D /* ProjexSyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */; };
 		B89085AD2AB093F800F7AE4D /* ProgrammaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AC2AB093F800F7AE4D /* ProgrammaticView.swift */; };
 		B89085AF2AB0945800F7AE4D /* LoginViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AE2AB0945800F7AE4D /* LoginViewControllerView.swift */; };
+		B89085F92AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085F82AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift */; };
 		B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */; };
 		B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */; };
 		B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */; };
@@ -74,6 +75,7 @@
 		B89085AA2AB088BB00F7AE4D /* ProjexSyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjexSyncButton.swift; sourceTree = "<group>"; };
 		B89085AC2AB093F800F7AE4D /* ProgrammaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticView.swift; sourceTree = "<group>"; };
 		B89085AE2AB0945800F7AE4D /* LoginViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerView.swift; sourceTree = "<group>"; };
+		B89085F82AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordValidatorTests.swift; sourceTree = "<group>"; };
 		B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerInteractorTests.swift; sourceTree = "<group>"; };
 		B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerPresenterTests.swift; sourceTree = "<group>"; };
@@ -185,6 +187,14 @@
 			path = TextField;
 			sourceTree = "<group>";
 		};
+		B89085F72AB5DF0B00F7AE4D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B89085F82AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		B89D47142AAC44B4008AAB2E /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +285,7 @@
 		B8C1EF242AAB4258004ECCF2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				B89085F72AB5DF0B00F7AE4D /* Login */,
 			);
 			path = FrameWorks;
 			sourceTree = "<group>";
@@ -448,6 +459,7 @@
 				B8F2985A2AAC90100069026A /* UIControl+TestHelpers.swift in Sources */,
 				B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */,
 				B8C1EF102AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				B89085F92AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift in Sources */,
 				B8F298562AAC8E800069026A /* LoginViewControllerTests.swift in Sources */,
 				B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */,
 				B8F298582AAC8FF80069026A /* UIButton+TestHelpers.swift in Sources */,
