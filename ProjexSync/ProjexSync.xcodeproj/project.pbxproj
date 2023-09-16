@@ -23,6 +23,8 @@
 		B89085AD2AB093F800F7AE4D /* ProgrammaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AC2AB093F800F7AE4D /* ProgrammaticView.swift */; };
 		B89085AF2AB0945800F7AE4D /* LoginViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085AE2AB0945800F7AE4D /* LoginViewControllerView.swift */; };
 		B89085F92AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085F82AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift */; };
+		B89085FB2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085FA2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift */; };
+		B89085FD2AB6186200F7AE4D /* EmailPasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085FC2AB6186200F7AE4D /* EmailPasswordValidation.swift */; };
 		B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */; };
 		B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */; };
 		B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */; };
@@ -76,6 +78,8 @@
 		B89085AC2AB093F800F7AE4D /* ProgrammaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticView.swift; sourceTree = "<group>"; };
 		B89085AE2AB0945800F7AE4D /* LoginViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerView.swift; sourceTree = "<group>"; };
 		B89085F82AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordValidatorTests.swift; sourceTree = "<group>"; };
+		B89085FA2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordValidator.swift; sourceTree = "<group>"; };
+		B89085FC2AB6186200F7AE4D /* EmailPasswordValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordValidation.swift; sourceTree = "<group>"; };
 		B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerInteractorTests.swift; sourceTree = "<group>"; };
 		B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerPresenterTests.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 			children = (
 				B8C1EF0C2AA9E39F004ECCF2 /* EmailLoginClient.swift */,
 				B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */,
+				B89085FA2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift */,
+				B89085FC2AB6186200F7AE4D /* EmailPasswordValidation.swift */,
 			);
 			path = EmailPassword;
 			sourceTree = "<group>";
@@ -445,7 +451,9 @@
 				B8C1EF0D2AA9E39F004ECCF2 /* EmailLoginClient.swift in Sources */,
 				B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */,
 				B89085AF2AB0945800F7AE4D /* LoginViewControllerView.swift in Sources */,
+				B89085FD2AB6186200F7AE4D /* EmailPasswordValidation.swift in Sources */,
 				B8C1EF2A2AAB4349004ECCF2 /* RootTabBarController.swift in Sources */,
+				B89085FB2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift in Sources */,
 				B890857F2AAF0C4000F7AE4D /* FontConstants.swift in Sources */,
 				B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */,
 				B89085AD2AB093F800F7AE4D /* ProgrammaticView.swift in Sources */,
