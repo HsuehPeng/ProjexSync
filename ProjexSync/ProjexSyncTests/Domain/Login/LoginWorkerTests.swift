@@ -53,9 +53,33 @@ final class LoginWorkerTests: XCTestCase {
 		let wrongEmail = "0000"
 		let anyPassword = "000000"
 		let expectedError = LoginWorker.LoginError.email
-		let exp = expectation(description: "Wait for load completion")
+		let exp = expectation(description: "Wait for login completion")
 
 		sut.login(email: wrongEmail, password: anyPassword) { result in
+			switch result {
+			case .success:
+				XCTFail("Expected login failure but got success instead")
+			case .failure(let receivedError as LoginWorker.LoginError):
+				XCTAssertEqual(receivedError, expectedError)
+			default:
+				XCTFail("Expected result \(expectedError), got \(result) instead")
+			}
+			
+			exp.fulfill()
+		}
+				
+		wait(for: [exp], timeout: 1.0)
+	}
+	
+	func test_login_loginWithWrongFormattedPassword_deliverWrongPasswordFormateError() {
+		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: true, isPasswordValid: false)
+		let (sut, _) = makeSut(validator: emailPasswordValidator)
+		let anyEmail = "123@gmail"
+		let wrongPassword = "000"
+		let expectedError = LoginWorker.LoginError.password
+		let exp = expectation(description: "Wait for login completion")
+
+		sut.login(email: anyEmail, password: wrongPassword) { result in
 			switch result {
 			case .success:
 				XCTFail("Expected login failure but got success instead")
