@@ -18,6 +18,16 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		XCTAssertEqual(loginWorker.loginCallCount, 1)
 	}
 	
+	func test_login_loginWorkerCallTwiceLogin_WhenLoginWorkerCompletesLoginOnceAndCallLoginAgain() {
+		let (sut, _, loginWorker) = makeSut()
+		
+		sut.loginWith(email: anyEmail(), password: anyPassword())
+		loginWorker.completeLoginSuccess()
+		sut.loginWith(email: anyEmail(), password: anyPassword())
+
+		XCTAssertEqual(loginWorker.loginCallCount, 2)
+	}
+	
 	func test_login_loginWorkerDidCallLoginWithEmailAndPassword() {
 		let (sut, _, loginWorker) = makeSut()
 		
