@@ -66,8 +66,8 @@ final class LoginWorkerTests: XCTestCase {
 	func test_login_loginWithCorrectFormattedEmailAndPassword_emailLoginClientCallsLogin() {
 		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: true, isPasswordValid: true)
 		let (sut, emailLoginClient) = makeSut(validator: emailPasswordValidator)
-		let anyEmail = "123@gmail.com"
-		let anyPassword = "000000"
+		let anyEmail = anyEmail()
+		let anyPassword = anyPassword()
 
 		sut.login(email: anyEmail, password: anyPassword) { _ in }
 				
@@ -104,8 +104,8 @@ final class LoginWorkerTests: XCTestCase {
 	
 	private func expect(_ sut: LoginLogic, completeWith expectedResult: Result<Bool, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line ) {
 		let exp = expectation(description: "Wait for login completion")
-		let anyEmail = "123@gmail.com"
-		let anyPassword = "000000"
+		let anyEmail = anyEmail()
+		let anyPassword = anyPassword()
 		
 		sut.login(email: anyEmail, password: anyPassword) { receivedResult in
 			switch (expectedResult, receivedResult) {
@@ -124,6 +124,7 @@ final class LoginWorkerTests: XCTestCase {
 				
 		wait(for: [exp], timeout: 1.0)
 	}
+	
 	
 	final class EmailLoginClientSpy: EmailLoginClient {
 		enum Message {

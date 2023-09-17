@@ -84,14 +84,6 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		return (sut, presenter, emailLoginClient)
 	}
 	
-	func anyEmail() -> String {
-		return "email@gmail.com"
-	}
-	
-	func anyPassword() -> String {
-		return "AnyPassword"
-	}
-	
 	private final class LoginViewControllerPresenterMock: LoginViewControllerPresentationLogic {
 		var isIndicatorLoading = false
 		var showLoginSuccessCallCount = 0
