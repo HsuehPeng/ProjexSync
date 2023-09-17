@@ -17,10 +17,21 @@ final class LoginWorker: LoginLogic {
 	let emailLoginClient: EmailLoginClient
 	let emailPasswordValidator: EmailPasswordValidation
 	
-	enum LoginError: Error {
+	enum LoginError: Error, LocalizedError {
 		case email
 		case password
-		case client
+		case auth
+		
+		var errorDescription: String? {
+			switch self {
+			case .email:
+				return NSLocalizedString("Invalid email address", comment: "")
+			case .password:
+				return NSLocalizedString("Invalid password", comment: "")
+			case .auth:
+				return NSLocalizedString("Authentication Failed", comment: "")
+			}
+		}
 	}
 	
 	func login(email: String?, password: String?, completion: @escaping (LoginResult) -> Void) {
@@ -36,8 +47,8 @@ final class LoginWorker: LoginLogic {
 		
 		emailLoginClient.login(email: email, password: password) { result in
 			switch result {
-			case .failure(let error):
-				completion(.failure(LoginError.client))
+			case .failure:
+				completion(.failure(LoginError.auth))
 			case .success:
 				completion(.success(true))
 			}

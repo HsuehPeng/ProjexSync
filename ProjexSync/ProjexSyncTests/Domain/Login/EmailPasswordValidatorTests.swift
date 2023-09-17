@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import ProjexSync
+@testable import ProjexSync
 
 final class EmailPasswordValidatorTests: XCTestCase {
 	func test_validateEmail_returnFalseWhenEmailIsWrong() {

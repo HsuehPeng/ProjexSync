@@ -38,7 +38,7 @@ final class LoginWorkerTests: XCTestCase {
 		let (sut, emailLoginClient) = makeSut(validator: emailPasswordValidator)
 		let anyNSError = NSError(domain: "", code: 1)
 		
-		expect(sut, completeWith: .failure(LoginWorker.LoginError.client), when: {
+		expect(sut, completeWith: .failure(LoginWorker.LoginError.auth), when: {
 			emailLoginClient.completeWith(.failure(anyNSError))
 		})
 	}
