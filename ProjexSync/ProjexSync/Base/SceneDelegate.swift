@@ -11,12 +11,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
 
-
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 
 		let window = UIWindow(windowScene: windowScene)
-		window.rootViewController = LoginViewController()
+		let rootTabBarViewController = RootTabBarController(viewControllers: [UINavigationController(rootViewController: HomePageViewController())])
+		let loginSceneFactory = LoginSceneFactory()
+		let rootTabBarRouter = RootTabBarRouter(loginSceneFactory: loginSceneFactory)
+		rootTabBarViewController.router = rootTabBarRouter
+		rootTabBarRouter.source = rootTabBarViewController
+
+		window.rootViewController = rootTabBarViewController
 		self.window = window
 		window.makeKeyAndVisible()
 	}

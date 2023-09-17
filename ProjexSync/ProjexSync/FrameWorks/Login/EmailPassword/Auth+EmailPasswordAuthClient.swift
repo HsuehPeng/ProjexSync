@@ -7,7 +7,7 @@
 
 import FirebaseAuth
 
-extension Auth: EmailPasswordAuthClient {
+extension Auth: EmailLoginClient {
 	public func login(email: String, password: String, completion: @escaping LoginCompletion) {
 		self.signIn(withEmail: email, password: password) { result, error in
 			if let error = error {
