@@ -9,7 +9,7 @@ import XCTest
 import ProjexSync
 
 protocol LoginLogic {
-	func login(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+	func login(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void)
 }
 
 final class LoginWorker: LoginLogic {
@@ -22,7 +22,7 @@ final class LoginWorker: LoginLogic {
 		case client
 	}
 	
-	func login(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+	func login(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
 		guard emailPasswordValidator.isValidEmail(email) else {
 			completion(.failure(LoginError.email))
 			return
@@ -37,8 +37,8 @@ final class LoginWorker: LoginLogic {
 			switch result {
 			case .failure(let error):
 				completion(.failure(LoginError.client))
-			default:
-				return
+			case .success:
+				completion(.success(true))
 			}
 		}
 	}
@@ -74,13 +74,22 @@ final class LoginWorkerTests: XCTestCase {
 		XCTAssertEqual(emailLoginClient.messages, [.login])
 	}
 	
-	func test_login_loginWithCorrectFormattedEmailAndPassword_deliverClientLoginError() {
+	func test_login_loginWithCorrectFormattedEmailAndPassword_failToAuthenticateFromServer_deliverClientLoginError() {
 		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: true, isPasswordValid: true)
 		let (sut, emailLoginClient) = makeSut(validator: emailPasswordValidator)
 		let anyNSError = NSError(domain: "", code: 1)
 		
 		expect(sut, completeWith: .failure(LoginWorker.LoginError.client), when: {
 			emailLoginClient.completeWith(.failure(anyNSError))
+		})
+	}
+	
+	func test_login_loginWithCorrectFormattedEmailAndPassword_succeedToAuthenticateFromServer_deliverLoginSuccess() {
+		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: true, isPasswordValid: true)
+		let (sut, emailLoginClient) = makeSut(validator: emailPasswordValidator)
+		
+		expect(sut, completeWith: .success(true), when: {
+			emailLoginClient.completeWith(.success(true))
 		})
 	}
 	
@@ -93,7 +102,7 @@ final class LoginWorkerTests: XCTestCase {
 		return (sut, emailLoginClient)
 	}
 	
-	private func expect(_ sut: LoginLogic, completeWith expectedResult: Result<Void, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line ) {
+	private func expect(_ sut: LoginLogic, completeWith expectedResult: Result<Bool, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line ) {
 		let exp = expectation(description: "Wait for login completion")
 		let anyEmail = "123@gmail.com"
 		let anyPassword = "000000"
