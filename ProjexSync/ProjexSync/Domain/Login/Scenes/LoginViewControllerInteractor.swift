@@ -13,11 +13,11 @@ protocol LoginViewControllerBusinessLogic: AnyObject {
 
 class LoginViewControllerInteractor {
 	private let presenter: LoginViewControllerPresentationLogic
-	private let loginClient: EmailLoginClient
+	private let loginWorker: LoginLogic
 	
-	init(presenter: LoginViewControllerPresentationLogic, loginClient: EmailLoginClient) {
+	init(presenter: LoginViewControllerPresentationLogic, loginWorker: LoginLogic) {
 		self.presenter = presenter
-		self.loginClient = loginClient
+		self.loginWorker = loginWorker
 	}
 }
 
@@ -25,7 +25,7 @@ extension LoginViewControllerInteractor: LoginViewControllerBusinessLogic {
 	func loginWith(email: String?, password: String?) {
 		presenter.loginLoadingIndicator(isLoading: true)
 		
-		loginClient.login(email: email ?? "", password: password ?? "") { [weak self] result in
+		loginWorker.login(email: email, password: password) { [weak self] result in
 			guard let self = self else { return }
 			
 			switch result {

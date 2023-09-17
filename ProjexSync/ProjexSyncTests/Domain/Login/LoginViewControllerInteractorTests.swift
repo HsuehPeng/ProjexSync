@@ -9,12 +9,12 @@ import XCTest
 @testable import ProjexSync
 
 final class LoginViewControllerInteractorTests: XCTestCase {
-	func test_login_loginClientDidCall() {
-		let (sut, _, loginClient) = makeSut()
+	func test_login_loginWorkerDidCallLoginWithEmailAndPassword() {
+		let (sut, _, loginWorker) = makeSut()
 		
 		sut.loginWith(email: anyEmail(), password: anyPassword())
 		
-		XCTAssertEqual(loginClient.loginCallCount, 1)
+		XCTAssertEqual(loginWorker.loginCallCount, 1)
 	}
 	
 	func test_login_presenterShowLoginIndicatorWhenLoginNotFinish() {
@@ -59,12 +59,12 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	
 	func test_login_loginClientDoesnotCallLoginWhenInteractorIsDeallocated() {
 		let presenter = LoginViewControllerPresenterMock()
-		let emailLoginClient = EmailLoginClientSpy()
-		var sut: LoginViewControllerInteractor? = LoginViewControllerInteractor(presenter: presenter, loginClient: emailLoginClient)
+		let loginWorker = LoginWorkerSpy()
+		var sut: LoginViewControllerInteractor? = LoginViewControllerInteractor(presenter: presenter, loginWorker: loginWorker)
 
 		sut?.loginWith(email: anyEmail(), password: anyPassword())
 		sut = nil
-		emailLoginClient.completeLoginSuccess()
+		loginWorker.completeLoginSuccess()
 		
 		XCTAssertEqual(presenter.showLoginFailureCallCount, 0)
 		XCTAssertEqual(presenter.showLoginSuccessCallCount, 0)
@@ -72,16 +72,16 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerInteractor, LoginViewControllerPresenterMock, EmailLoginClientSpy) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerInteractor, LoginViewControllerPresenterMock, LoginWorkerSpy) {
 		let presenter = LoginViewControllerPresenterMock()
-		let emailLoginClient = EmailLoginClientSpy()
-		let sut = LoginViewControllerInteractor(presenter: presenter, loginClient: emailLoginClient)
+		let loginWorker = LoginWorkerSpy()
+		let sut = LoginViewControllerInteractor(presenter: presenter, loginWorker: loginWorker)
 		
 		trackForMemoryleaks(presenter, file: file, line: line)
-		trackForMemoryleaks(emailLoginClient, file: file, line: line)
+		trackForMemoryleaks(loginWorker, file: file, line: line)
 		trackForMemoryleaks(sut, file: file, line: line)
 
-		return (sut, presenter, emailLoginClient)
+		return (sut, presenter, loginWorker)
 	}
 	
 	private final class LoginViewControllerPresenterMock: LoginViewControllerPresentationLogic {
@@ -102,19 +102,21 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		}
 	}
 	
-	private final class EmailLoginClientSpy: EmailLoginClient {
+	private final class LoginWorkerSpy: LoginLogic {
+		typealias LoginCompletion = (LoginResult) -> Void
+		
 		var loginCallCount = 0
 		var loginCompletions: [LoginCompletion] = []
 		
-		func login(email: String, password: String, completion: @escaping LoginCompletion) {
+		func login(email: String?, password: String?, completion: @escaping LoginCompletion) {
 			loginCallCount += 1
 			loginCompletions.append(completion)
 		}
-		
+
 		func completeLoginSuccess(at index: Int = 0) {
 			loginCompletions[index](.success(true))
 		}
-		
+
 		func completeLoginFailure(with error: Error, at index: Int = 0) {
 			loginCompletions[index](.failure(error))
 		}
