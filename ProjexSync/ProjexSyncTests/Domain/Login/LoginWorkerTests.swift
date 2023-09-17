@@ -19,6 +19,7 @@ final class LoginWorker: LoginLogic {
 	enum LoginError: Error {
 		case email
 		case password
+		case client
 	}
 	
 	func login(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
@@ -34,6 +35,8 @@ final class LoginWorker: LoginLogic {
 		
 		emailLoginClient.login(email: email, password: password) { result in
 			switch result {
+			case .failure(let error):
+				completion(.failure(LoginError.client))
 			default:
 				return
 			}
@@ -69,6 +72,16 @@ final class LoginWorkerTests: XCTestCase {
 		sut.login(email: anyEmail, password: anyPassword) { _ in }
 				
 		XCTAssertEqual(emailLoginClient.messages, [.login])
+	}
+	
+	func test_login_loginWithCorrectFormattedEmailAndPassword_deliverClientLoginError() {
+		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: true, isPasswordValid: true)
+		let (sut, emailLoginClient) = makeSut(validator: emailPasswordValidator)
+		let anyNSError = NSError(domain: "", code: 1)
+		
+		expect(sut, completeWith: .failure(LoginWorker.LoginError.client), when: {
+			emailLoginClient.completeWith(.failure(anyNSError))
+		})
 	}
 	
 	// MARK: - Helpers
