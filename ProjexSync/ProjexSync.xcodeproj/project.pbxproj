@@ -27,6 +27,7 @@
 		B89085FB2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085FA2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift */; };
 		B89085FD2AB6186200F7AE4D /* EmailPasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085FC2AB6186200F7AE4D /* EmailPasswordValidation.swift */; };
 		B89A11A02AB6E6F1006814A5 /* LoginTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A119F2AB6E6F1006814A5 /* LoginTestHelpers.swift */; };
+		B89A11A22AB6EA4B006814A5 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A11A12AB6EA4B006814A5 /* LoginWorker.swift */; };
 		B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */; };
 		B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */; };
 		B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */; };
@@ -84,6 +85,7 @@
 		B89085FA2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordValidator.swift; sourceTree = "<group>"; };
 		B89085FC2AB6186200F7AE4D /* EmailPasswordValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPasswordValidation.swift; sourceTree = "<group>"; };
 		B89A119F2AB6E6F1006814A5 /* LoginTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTestHelpers.swift; sourceTree = "<group>"; };
+		B89A11A12AB6EA4B006814A5 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerInteractorTests.swift; sourceTree = "<group>"; };
 		B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerPresenterTests.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				B8C1EF192AAB1E3F004ECCF2 /* LoginViewControllerInteractor.swift */,
 				B8C1EF1B2AAB1E55004ECCF2 /* LoginViewControllerPresenter.swift */,
 				B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */,
+				B89A11A12AB6EA4B006814A5 /* LoginWorker.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B89A11A22AB6EA4B006814A5 /* LoginWorker.swift in Sources */,
 				B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */,
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
 				B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */,
