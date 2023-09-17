@@ -49,7 +49,7 @@ final class LoginWorker: LoginLogic {
 final class LoginWorkerTests: XCTestCase {
 	func test_login_loginWithWrongFormattedEmail_deliverWrongEmailFormateError() {
 		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: false, isPasswordValid: true)
-		let sut = makeSut(validator: emailPasswordValidator)
+		let (sut, _) = makeSut(validator: emailPasswordValidator)
 		let wrongEmail = "0000"
 		let anyPassword = "000000"
 		let expectedError = LoginWorker.LoginError.email
@@ -71,13 +71,24 @@ final class LoginWorkerTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
+	func test_login_loginWithCorrectFormattedEmailAndPassword_emailLoginClientCallsLogin() {
+		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: true, isPasswordValid: true)
+		let (sut, emailLoginClient) = makeSut(validator: emailPasswordValidator)
+		let anyEmail = "123@gmail.com"
+		let anyPassword = "000000"
+
+		sut.login(email: anyEmail, password: anyPassword) { _ in }
+				
+		XCTAssertEqual(emailLoginClient.messages, [.login])
+	}
+	
 	// MARK: - Helpers
 	
-	private func makeSut(validator: EmailPasswordValidation) -> LoginWorker {
+	private func makeSut(validator: EmailPasswordValidation) -> (LoginWorker, EmailLoginClientSpy) {
 		let emailLoginClient = EmailLoginClientSpy()
 		let sut = LoginWorker(emailLoginClient: emailLoginClient, emailPasswordValidator: validator)
 		
-		return sut
+		return (sut, emailLoginClient)
 	}
 	
 	final class EmailLoginClientSpy: EmailLoginClient {
