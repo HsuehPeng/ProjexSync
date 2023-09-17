@@ -14,6 +14,7 @@ protocol LoginViewControllerBusinessLogic: AnyObject {
 class LoginViewControllerInteractor {
 	private let presenter: LoginViewControllerPresentationLogic
 	private let loginWorker: LoginLogic
+	private var isLoggingIn = false
 	
 	init(presenter: LoginViewControllerPresentationLogic, loginWorker: LoginLogic) {
 		self.presenter = presenter
@@ -23,6 +24,9 @@ class LoginViewControllerInteractor {
 
 extension LoginViewControllerInteractor: LoginViewControllerBusinessLogic {
 	func loginWith(email: String?, password: String?) {
+		guard !isLoggingIn else { return }
+		
+		isLoggingIn = true
 		presenter.loginLoadingIndicator(isLoading: true)
 		
 		loginWorker.login(email: email, password: password) { [weak self] result in
@@ -35,6 +39,7 @@ extension LoginViewControllerInteractor: LoginViewControllerBusinessLogic {
 				self.presenter.showLoginFailure(message: error.localizedDescription)
 			}
 			
+			isLoggingIn = false
 			self.presenter.loginLoadingIndicator(isLoading: false)
 		}
 	}

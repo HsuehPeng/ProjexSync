@@ -146,9 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				B843CC0A2AA85EC000C5DC1E /* Info.plist */,
-				B89085792AAF061300F7AE4D /* Common */,
 				B8C1EF1E2AAB1FB6004ECCF2 /* FrameWorks */,
 				B8C1EF172AAB1C9A004ECCF2 /* Base */,
+				B89085792AAF061300F7AE4D /* Common */,
 				B8C1EF162AAB1C5D004ECCF2 /* Domain */,
 			);
 			path = ProjexSync;
