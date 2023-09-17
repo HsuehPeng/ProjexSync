@@ -97,9 +97,14 @@ final class LoginWorkerTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(validator: EmailPasswordValidation) -> (LoginWorker, EmailLoginClientSpy) {
+	private func makeSut(validator: EmailPasswordValidatorMock) -> (LoginWorker, EmailLoginClientSpy) {
 		let emailLoginClient = EmailLoginClientSpy()
-		let sut = LoginWorker(emailLoginClient: emailLoginClient, emailPasswordValidator: validator)
+		let emailPasswordValidator = validator
+		let sut = LoginWorker(emailLoginClient: emailLoginClient, emailPasswordValidator: emailPasswordValidator)
+		
+		trackForMemoryleaks(emailLoginClient)
+		trackForMemoryleaks(emailPasswordValidator)
+		trackForMemoryleaks(sut)
 		
 		return (sut, emailLoginClient)
 	}
