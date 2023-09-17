@@ -12,6 +12,7 @@
 		B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */; };
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
+		B863810E2AB6D49000A5CF5C /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */; };
 		B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */; };
 		B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890857A2AAF064200F7AE4D /* ColorConstants.swift */; };
 		B890857D2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */; };
@@ -67,6 +68,7 @@
 		B843CC0A2AA85EC000C5DC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
+		B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerRouter.swift; sourceTree = "<group>"; };
 		B890857A2AAF064200F7AE4D /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				B89D47192AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift */,
 				B8A727762AAC7F8800279689 /* LoginViewControllerPresenterTests.swift */,
 				B8F298552AAC8E800069026A /* LoginViewControllerTests.swift */,
+				B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				B8F298562AAC8E800069026A /* LoginViewControllerTests.swift in Sources */,
 				B89D471A2AAC5454008AAB2E /* LoginViewControllerInteractorTests.swift in Sources */,
 				B8F298582AAC8FF80069026A /* UIButton+TestHelpers.swift in Sources */,
+				B863810E2AB6D49000A5CF5C /* LoginWorkerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
