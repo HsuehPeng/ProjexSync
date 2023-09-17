@@ -9,7 +9,9 @@ import XCTest
 import ProjexSync
 
 protocol LoginLogic {
-	func login(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void)
+	typealias LoginResult = Result<Bool, Error>
+	
+	func login(email: String, password: String, completion: @escaping (LoginResult) -> Void)
 }
 
 final class LoginWorker: LoginLogic {
@@ -22,7 +24,7 @@ final class LoginWorker: LoginLogic {
 		case client
 	}
 	
-	func login(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+	func login(email: String, password: String, completion: @escaping (LoginResult) -> Void) {
 		guard emailPasswordValidator.isValidEmail(email) else {
 			completion(.failure(LoginError.email))
 			return
@@ -102,7 +104,7 @@ final class LoginWorkerTests: XCTestCase {
 		return (sut, emailLoginClient)
 	}
 	
-	private func expect(_ sut: LoginLogic, completeWith expectedResult: Result<Bool, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line ) {
+	private func expect(_ sut: LoginLogic, completeWith expectedResult: LoginLogic.LoginResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line ) {
 		let exp = expectation(description: "Wait for login completion")
 		let anyEmail = anyEmail()
 		let anyPassword = anyPassword()
