@@ -13,6 +13,8 @@
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
 		B863810E2AB6D49000A5CF5C /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */; };
+		B88ADE912AB86F5B0012EF91 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */; };
+		B88ADE942AB875FF0012EF91 /* ProjectListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */; };
 		B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */; };
 		B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890857A2AAF064200F7AE4D /* ColorConstants.swift */; };
 		B890857D2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */; };
@@ -70,6 +72,8 @@
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
 		B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
+		B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
+		B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerTests.swift; sourceTree = "<group>"; };
 		B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerRouter.swift; sourceTree = "<group>"; };
 		B890857A2AAF064200F7AE4D /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -165,6 +169,22 @@
 			path = ProjexSyncTests;
 			sourceTree = "<group>";
 		};
+		B88ADE8F2AB86F340012EF91 /* ProjectList */ = {
+			isa = PBXGroup;
+			children = (
+				B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */,
+			);
+			path = ProjectList;
+			sourceTree = "<group>";
+		};
+		B88ADE922AB875E30012EF91 /* ProjectList */ = {
+			isa = PBXGroup;
+			children = (
+				B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */,
+			);
+			path = ProjectList;
+			sourceTree = "<group>";
+		};
 		B89085792AAF061300F7AE4D /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,9 +271,10 @@
 		B8C1EF162AAB1C5D004ECCF2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				B8C1EF072AA9BADF004ECCF2 /* Login */,
 				B8C1EF282AAB4324004ECCF2 /* RootTabBar */,
 				B89D47142AAC44B4008AAB2E /* HomePage */,
-				B8C1EF072AA9BADF004ECCF2 /* Login */,
+				B88ADE8F2AB86F340012EF91 /* ProjectList */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -311,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				B8C1EF272AAB42AD004ECCF2 /* Login */,
+				B88ADE922AB875E30012EF91 /* ProjectList */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -454,6 +476,7 @@
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
 				B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */,
 				B89085A32AB05CA200F7AE4D /* HidableTextField.swift in Sources */,
+				B88ADE912AB86F5B0012EF91 /* ProjectListViewController.swift in Sources */,
 				B89085AB2AB088BB00F7AE4D /* ProjexSyncButton.swift in Sources */,
 				B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */,
 				B8C1EF232AAB408E004ECCF2 /* LoginSceneFactory.swift in Sources */,
@@ -480,6 +503,7 @@
 			files = (
 				B8F2985A2AAC90100069026A /* UIControl+TestHelpers.swift in Sources */,
 				B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */,
+				B88ADE942AB875FF0012EF91 /* ProjectListViewControllerTests.swift in Sources */,
 				B8C1EF102AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				B89085F92AB5DF9800F7AE4D /* EmailPasswordValidatorTests.swift in Sources */,
 				B89A11A02AB6E6F1006814A5 /* LoginTestHelpers.swift in Sources */,
