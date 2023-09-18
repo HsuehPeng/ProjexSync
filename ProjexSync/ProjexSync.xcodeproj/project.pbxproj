@@ -16,6 +16,8 @@
 		B88ADE912AB86F5B0012EF91 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */; };
 		B88ADE942AB875FF0012EF91 /* ProjectListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */; };
 		B88ADE972AB8771B0012EF91 /* ProjectListViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE962AB8771B0012EF91 /* ProjectListViewControllerFactory.swift */; };
+		B88ADE992AB881740012EF91 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE982AB881740012EF91 /* SearchTextField.swift */; };
+		B88ADE9B2AB8A6D80012EF91 /* HomePageViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE9A2AB8A6D80012EF91 /* HomePageViewControllerFactory.swift */; };
 		B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */; };
 		B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890857A2AAF064200F7AE4D /* ColorConstants.swift */; };
 		B890857D2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */; };
@@ -76,6 +78,8 @@
 		B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerTests.swift; sourceTree = "<group>"; };
 		B88ADE962AB8771B0012EF91 /* ProjectListViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerFactory.swift; sourceTree = "<group>"; };
+		B88ADE982AB881740012EF91 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		B88ADE9A2AB8A6D80012EF91 /* HomePageViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewControllerFactory.swift; sourceTree = "<group>"; };
 		B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerRouter.swift; sourceTree = "<group>"; };
 		B890857A2AAF064200F7AE4D /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		B890857C2AAF0B1100F7AE4D /* PlusJakartaSans-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 			children = (
 				B89085A42AB05CB600F7AE4D /* BaseTextField.swift */,
 				B89085A22AB05CA200F7AE4D /* HidableTextField.swift */,
+				B88ADE982AB881740012EF91 /* SearchTextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				B89D47152AAC44FB008AAB2E /* HomePageViewController.swift */,
+				B88ADE9A2AB8A6D80012EF91 /* HomePageViewControllerFactory.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -485,8 +491,10 @@
 				B89A11A22AB6EA4B006814A5 /* LoginWorker.swift in Sources */,
 				B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */,
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
+				B88ADE9B2AB8A6D80012EF91 /* HomePageViewControllerFactory.swift in Sources */,
 				B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */,
 				B89085A32AB05CA200F7AE4D /* HidableTextField.swift in Sources */,
+				B88ADE992AB881740012EF91 /* SearchTextField.swift in Sources */,
 				B88ADE912AB86F5B0012EF91 /* ProjectListViewController.swift in Sources */,
 				B89085AB2AB088BB00F7AE4D /* ProjexSyncButton.swift in Sources */,
 				B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */,
