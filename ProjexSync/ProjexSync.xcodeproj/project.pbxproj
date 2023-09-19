@@ -13,6 +13,7 @@
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
 		B852F2A12AB99A490089EF12 /* ProjectListViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852F2A02AB99A490089EF12 /* ProjectListViewControllerView.swift */; };
+		B852F2A32AB9A5250089EF12 /* ProjectListViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852F2A22AB9A5250089EF12 /* ProjectListViewControllerInteractor.swift */; };
 		B863810E2AB6D49000A5CF5C /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */; };
 		B88ADE912AB86F5B0012EF91 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */; };
 		B88ADE942AB875FF0012EF91 /* ProjectListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */; };
@@ -76,6 +77,7 @@
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
 		B852F2A02AB99A490089EF12 /* ProjectListViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerView.swift; sourceTree = "<group>"; };
+		B852F2A22AB9A5250089EF12 /* ProjectListViewControllerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerInteractor.swift; sourceTree = "<group>"; };
 		B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */,
+				B852F2A22AB9A5250089EF12 /* ProjectListViewControllerInteractor.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
 				B88ADE9B2AB8A6D80012EF91 /* HomePageViewControllerFactory.swift in Sources */,
 				B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */,
+				B852F2A32AB9A5250089EF12 /* ProjectListViewControllerInteractor.swift in Sources */,
 				B89085A32AB05CA200F7AE4D /* HidableTextField.swift in Sources */,
 				B88ADE992AB881740012EF91 /* SearchTextField.swift in Sources */,
 				B88ADE912AB86F5B0012EF91 /* ProjectListViewController.swift in Sources */,

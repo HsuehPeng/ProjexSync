@@ -11,6 +11,7 @@ final class ProjectListViewController: UIViewController {
 	// MARK: - Properties
 	
 	let contentView = ProjectListViewControllerView()
+	let interactor: ProjectListViewControllerBussinessLogic
 	
 	// MARK: - LifeCycle
 	
@@ -18,6 +19,16 @@ final class ProjectListViewController: UIViewController {
 		super.viewDidLoad()
 		
 		setupContentView()
+		interactor.loadProjectList()
+	}
+	
+	init(interactor: ProjectListViewControllerBussinessLogic) {
+		self.interactor = interactor
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 	
 	// MARK: - UI
