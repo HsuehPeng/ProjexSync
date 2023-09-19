@@ -7,12 +7,22 @@
 
 import Foundation
 
+protocol ProjectListLoadingLogic {
+	
+}
+
 protocol ProjectListViewControllerBussinessLogic {
 	func loadProjectList()
 }
 
 final class ProjectListViewControllerInteractor: ProjectListViewControllerBussinessLogic {
+	let projectListLoadingWorker: ProjectListLoadingLogic
+	
 	func loadProjectList() {
 		
+	}
+	
+	init(projectListLoadingWorker: ProjectListLoadingLogic) {
+		self.projectListLoadingWorker = projectListLoadingWorker
 	}
 }
