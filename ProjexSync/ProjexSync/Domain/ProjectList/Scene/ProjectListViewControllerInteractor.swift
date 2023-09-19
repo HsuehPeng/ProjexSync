@@ -15,7 +15,9 @@ final class ProjectListViewControllerInteractor: ProjectListViewControllerBussin
 	let projectListLoadingWorker: ProjectListLoadingLogic
 	
 	func loadProjectList() {
-		
+		projectListLoadingWorker.load { result in
+			
+		}
 	}
 	
 	init(projectListLoadingWorker: ProjectListLoadingLogic) {

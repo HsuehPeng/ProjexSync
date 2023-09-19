@@ -10,7 +10,14 @@ import XCTest
 
 final class ProjectListViewControllerInteractorTests: XCTestCase {
 	
-	
+	func test_loadProjectList_projectListLoadingWorkerDidCallLoad() {
+		let (sut, projectListLoadingWorker) = makeSut()
+		let expectedResult: [ProjectListLoadingWorkerSpy.Message] = [.load]
+		
+		sut.loadProjectList()
+		
+		XCTAssertEqual(projectListLoadingWorker.messages, expectedResult)
+	}
 
 	// MARK: - Helpers
 	
@@ -20,9 +27,15 @@ final class ProjectListViewControllerInteractorTests: XCTestCase {
 		return (sut, projectListLoadingWorkerSpy)
 	}
 	
-	class ProjectListLoadingWorkerSpy: ProjectListLoadingLogic{
+	class ProjectListLoadingWorkerSpy: ProjectListLoadingLogic {
+		enum Message {
+			case load
+		}
+		
+		var messages = [Message]()
+		
 		func load(completion: @escaping (LoadResult) -> Void) {
-			
+			messages.append(.load)
 		}
 	}
 }
