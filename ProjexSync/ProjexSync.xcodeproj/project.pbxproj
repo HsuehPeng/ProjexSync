@@ -12,6 +12,7 @@
 		B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */; };
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
+		B852F2A12AB99A490089EF12 /* ProjectListViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852F2A02AB99A490089EF12 /* ProjectListViewControllerView.swift */; };
 		B863810E2AB6D49000A5CF5C /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */; };
 		B88ADE912AB86F5B0012EF91 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */; };
 		B88ADE942AB875FF0012EF91 /* ProjectListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */; };
@@ -74,6 +75,7 @@
 		B843CC0A2AA85EC000C5DC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
+		B852F2A02AB99A490089EF12 /* ProjectListViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerView.swift; sourceTree = "<group>"; };
 		B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		B88ADE902AB86F5B0012EF91 /* ProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				B88ADE962AB8771B0012EF91 /* ProjectListViewControllerFactory.swift */,
+				B852F2A02AB99A490089EF12 /* ProjectListViewControllerView.swift */,
 				B88ADE952AB876F90012EF91 /* Scene */,
 			);
 			path = ProjectList;
@@ -501,6 +504,7 @@
 				B8C1EF232AAB408E004ECCF2 /* LoginSceneFactory.swift in Sources */,
 				B8C1EF1C2AAB1E55004ECCF2 /* LoginViewControllerPresenter.swift in Sources */,
 				B89085A72AB07F0100F7AE4D /* PrimaryButton.swift in Sources */,
+				B852F2A12AB99A490089EF12 /* ProjectListViewControllerView.swift in Sources */,
 				B88ADE972AB8771B0012EF91 /* ProjectListViewControllerFactory.swift in Sources */,
 				B89D47162AAC44FB008AAB2E /* HomePageViewController.swift in Sources */,
 				B8C1EF1A2AAB1E3F004ECCF2 /* LoginViewControllerInteractor.swift in Sources */,
