@@ -12,9 +12,19 @@ final class ProjectListViewControllerTests: XCTestCase {
 	
 	func test_viewDidLoad_loadProject_interactorCallLoadProject() {
 		let (sut, interactor) = makeSut()
-		
-		sut.loadViewIfNeeded()
 		let expectedResult = [ProjectListBussinessLogicSpy.Message.loadProjectList]
+
+		sut.loadViewIfNeeded()
+		
+		XCTAssertEqual(interactor.messages, expectedResult)
+	}
+	
+	func test_tableView_refresh_interactorCallLoadProject() {
+		let (sut, interactor) = makeSut()
+		let expectedResult: [ProjectListBussinessLogicSpy.Message] = [.loadProjectList, .loadProjectList]
+
+		sut.loadViewIfNeeded()
+		sut.refreshProjectList()
 
 		XCTAssertEqual(interactor.messages, expectedResult)
 	}
@@ -24,7 +34,7 @@ final class ProjectListViewControllerTests: XCTestCase {
 	private func makeSut() -> (ProjectListViewController, ProjectListBussinessLogicSpy) {
 		let interactorSpy = ProjectListBussinessLogicSpy()
 		let sut = ProjectListViewController(interactor: interactorSpy)
-		
+
 		return (sut, interactorSpy)
 	}
 	
@@ -38,5 +48,11 @@ final class ProjectListViewControllerTests: XCTestCase {
 		func loadProjectList() {
 			messages.append(.loadProjectList)
 		}
+	}
+}
+
+private extension ProjectListViewController {
+	func refreshProjectList() {
+		contentView.refreshControl.simulatePullToRefresh()
 	}
 }

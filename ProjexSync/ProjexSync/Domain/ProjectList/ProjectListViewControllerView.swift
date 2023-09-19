@@ -18,8 +18,11 @@ final class ProjectListViewControllerView: ProgrammaticView {
 	lazy var tableView: UITableView = {
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.refreshControl = refreshControl
 		return tableView
 	}()
+	
+	let refreshControl = UIRefreshControl()
 	
 	override func configure() {
 		backgroundColor = .white

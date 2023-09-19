@@ -19,7 +19,8 @@ final class ProjectListViewController: UIViewController {
 		super.viewDidLoad()
 		
 		setupContentView()
-		interactor.loadProjectList()
+		contentView.refreshControl.addTarget(self, action: #selector(didRefreshTableView), for: .valueChanged)
+		didRefreshTableView()
 	}
 	
 	init(interactor: ProjectListViewControllerBussinessLogic) {
@@ -29,6 +30,16 @@ final class ProjectListViewController: UIViewController {
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	// MARK: - Action
+	
+	@objc func didRefreshTableView() {
+		interactor.loadProjectList()
+	}
+	
+	func showRefreshing(_ refreshing: Bool) {
+		refreshing ? contentView.refreshControl.beginRefreshing() : contentView.refreshControl.endRefreshing()
 	}
 	
 	// MARK: - UI
