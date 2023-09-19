@@ -21,6 +21,8 @@ final class ProjectListViewControllerInteractorTests: XCTestCase {
 	}
 	
 	class ProjectListLoadingWorkerSpy: ProjectListLoadingLogic{
-		
+		func load(completion: @escaping (LoadResult) -> Void) {
+			
+		}
 	}
 }

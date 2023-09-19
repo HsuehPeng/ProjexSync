@@ -9,7 +9,8 @@ import UIKit
 
 final class ProjectListViewControllerFactory {
 	static func makeProjectListScene() -> ProjectListViewController {
-		let interactor = ProjectListViewControllerInteractor()
+		let projectListLoadingWorker = ProjectListLoadingWorker()
+		let interactor = ProjectListViewControllerInteractor(projectListLoadingWorker: projectListLoadingWorker)
 		let vc = ProjectListViewController(interactor: interactor)
 		vc.title = "Project"
 		return vc

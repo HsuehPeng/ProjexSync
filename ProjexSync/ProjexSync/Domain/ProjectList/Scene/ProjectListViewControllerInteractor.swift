@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol ProjectListLoadingLogic {
-	
-}
-
 protocol ProjectListViewControllerBussinessLogic {
 	func loadProjectList()
 }
