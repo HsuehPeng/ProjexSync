@@ -7,20 +7,31 @@
 
 import Foundation
 
-protocol ProjectListViewControllerBussinessLogic {
+protocol ProjectListViewControllerBusinessLogic {
 	func loadProjectList()
 }
 
-final class ProjectListViewControllerInteractor: ProjectListViewControllerBussinessLogic {
+final class ProjectListViewControllerInteractor: ProjectListViewControllerBusinessLogic {
+	let presenter: ProjectListViewControllerPresentationLogic
 	let projectListLoadingWorker: ProjectListLoadingLogic
 	
 	func loadProjectList() {
-		projectListLoadingWorker.load { result in
+		presenter.didStartLoadingProjectList()
+		
+		projectListLoadingWorker.load { [weak self] result in
+			guard let self = self else { return }
 			
+			switch result {
+			case .success(let projects):
+				self.presenter.didFinishLoadingProjectList(with: projects)
+			case .failure(let error):
+				self.presenter.didFinishLoadingProjectList(with: error)
+			}
 		}
 	}
 	
-	init(projectListLoadingWorker: ProjectListLoadingLogic) {
+	init(presenter: ProjectListViewControllerPresentationLogic, projectListLoadingWorker: ProjectListLoadingLogic) {
+		self.presenter = presenter
 		self.projectListLoadingWorker = projectListLoadingWorker
 	}
 }

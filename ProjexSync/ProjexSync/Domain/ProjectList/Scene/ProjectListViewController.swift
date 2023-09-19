@@ -11,7 +11,7 @@ final class ProjectListViewController: UIViewController {
 	// MARK: - Properties
 	
 	let contentView = ProjectListViewControllerView()
-	let interactor: ProjectListViewControllerBussinessLogic
+	let interactor: ProjectListViewControllerBusinessLogic
 	
 	// MARK: - LifeCycle
 	
@@ -23,7 +23,7 @@ final class ProjectListViewController: UIViewController {
 		didRefreshTableView()
 	}
 	
-	init(interactor: ProjectListViewControllerBussinessLogic) {
+	init(interactor: ProjectListViewControllerBusinessLogic) {
 		self.interactor = interactor
 		super.init(nibName: nil, bundle: nil)
 	}

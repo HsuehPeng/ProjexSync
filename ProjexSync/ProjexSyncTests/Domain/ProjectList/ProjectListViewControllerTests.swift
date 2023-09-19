@@ -38,7 +38,7 @@ final class ProjectListViewControllerTests: XCTestCase {
 		return (sut, interactorSpy)
 	}
 	
-	class ProjectListBussinessLogicSpy: ProjectListViewControllerBussinessLogic {
+	class ProjectListBussinessLogicSpy: ProjectListViewControllerBusinessLogic {
 		enum Message {
 			case loadProjectList
 		}
