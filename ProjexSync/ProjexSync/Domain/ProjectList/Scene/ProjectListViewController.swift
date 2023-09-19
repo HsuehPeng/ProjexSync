@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ProjectListViewControllerDisplayLogic: AnyObject {
+	func showRefreshing()
+}
+
 final class ProjectListViewController: UIViewController {
 	// MARK: - Properties
 	

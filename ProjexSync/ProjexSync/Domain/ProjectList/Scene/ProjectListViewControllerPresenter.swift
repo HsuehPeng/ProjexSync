@@ -5,7 +5,7 @@
 //  Created by Hsueh Peng Tseng on 2023/9/19.
 //
 
-import Foundation
+import UIKit
 
 protocol ProjectListViewControllerPresentationLogic {
 	func didStartLoadingProjectList()
@@ -14,8 +14,10 @@ protocol ProjectListViewControllerPresentationLogic {
 }
 
 final class ProjectListViewControllerPresenter: ProjectListViewControllerPresentationLogic {
+	weak var controller: ProjectListViewControllerDisplayLogic?
+	
 	func didStartLoadingProjectList() {
-		
+		controller?.showRefreshing()
 	}
 	
 	func didFinishLoadingProjectList(with project: [Project]) {
