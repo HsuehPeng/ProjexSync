@@ -12,7 +12,7 @@ class SearchTextField: BaseTextField {
 		let view = UIImageView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.image = UIImage(systemName: "magnifyingglass")?.withTintColor(ColorConstants.grayscale70, renderingMode: .alwaysOriginal)
-		view.contentMode = .center
+		view.contentMode = .scaleAspectFit
 		return view
 	}()
 	
@@ -35,7 +35,7 @@ class SearchTextField: BaseTextField {
 	lazy var filterButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
+		button.setImage(UIImage(systemName: "slider.horizontal.3")?.withTintColor(ColorConstants.grayscale70, renderingMode: .alwaysOriginal), for: .normal)
 		button.addTarget(self, action: #selector(didTapFilterButton), for: .touchUpInside)
 		return button
 	}()
@@ -45,6 +45,7 @@ class SearchTextField: BaseTextField {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .horizontal
 		stack.spacing = 8
+		stack.distribution = .fill
 		return stack
 	}()
 	
@@ -54,32 +55,36 @@ class SearchTextField: BaseTextField {
 		hStack.addArrangedSubview(clearButton)
 		hStack.addArrangedSubview(verticalLine)
 		hStack.addArrangedSubview(filterButton)
-
-		leftView = searchImageView
-		rightView = hStack
-		rightViewMode = .always
-	}
-	
-	override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-		super.leftViewRect(forBounds: bounds)
 		
-		let x = bounds.minX
-		let y = bounds.minY
-		let width = 34.0
-		let height = bounds.height
-
-		return CGRect(x: x, y: y, width: width, height: height)
-	}
-	
-	override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-		super.rightViewRect(forBounds: bounds)
-
-		let x = bounds.maxX - 71
-		let y = bounds.minY
-		let width = 55.0
-		let height = bounds.height
-
-		return CGRect(x: x, y: y, width: width, height: height)
+		addSubview(searchImageView)
+		addSubview(hStack)
+		
+		NSLayoutConstraint.activate([
+			searchImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+			searchImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+			searchImageView.widthAnchor.constraint(equalToConstant: 18),
+			searchImageView.heightAnchor.constraint(equalToConstant: 18)
+		])
+		
+		NSLayoutConstraint.activate([
+			clearButton.widthAnchor.constraint(equalToConstant: 18),
+			clearButton.heightAnchor.constraint(equalToConstant: 18)
+		])
+		
+		NSLayoutConstraint.activate([
+			verticalLine.widthAnchor.constraint(equalToConstant: 1)
+		])
+		
+		NSLayoutConstraint.activate([
+			filterButton.widthAnchor.constraint(equalToConstant: 18),
+			filterButton.heightAnchor.constraint(equalToConstant: 18)
+		])
+		
+		NSLayoutConstraint.activate([
+			hStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+			hStack.centerYAnchor.constraint(equalTo: centerYAnchor),
+		])
+		
 	}
 	
 	override var inputEdgeInset: UIEdgeInsets {
