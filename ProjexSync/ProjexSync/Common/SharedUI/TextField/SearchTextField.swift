@@ -19,7 +19,7 @@ class SearchTextField: BaseTextField {
 	lazy var clearButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setImage(UIImage(systemName: "xmark"), for: .normal)
+		button.setImage(UIImage(systemName: "xmark")?.withTintColor(ColorConstants.grayscale70, renderingMode: .alwaysOriginal), for: .normal)
 		button.addTarget(self, action: #selector(didTapClearButton), for: .touchUpInside)
 		button.isHidden = true
 		return button
@@ -93,6 +93,7 @@ class SearchTextField: BaseTextField {
 	
 	@objc func didTapClearButton() {
 		text = nil
+		setEmptyUI()
 	}
 	
 	@objc func didTapFilterButton() {

@@ -10,7 +10,7 @@ import UIKit
 final class ProjectListViewController: UIViewController {
 	// MARK: - Properties
 	
-	let contentView = LoginViewControllerView()
+	let contentView = ProjectListViewControllerView()
 	
 	// MARK: - LifeCycle
 	
