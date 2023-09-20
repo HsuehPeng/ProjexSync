@@ -12,27 +12,31 @@ final class ProjectListViewControllerPresenterTests: XCTestCase {
 	
 	func test_didStartLoadingProjectList_controllerCallsShowRefreshing() {
 		let (sut, controller) = makeSut()
+		let expectedResult: [ProjectListViewControllerSpy.Message] = [.showRefresh(true)]
 		
 		sut.didStartLoadingProjectList()
 		
-		XCTAssertTrue(controller.showRefreshingCalled)
+		XCTAssertEqual(controller.messages, expectedResult)
 	}
 
 	// MARK: - Helpers
 	
-	private func makeSut() -> (ProjectListViewControllerPresenter, ProjectListViewControllerMock) {
+	private func makeSut() -> (ProjectListViewControllerPresenter, ProjectListViewControllerSpy) {
 		let sut = ProjectListViewControllerPresenter()
-		let viewController = ProjectListViewControllerMock()
+		let viewController = ProjectListViewControllerSpy()
 		sut.controller = viewController
 		return (sut, viewController)
 	}
 	
-	class ProjectListViewControllerMock: ProjectListViewControllerDisplayLogic {
-		func show(refresh: Bool) {
-			showRefreshingCalled = true
+	class ProjectListViewControllerSpy: ProjectListViewControllerDisplayLogic {
+		enum Message: Equatable {
+			case showRefresh(Bool)
 		}
 		
-		var showRefreshingCalled = false
-
+		var messages = [Message]()
+		
+		func show(refresh: Bool) {
+			messages.append(.showRefresh(refresh))
+		}
 	}
 }
