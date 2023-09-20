@@ -21,7 +21,7 @@ final class ProjectListViewControllerPresenter: ProjectListViewControllerPresent
 	}
 	
 	func didFinishLoadingProjectList(with project: [Project]) {
-		
+		controller?.show(refresh: false)
 	}
 	
 	func didFinishLoadingProjectList(with error: Error) {
