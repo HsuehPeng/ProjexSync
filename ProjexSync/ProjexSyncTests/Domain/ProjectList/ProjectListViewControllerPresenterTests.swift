@@ -28,10 +28,11 @@ final class ProjectListViewControllerPresenterTests: XCTestCase {
 	}
 	
 	class ProjectListViewControllerMock: ProjectListViewControllerDisplayLogic {
-		var showRefreshingCalled = false
-		
-		func showRefreshing() {
+		func show(refresh: Bool) {
 			showRefreshingCalled = true
 		}
+		
+		var showRefreshingCalled = false
+
 	}
 }

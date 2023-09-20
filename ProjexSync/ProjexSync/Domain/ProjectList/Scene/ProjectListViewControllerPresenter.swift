@@ -17,7 +17,7 @@ final class ProjectListViewControllerPresenter: ProjectListViewControllerPresent
 	weak var controller: ProjectListViewControllerDisplayLogic?
 	
 	func didStartLoadingProjectList() {
-		controller?.showRefreshing()
+		controller?.show(refresh: true)
 	}
 	
 	func didFinishLoadingProjectList(with project: [Project]) {

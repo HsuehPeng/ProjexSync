@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProjectListViewControllerDisplayLogic: AnyObject {
-	func showRefreshing()
+	func show(refresh: Bool)
 }
 
 final class ProjectListViewController: UIViewController {
