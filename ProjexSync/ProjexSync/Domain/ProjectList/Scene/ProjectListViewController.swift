@@ -10,6 +10,7 @@ import UIKit
 protocol ProjectListViewControllerDisplayLogic: AnyObject {
 	func show(refresh: Bool)
 	func show(projects: [Project])
+	func show(error: Error)
 }
 
 final class ProjectListViewController: UIViewController {
