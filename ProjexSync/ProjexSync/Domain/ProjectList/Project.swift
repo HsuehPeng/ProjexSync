@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Project {
-	
+struct Project: Codable {
+	let name: String
 }
