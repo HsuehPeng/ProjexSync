@@ -11,8 +11,8 @@ import XCTest
 final class ProjectListUseCaseIntegrationTests: XCTestCase {
 	
 	func test_viewDidLoad_loadProject_interactorCallLoadProject() {
-		let (sut, interactor) = makeSut()
-		let expectedResult = [ProjectListBussinessLogicSpy.Message.loadProjectList]
+		let (sut, interactor, _) = makeSut()
+		let expectedResult = [ProjectListInteractorSpy.Message.loadProjectList]
 
 		sut.loadViewIfNeeded()
 		
@@ -20,8 +20,8 @@ final class ProjectListUseCaseIntegrationTests: XCTestCase {
 	}
 	
 	func test_tableView_refresh_interactorCallLoadProject() {
-		let (sut, interactor) = makeSut()
-		let expectedResult: [ProjectListBussinessLogicSpy.Message] = [.loadProjectList, .loadProjectList]
+		let (sut, interactor, _) = makeSut()
+		let expectedResult: [ProjectListInteractorSpy.Message] = [.loadProjectList, .loadProjectList]
 
 		sut.loadViewIfNeeded()
 		sut.refreshProjectList()
@@ -29,16 +29,28 @@ final class ProjectListUseCaseIntegrationTests: XCTestCase {
 		XCTAssertEqual(interactor.messages, expectedResult)
 	}
 	
-	// MARK: - Helpers
-	
-	private func makeSut() -> (ProjectListViewController, ProjectListBussinessLogicSpy) {
-		let interactorSpy = ProjectListBussinessLogicSpy()
-		let sut = ProjectListViewController(interactor: interactorSpy)
+	func test_showProjects_projectsGetFromPresenter() {
+		let (sut, _, presenter) = makeSut()
+		let projects = [Project(id: "id", name: "name")]
 
-		return (sut, interactorSpy)
+		presenter.didFinishLoadingProjectList(with: projects)
+
+		XCTAssertEqual(sut.projects, projects)
 	}
 	
-	class ProjectListBussinessLogicSpy: ProjectListViewControllerBusinessLogic {
+	// MARK: - Helpers
+	
+	private func makeSut() -> (ProjectListViewController, ProjectListInteractorSpy, ProjectListViewControllerPresenter) {
+		let presenter = ProjectListViewControllerPresenter()
+		let interactorSpy = ProjectListInteractorSpy()
+		let sut = ProjectListViewController(interactor: interactorSpy)
+		
+		presenter.controller = sut
+		
+		return (sut, interactorSpy, presenter)
+	}
+	
+	class ProjectListInteractorSpy: ProjectListViewControllerBusinessLogic {
 		enum Message {
 			case loadProjectList
 		}

@@ -19,6 +19,8 @@ final class ProjectListViewController: UIViewController {
 	let contentView = ProjectListViewControllerView()
 	let interactor: ProjectListViewControllerBusinessLogic
 	
+	var projects: [Project] = []
+	
 	// MARK: - LifeCycle
 	
 	override func viewDidLoad() {
@@ -64,7 +66,7 @@ extension ProjectListViewController: ProjectListViewControllerDisplayLogic {
 	}
 	
 	func show(projects: [Project]) {
-		print(projects)
+		self.projects = projects
 	}
 	
 	func show(errorMessage: String) {
