@@ -63,6 +63,8 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 			switch (retrievedResult, expectedResult) {
 			case let (.failure(retrievedError as ProjectListLoadingWorker.Error), .failure(expectedError as ProjectListLoadingWorker.Error)):
 				XCTAssertEqual(retrievedError, expectedError, file: file, line: line)
+				XCTAssertEqual(retrievedError.localizedDescription, expectedError.localizedDescription, file: file, line: line)
+
 			case let (.success(retrievedProjects), .success(expectedProjects)):
 				XCTAssertEqual(retrievedProjects, expectedProjects, file: file, line: line)
 			default:
