@@ -31,7 +31,7 @@ final class ProjectListUseCaseIntegrationTests: XCTestCase {
 	
 	func test_showProjects_projectsGetFromPresenter() {
 		let (sut, _, presenter) = makeSut()
-		let projects = [Project(id: "id", name: "name")]
+		let projects = [anyProject]
 
 		presenter.didFinishLoadingProjectList(with: projects)
 
@@ -40,7 +40,7 @@ final class ProjectListUseCaseIntegrationTests: XCTestCase {
 	
 	func test_showProjects_tableView_numbersOfCell() {
 		let (sut, _, presenter) = makeSut()
-		let projects = [Project(id: "id", name: "name")]
+		let projects = [anyProject]
 		
 		sut.loadViewIfNeeded()
 		presenter.didFinishLoadingProjectList(with: projects)
@@ -58,6 +58,17 @@ final class ProjectListUseCaseIntegrationTests: XCTestCase {
 		presenter.controller = sut
 		
 		return (sut, interactorSpy, presenter)
+	}
+	
+	var anyProject: Project {
+		return Project(id: "id",
+					   name: "name",
+					   creationDate: Date(timeIntervalSince1970: 0),
+					   deadline: Date(timeIntervalSince1970: 10),
+					   overview: "overview",
+					   participants: [:],
+					   priority: .high,
+					   progress: 0)
 	}
 	
 	class ProjectListInteractorSpy: ProjectListViewControllerBusinessLogic {

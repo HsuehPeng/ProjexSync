@@ -40,8 +40,8 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 	
 	func test_load_completeWithSuccessWhenLoaderSucceedToLoadValidData() {
 		let (sut, loader) = makeSut()
-		let validData = validData(from: projects)
-		let expectedProjects = projects
+		let validData = validData(from: [anyProject])
+		let expectedProjects = [anyProject]
 		
 		expect(sut, completeWithResult: .success(expectedProjects), when: {
 			loader.completeLoadWith(.success(validData))
@@ -78,8 +78,15 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
-	private var projects: [Project] {
-		return [Project(id: "id", name: "name")]
+	var anyProject: Project {
+		return Project(id: "id",
+					   name: "name",
+					   creationDate: Date(timeIntervalSince1970: 0),
+					   deadline: Date(timeIntervalSince1970: 10),
+					   overview: "overview",
+					   participants: [:],
+					   priority: .high,
+					   progress: 0)
 	}
 	
 	private func invalidData() -> Data {
