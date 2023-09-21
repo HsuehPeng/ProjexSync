@@ -38,6 +38,16 @@ final class ProjectListUseCaseIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.projects, projects)
 	}
 	
+	func test_showProjects_tableView_numbersOfCell() {
+		let (sut, _, presenter) = makeSut()
+		let projects = [Project(id: "id", name: "name")]
+		
+		sut.loadViewIfNeeded()
+		presenter.didFinishLoadingProjectList(with: projects)
+
+		XCTAssertEqual(sut.numbersOfCell(), projects.count)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut() -> (ProjectListViewController, ProjectListInteractorSpy, ProjectListViewControllerPresenter) {
@@ -66,5 +76,9 @@ final class ProjectListUseCaseIntegrationTests: XCTestCase {
 private extension ProjectListViewController {
 	func refreshProjectList() {
 		contentView.refreshControl.simulatePullToRefresh()
+	}
+	
+	func numbersOfCell(in section: Int = 0) -> Int {
+		contentView.tableView.dataSource?.tableView(contentView.tableView, numberOfRowsInSection: section) ?? 0
 	}
 }

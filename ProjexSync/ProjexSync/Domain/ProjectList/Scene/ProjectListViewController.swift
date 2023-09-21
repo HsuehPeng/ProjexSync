@@ -19,7 +19,11 @@ final class ProjectListViewController: UIViewController {
 	let contentView = ProjectListViewControllerView()
 	let interactor: ProjectListViewControllerBusinessLogic
 	
-	var projects: [Project] = []
+	var projects: [Project] = [] {
+		didSet {
+			contentView.tableView.reloadData()
+		}
+	}
 	
 	// MARK: - LifeCycle
 	
@@ -27,7 +31,6 @@ final class ProjectListViewController: UIViewController {
 		super.viewDidLoad()
 		
 		setupContentView()
-		contentView.refreshControl.addTarget(self, action: #selector(didRefreshTableView), for: .valueChanged)
 		didRefreshTableView()
 	}
 	
@@ -57,8 +60,13 @@ final class ProjectListViewController: UIViewController {
 			contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
+		
+		contentView.refreshControl.addTarget(self, action: #selector(didRefreshTableView), for: .valueChanged)
+		contentView.tableView.dataSource = self
 	}
 }
+
+// MARK: - ProjectListViewControllerDisplayLogic
 
 extension ProjectListViewController: ProjectListViewControllerDisplayLogic {
 	func show(refresh: Bool) {
@@ -72,5 +80,16 @@ extension ProjectListViewController: ProjectListViewControllerDisplayLogic {
 	func show(errorMessage: String) {
 		
 	}
+}
+
+// MARK: - UITableViewDataSource
+
+extension ProjectListViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return projects.count
+	}
 	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		return UITableViewCell()
+	}
 }
