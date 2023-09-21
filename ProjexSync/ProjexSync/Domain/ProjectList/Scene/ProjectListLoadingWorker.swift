@@ -41,7 +41,7 @@ protocol ProjectListLoadingLogic {
 	func load(completion: @escaping (LoadResult) -> Void)
 }
 
-final class ProjectListLoadingWorker: ProjectListLoadingLogic {
+final class ProjectListLoadingWorker {
 	private let loader: FirebaseDataLoader
 	
 	enum Error: Swift.Error, LocalizedError {
@@ -58,6 +58,12 @@ final class ProjectListLoadingWorker: ProjectListLoadingLogic {
 		}
 	}
 	
+	init(loader: FirebaseDataLoader) {
+		self.loader = loader
+	}
+}
+
+extension ProjectListLoadingWorker: ProjectListLoadingLogic {
 	func load(completion: @escaping (LoadResult) -> Void) {
 		loader.load { result in
 			switch result {
@@ -74,9 +80,5 @@ final class ProjectListLoadingWorker: ProjectListLoadingLogic {
 				}
 			}
 		}
-	}
-	
-	init(loader: FirebaseDataLoader) {
-		self.loader = loader
 	}
 }
