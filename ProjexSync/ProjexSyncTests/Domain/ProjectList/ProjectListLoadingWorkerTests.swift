@@ -22,42 +22,20 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		let (sut, loader) = makeSut()
 		let anyError = anyError()
 		let expetectedError = ProjectListLoadingWorker.Error.network
-		let exp = expectation(description: "Load complete")
 		
-		sut.load { retrievedResult in
-			switch retrievedResult {
-			case .failure(let retrievedError):
-				XCTAssertEqual(retrievedError as? ProjectListLoadingWorker.Error, expetectedError)
-			default:
-				XCTFail("Expected to fail, got success instead")
-			}
-			exp.fulfill()
-		}
-		
-		loader.completeLoadWith(.failure(anyError))
-		
-		wait(for: [exp], timeout: 1.0)
+		expect(sut, completeWithError: .network, when: {
+			loader.completeLoadWith(.failure(anyError))
+		})
 	}
 	
 	func test_load_completeWithDecodeErrorWhenLoaderSucceedToLoadDataButFailToDecodeData() {
 		let (sut, loader) = makeSut()
 		let invalidData = invalidData()
 		let expetectedError = ProjectListLoadingWorker.Error.decode
-		let exp = expectation(description: "Load complete")
 		
-		sut.load { retrievedResult in
-			switch retrievedResult {
-			case .failure(let retrievedError):
-				XCTAssertEqual(retrievedError as? ProjectListLoadingWorker.Error, expetectedError)
-			default:
-				XCTFail("Expected to fail, got success instead")
-			}
-			exp.fulfill()
-		}
-		
-		loader.completeLoadWith(.success(invalidData))
-		
-		wait(for: [exp], timeout: 1.0)
+		expect(sut, completeWithError: .decode, when: {
+			loader.completeLoadWith(.success(invalidData))
+		})
 	}
 	
 	// MARK: - Helpers
@@ -66,6 +44,24 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		let projectListLoader = ProjectListLoaderMock()
 		let sut = ProjectListLoadingWorker(loader: projectListLoader)
 		return (sut, projectListLoader)
+	}
+	
+	private func expect(_ sut: ProjectListLoadingWorker, completeWithError expectedError: ProjectListLoadingWorker.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+		let exp = expectation(description: "Load complete")
+		
+		sut.load { retrievedResult in
+			switch retrievedResult {
+			case .failure(let retrievedError):
+				XCTAssertEqual(retrievedError as? ProjectListLoadingWorker.Error, expectedError, file: file, line: line)
+			default:
+				XCTFail("Expected to fail with \(expectedError), got success instead", file: file, line: line)
+			}
+			exp.fulfill()
+		}
+		
+		action()
+		
+		wait(for: [exp], timeout: 1.0)
 	}
 	
 	private func invalidData() -> Data {
