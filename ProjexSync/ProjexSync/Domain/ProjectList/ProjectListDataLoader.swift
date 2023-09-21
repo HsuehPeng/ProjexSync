@@ -8,10 +8,11 @@
 import FirebaseFirestore
 
 final class ProjectListDataLoader: FirebaseDataLoader {
-	let ref = Firestore.firestore().collection("User").document("OFohDxvHlahAOB4YVQc6AKuyG4e2").collection("Project")
+	let ref = Firestore.firestore().collection("Project")
 	
 	func load(completion: @escaping (LoadResult) -> Void) {
-		ref.getDocuments { snapshot, error in
+		
+		ref.whereField("participants.OFohDxvHlahAOB4YVQc6AKuyG4e2", isNotEqualTo: "").getDocuments { snapshot, error in
 			if let error = error {
 				completion(.failure(error))
 			} else {
