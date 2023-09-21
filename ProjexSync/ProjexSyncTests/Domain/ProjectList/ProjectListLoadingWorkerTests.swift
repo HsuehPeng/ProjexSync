@@ -50,8 +50,8 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut() -> (ProjectListLoadingWorker, ProjectListLoaderMock) {
-		let projectListLoader = ProjectListLoaderMock()
+	private func makeSut() -> (ProjectListLoadingWorker, ProjectListLoaderSpy) {
+		let projectListLoader = ProjectListLoaderSpy()
 		let sut = ProjectListLoadingWorker(loader: projectListLoader)
 		return (sut, projectListLoader)
 	}
@@ -88,7 +88,7 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		return try! JSONEncoder().encode(projects)
 	}
 	
-	class ProjectListLoaderMock: FirebaseDataLoader {
+	class ProjectListLoaderSpy: FirebaseDataLoader {
 		var didCallLoad = false
 		var completions = [(LoadResult) -> Void]()
 		
