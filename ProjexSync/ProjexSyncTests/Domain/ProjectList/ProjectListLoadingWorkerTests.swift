@@ -38,12 +38,42 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		})
 	}
 	
+	func test_load_completeWithSuccessWhenLoaderSucceedToLoadValidData() {
+		let (sut, loader) = makeSut()
+		let validData = validData(from: projects)
+		let expectedProjects = projects
+		
+		expect(sut, completeWithResult: .success(expectedProjects), when: {
+			loader.completeLoadWith(.success(validData))
+		})
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut() -> (ProjectListLoadingWorker, ProjectListLoaderMock) {
 		let projectListLoader = ProjectListLoaderMock()
 		let sut = ProjectListLoadingWorker(loader: projectListLoader)
 		return (sut, projectListLoader)
+	}
+	
+	private func expect(_ sut: ProjectListLoadingWorker, completeWithResult expectedResult: ProjectListLoadingLogic.LoadResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+		let exp = expectation(description: "Load complete")
+		
+		sut.load { retrievedResult in
+			switch (retrievedResult, expectedResult) {
+			case let (.failure(retrievedError as ProjectListLoadingWorker.Error), .failure(expectedError as ProjectListLoadingWorker.Error)):
+				XCTAssertEqual(retrievedError, expectedError, file: file, line: line)
+			case let (.success(retrievedProjects), .success(expectedProjects)):
+				XCTAssertEqual(retrievedProjects, expectedProjects, file: file, line: line)
+			default:
+				XCTFail("Expected result \(expectedResult), got \(retrievedResult) instead", file: file, line: line)
+			}
+			exp.fulfill()
+		}
+		
+		action()
+		
+		wait(for: [exp], timeout: 1.0)
 	}
 	
 	private func expect(_ sut: ProjectListLoadingWorker, completeWithError expectedError: ProjectListLoadingWorker.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
@@ -64,8 +94,16 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
+	private var projects: [Project] {
+		return [Project(id: "id", name: "name")]
+	}
+	
 	private func invalidData() -> Data {
 		return Data("invalid".utf8)
+	}
+	
+	private func validData(from projects: [Project]) -> Data {
+		return try! JSONEncoder().encode(projects)
 	}
 	
 	class ProjectListLoaderMock: FirebaseDataLoader {

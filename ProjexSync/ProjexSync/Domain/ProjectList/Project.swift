@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Project: Codable {
+struct Project: Codable, Equatable {
+	let id: String
 	let name: String
 }

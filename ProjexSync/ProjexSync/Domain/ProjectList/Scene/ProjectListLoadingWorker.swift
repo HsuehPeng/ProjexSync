@@ -67,6 +67,7 @@ final class ProjectListLoadingWorker: ProjectListLoadingLogic {
 				do {
 					let decoder = JSONDecoder()
 					let projects = try decoder.decode([Project].self, from: data)
+					completion(.success(projects))
 					
 				} catch {
 					completion(.failure(Error.decode))
