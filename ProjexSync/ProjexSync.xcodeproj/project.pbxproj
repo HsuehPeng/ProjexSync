@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B83830892ABC28AE003B86D4 /* ProjectListLoadingWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83830882ABC28AE003B86D4 /* ProjectListLoadingWorkerTests.swift */; };
 		B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */; };
 		B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */; };
 		B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B83830882ABC28AE003B86D4 /* ProjectListLoadingWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListLoadingWorkerTests.swift; sourceTree = "<group>"; };
 		B843CBF92AA85EBF00C5DC1E /* ProjexSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjexSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				B88ADE932AB875FF0012EF91 /* ProjectListViewControllerTests.swift */,
 				B882B9732AB9B70100394E7F /* ProjectListViewControllerInteractorTests.swift */,
 				B882B97E2AB9E82F00394E7F /* ProjectListViewControllerPresenterTests.swift */,
+				B83830882ABC28AE003B86D4 /* ProjectListLoadingWorkerTests.swift */,
 			);
 			path = ProjectList;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				B882B97F2AB9E82F00394E7F /* ProjectListViewControllerPresenterTests.swift in Sources */,
 				B8F2985A2AAC90100069026A /* UIControl+TestHelpers.swift in Sources */,
 				B882B97D2AB9C21A00394E7F /* DomainSharedTestHelpers.swift in Sources */,
+				B83830892ABC28AE003B86D4 /* ProjectListLoadingWorkerTests.swift in Sources */,
 				B8A727772AAC7F8800279689 /* LoginViewControllerPresenterTests.swift in Sources */,
 				B88ADE942AB875FF0012EF91 /* ProjectListViewControllerTests.swift in Sources */,
 				B8C1EF102AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift in Sources */,

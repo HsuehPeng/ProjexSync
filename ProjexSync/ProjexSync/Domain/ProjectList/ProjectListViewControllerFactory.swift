@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 final class ProjectListViewControllerFactory {
 	static func makeProjectListScene() -> ProjectListViewController {
 		let presenter = ProjectListViewControllerPresenter()
-		let projectListLoadingWorker = ProjectListLoadingWorker()
+		let projectListLoadingWorker = ProjectListLoadingWorker(loader: FirebaseProjectListDataLoader())
 		let interactor = ProjectListViewControllerInteractor(presenter: presenter, projectListLoadingWorker: projectListLoadingWorker)
 		let vc = ProjectListViewController(interactor: interactor)
 		vc.title = "Project"
