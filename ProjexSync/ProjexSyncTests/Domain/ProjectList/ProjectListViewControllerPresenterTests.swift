@@ -21,19 +21,21 @@ final class ProjectListViewControllerPresenterTests: XCTestCase {
 
 	func test_didFinishLoadingProjectListWithProjects_controllerShowRefreshToFalse_whenControllerStartLoadingProjectListAndFinishLoadingProjectList() {
 		let (sut, controller) = makeSut()
-		let expectedResult: [ProjectListViewControllerSpy.Message] = [.showRefresh(true), .showRefresh(false), .showProjects]
+		let projectList = [Project]()
+		let expectedResult: [ProjectListViewControllerSpy.Message] = [.showRefresh(true), .showRefresh(false), .showProjects(projectList)]
 		
 		sut.didStartLoadingProjectList()
-		sut.didFinishLoadingProjectList(with: [])
+		sut.didFinishLoadingProjectList(with: projectList)
 		
 		XCTAssertEqual(controller.messages, expectedResult)
 	}
 	
 	func test_didFinishLoadingProjectListWithProjects_controllerShowProjectListWhenFinishLoadingProjectList() {
 		let (sut, controller) = makeSut()
-		let expectedResult: [ProjectListViewControllerSpy.Message] = [.showRefresh(false), .showProjects]
+		let projectList = [Project]()
+		let expectedResult: [ProjectListViewControllerSpy.Message] = [.showRefresh(false), .showProjects(projectList)]
 		
-		sut.didFinishLoadingProjectList(with: [])
+		sut.didFinishLoadingProjectList(with: projectList)
 		
 		XCTAssertEqual(controller.messages, expectedResult)
 	}
@@ -59,7 +61,7 @@ final class ProjectListViewControllerPresenterTests: XCTestCase {
 	class ProjectListViewControllerSpy: ProjectListViewControllerDisplayLogic {
 		enum Message: Equatable {
 			case showRefresh(Bool)
-			case showProjects
+			case showProjects([Project])
 			case showError
 		}
 		
@@ -70,7 +72,7 @@ final class ProjectListViewControllerPresenterTests: XCTestCase {
 		}
 		
 		func show(projects: [ProjexSync.Project]) {
-			messages.append(.showProjects)
+			messages.append(.showProjects(projects))
 		}
 		
 		func show(error: Error) {
