@@ -8,7 +8,7 @@
 import XCTest
 @testable import ProjexSync
 
-final class ProjectListViewControllerTests: XCTestCase {
+final class ProjectListUseCaseIntegrationTests: XCTestCase {
 	
 	func test_viewDidLoad_loadProject_interactorCallLoadProject() {
 		let (sut, interactor) = makeSut()
