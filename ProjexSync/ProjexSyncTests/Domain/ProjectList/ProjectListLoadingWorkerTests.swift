@@ -23,7 +23,7 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		let anyError = anyError()
 		let expetectedError = ProjectListLoadingWorker.Error.network
 		
-		expect(sut, completeWithError: .network, when: {
+		expect(sut, completeWithResult: .failure(expetectedError), when: {
 			loader.completeLoadWith(.failure(anyError))
 		})
 	}
@@ -33,7 +33,7 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		let invalidData = invalidData()
 		let expetectedError = ProjectListLoadingWorker.Error.decode
 		
-		expect(sut, completeWithError: .decode, when: {
+		expect(sut, completeWithResult: .failure(expetectedError), when: {
 			loader.completeLoadWith(.success(invalidData))
 		})
 	}
@@ -67,24 +67,6 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 				XCTAssertEqual(retrievedProjects, expectedProjects, file: file, line: line)
 			default:
 				XCTFail("Expected result \(expectedResult), got \(retrievedResult) instead", file: file, line: line)
-			}
-			exp.fulfill()
-		}
-		
-		action()
-		
-		wait(for: [exp], timeout: 1.0)
-	}
-	
-	private func expect(_ sut: ProjectListLoadingWorker, completeWithError expectedError: ProjectListLoadingWorker.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-		let exp = expectation(description: "Load complete")
-		
-		sut.load { retrievedResult in
-			switch retrievedResult {
-			case .failure(let retrievedError):
-				XCTAssertEqual(retrievedError as? ProjectListLoadingWorker.Error, expectedError, file: file, line: line)
-			default:
-				XCTFail("Expected to fail with \(expectedError), got success instead", file: file, line: line)
 			}
 			exp.fulfill()
 		}
