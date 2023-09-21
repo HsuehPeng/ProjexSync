@@ -27,11 +27,27 @@ protocol ProjectListLoadingLogic {
 }
 
 final class ProjectListLoadingWorker: ProjectListLoadingLogic {
-	let loader: FirebaseDataLoader
+	private let loader: FirebaseDataLoader
+	
+	enum Error: Swift.Error, LocalizedError {
+		case network
+		
+		var errorDescription: String? {
+			switch self {
+			case .network:
+				return "Network error"
+			}
+		}
+	}
 	
 	func load(completion: @escaping (LoadResult) -> Void) {
 		loader.load { result in
-			
+			switch result {
+			case .failure:
+				completion(.failure(Error.network))
+			default:
+				break
+			}
 		}
 	}
 	
