@@ -44,10 +44,6 @@ final class ProjectListViewController: UIViewController {
 		interactor.loadProjectList()
 	}
 	
-	func showRefreshing(_ refreshing: Bool) {
-		refreshing ? contentView.refreshControl.beginRefreshing() : contentView.refreshControl.endRefreshing()
-	}
-	
 	// MARK: - UI
 	
 	private func setupContentView() {
@@ -60,4 +56,19 @@ final class ProjectListViewController: UIViewController {
 			contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
 	}
+}
+
+extension ProjectListViewController: ProjectListViewControllerDisplayLogic {
+	func show(refresh: Bool) {
+		refresh ? contentView.refreshControl.beginRefreshing() : contentView.refreshControl.endRefreshing()
+	}
+	
+	func show(projects: [Project]) {
+		print(projects)
+	}
+	
+	func show(errorMessage: String) {
+		
+	}
+	
 }

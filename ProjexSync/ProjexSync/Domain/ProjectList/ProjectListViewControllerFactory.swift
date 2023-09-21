@@ -14,6 +14,9 @@ final class ProjectListViewControllerFactory {
 		let projectListLoadingWorker = ProjectListLoadingWorker(loader: ProjectListDataLoader())
 		let interactor = ProjectListViewControllerInteractor(presenter: presenter, projectListLoadingWorker: projectListLoadingWorker)
 		let vc = ProjectListViewController(interactor: interactor)
+		
+		presenter.controller = vc
+		
 		vc.title = "Project"
 		return vc
 	}
