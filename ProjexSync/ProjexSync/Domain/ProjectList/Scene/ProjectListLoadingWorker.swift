@@ -6,35 +6,6 @@
 //
 
 import Foundation
-import FirebaseFirestore
-import FirebaseAuth
-import FirebaseFirestoreSwift
-
-protocol FirebaseDataLoader {
-	typealias LoadResult = Result<Data, Error>
-	func load(completion: @escaping (LoadResult) -> Void)
-}
-
-final class FirebaseProjectListDataLoader: FirebaseDataLoader {
-	let ref = Firestore.firestore().collection("User").document("OFohDxvHlahAOB4YVQc6AKuyG4e2").collection("Project")
-	
-	func load(completion: @escaping (LoadResult) -> Void) {
-		ref.getDocuments { snapshot, error in
-			if let error = error {
-				completion(.failure(error))
-			} else {
-				do {
-					let dict = snapshot?.documents.map{ $0.data() } ?? []
-					let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
-					completion(.success(jsonData))
-					
-				} catch(let decodeError) {
-					completion(.failure(decodeError))
-				}
-			}
-		}
-	}
-}
 
 protocol ProjectListLoadingLogic {
 	typealias LoadResult = Result<[Project], Error>

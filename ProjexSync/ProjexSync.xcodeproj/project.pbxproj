@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B83830892ABC28AE003B86D4 /* ProjectListLoadingWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83830882ABC28AE003B86D4 /* ProjectListLoadingWorkerTests.swift */; };
+		B838308B2ABC4227003B86D4 /* ProjectListDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838308A2ABC4227003B86D4 /* ProjectListDataLoader.swift */; };
+		B838308E2ABC426C003B86D4 /* FirebaseDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B838308D2ABC426C003B86D4 /* FirebaseDataLoader.swift */; };
 		B843CBFD2AA85EBF00C5DC1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */; };
 		B843CBFF2AA85EBF00C5DC1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */; };
 		B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */; };
@@ -76,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		B83830882ABC28AE003B86D4 /* ProjectListLoadingWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListLoadingWorkerTests.swift; sourceTree = "<group>"; };
+		B838308A2ABC4227003B86D4 /* ProjectListDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListDataLoader.swift; sourceTree = "<group>"; };
+		B838308D2ABC426C003B86D4 /* FirebaseDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataLoader.swift; sourceTree = "<group>"; };
 		B843CBF92AA85EBF00C5DC1E /* ProjexSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjexSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CBFC2AA85EBF00C5DC1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B843CBFE2AA85EBF00C5DC1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +158,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B838308C2ABC4262003B86D4 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				B838308D2ABC426C003B86D4 /* FirebaseDataLoader.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		B843CBF02AA85EBF00C5DC1E = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				B882B9772AB9BA9800394E7F /* Project.swift */,
+				B838308A2ABC4227003B86D4 /* ProjectListDataLoader.swift */,
 				B88ADE962AB8771B0012EF91 /* ProjectListViewControllerFactory.swift */,
 				B852F2A02AB99A490089EF12 /* ProjectListViewControllerView.swift */,
 				B88ADE952AB876F90012EF91 /* Scene */,
@@ -361,6 +374,7 @@
 		B8C1EF1E2AAB1FB6004ECCF2 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				B838308C2ABC4262003B86D4 /* Firebase */,
 				B8C1EF1F2AAB1FD1004ECCF2 /* Login */,
 			);
 			path = FrameWorks;
@@ -552,7 +566,9 @@
 				B882B97A2AB9BD8C00394E7F /* ProjectListViewControllerPresenter.swift in Sources */,
 				B882B9782AB9BA9800394E7F /* Project.swift in Sources */,
 				B89085AF2AB0945800F7AE4D /* LoginViewControllerView.swift in Sources */,
+				B838308B2ABC4227003B86D4 /* ProjectListDataLoader.swift in Sources */,
 				B8C1EF2A2AAB4349004ECCF2 /* RootTabBarController.swift in Sources */,
+				B838308E2ABC426C003B86D4 /* FirebaseDataLoader.swift in Sources */,
 				B89085FB2AB5FA7E00F7AE4D /* EmailPasswordValidator.swift in Sources */,
 				B890857F2AAF0C4000F7AE4D /* FontConstants.swift in Sources */,
 				B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */,
