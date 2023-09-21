@@ -18,16 +18,16 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		XCTAssertTrue(loader.didCallLoad)
 	}
 	
-	func test_load_completeWithErrorWhenLoaderFailToLoadData() {
+	func test_load_completeWithNetworkErrorWhenLoaderFailToLoadData() {
 		let (sut, loader) = makeSut()
 		let anyError = anyError()
-		let expetectedResult = ProjectListLoadingWorker.Error.network
+		let expetectedError = ProjectListLoadingWorker.Error.network
 		let exp = expectation(description: "Load complete")
 		
 		sut.load { retrievedResult in
 			switch retrievedResult {
 			case .failure(let retrievedError):
-				XCTAssertEqual(retrievedError as? ProjectListLoadingWorker.Error, expetectedResult)
+				XCTAssertEqual(retrievedError as? ProjectListLoadingWorker.Error, expetectedError)
 			default:
 				XCTFail("Expected to fail, got success instead")
 			}
@@ -39,12 +39,37 @@ final class ProjectListLoadingWorkerTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
+	func test_load_completeWithDecodeErrorWhenLoaderSucceedToLoadDataButFailToDecodeData() {
+		let (sut, loader) = makeSut()
+		let invalidData = invalidData()
+		let expetectedError = ProjectListLoadingWorker.Error.decode
+		let exp = expectation(description: "Load complete")
+		
+		sut.load { retrievedResult in
+			switch retrievedResult {
+			case .failure(let retrievedError):
+				XCTAssertEqual(retrievedError as? ProjectListLoadingWorker.Error, expetectedError)
+			default:
+				XCTFail("Expected to fail, got success instead")
+			}
+			exp.fulfill()
+		}
+		
+		loader.completeLoadWith(.success(invalidData))
+		
+		wait(for: [exp], timeout: 1.0)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut() -> (ProjectListLoadingWorker, ProjectListLoaderMock) {
 		let projectListLoader = ProjectListLoaderMock()
 		let sut = ProjectListLoadingWorker(loader: projectListLoader)
 		return (sut, projectListLoader)
+	}
+	
+	private func invalidData() -> Data {
+		return Data("invalid".utf8)
 	}
 	
 	class ProjectListLoaderMock: FirebaseDataLoader {

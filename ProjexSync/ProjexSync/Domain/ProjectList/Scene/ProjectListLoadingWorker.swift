@@ -16,8 +16,23 @@ protocol FirebaseDataLoader {
 }
 
 final class FirebaseProjectListDataLoader: FirebaseDataLoader {
+	let ref = Firestore.firestore().collection("User").document("OFohDxvHlahAOB4YVQc6AKuyG4e2").collection("Project")
+	
 	func load(completion: @escaping (LoadResult) -> Void) {
-		
+		ref.getDocuments { snapshot, error in
+			if let error = error {
+				completion(.failure(error))
+			} else {
+				do {
+					let dict = snapshot?.documents.map{ $0.data() } ?? []
+					let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
+					completion(.success(jsonData))
+					
+				} catch(let decodeError) {
+					completion(.failure(decodeError))
+				}
+			}
+		}
 	}
 }
 
@@ -31,11 +46,14 @@ final class ProjectListLoadingWorker: ProjectListLoadingLogic {
 	
 	enum Error: Swift.Error, LocalizedError {
 		case network
+		case decode
 		
 		var errorDescription: String? {
 			switch self {
 			case .network:
 				return "Network error"
+			case .decode:
+				return "Failed to decode data"
 			}
 		}
 	}
@@ -45,8 +63,14 @@ final class ProjectListLoadingWorker: ProjectListLoadingLogic {
 			switch result {
 			case .failure:
 				completion(.failure(Error.network))
-			default:
-				break
+			case .success(let data):
+				do {
+					let decoder = JSONDecoder()
+					let projects = try decoder.decode([Project].self, from: data)
+					
+				} catch {
+					completion(.failure(Error.decode))
+				}
 			}
 		}
 	}
