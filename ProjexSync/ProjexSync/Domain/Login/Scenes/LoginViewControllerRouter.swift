@@ -7,14 +7,11 @@
 
 import UIKit
 
-protocol AuthViewControllerRoutingLogic: AnyObject, Routerable {
+protocol AuthViewControllerRoutingLogic: AnyObject {
 	func showLoginFailureView(viewModel: String)
 	func showLoginSuccessView()
 	func dismiss()
-}
-
-protocol Routerable: AnyObject {
-    func goTo(destination: UIViewController, with navigationController: UINavigationController)
+    func navigateToSignUpPage()
 }
 
 class AuthViewControllerRouter: AuthViewControllerRoutingLogic {
@@ -50,8 +47,9 @@ class AuthViewControllerRouter: AuthViewControllerRoutingLogic {
 		sourceView?.dismiss(animated: true)
 	}
     
-    func goTo(destination: UIViewController, with navigationController: UINavigationController) {
-        navigationController.pushViewController(destination, animated: true)
+    func navigateToSignUpPage() {
+        let vc = AuthSceneFactory().makeSignupScene()
+        sourceView?.navigationController?.pushViewController(vc, animated: true)
     }
 	
 }

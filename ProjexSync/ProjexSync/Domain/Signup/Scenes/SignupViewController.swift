@@ -8,7 +8,6 @@
 import UIKit
 
 class SignupViewController: LoginViewController {
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

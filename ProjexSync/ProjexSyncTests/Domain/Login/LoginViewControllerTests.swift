@@ -11,8 +11,7 @@ import XCTest
 final class LoginViewControllerTests: XCTestCase {
 	func test_didTapSignInButton_interactorCallsLogin() {
 		let (sut, interactor, _) = makeSut()
-        sut.contentView.actionButton.setTitle("Sign In", for: .normal)
-        sut.didTapSignInButton(sut.contentView.actionButton)
+        sut.didTapSignInButton(sut.contentView.authButton)
 		
 		XCTAssertEqual(interactor.loginCallCount, 1)
 	}
@@ -46,7 +45,7 @@ final class LoginViewControllerTests: XCTestCase {
 		sut.loadingIndicator(shouldShow: notAnimating)
 		XCTAssertEqual(sut.contentView.loadingIndicator.isAnimating, notAnimating)
 	}
-	
+    
 	// MARK: - helpers
 	
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewController, LoginViewControllerInteractorMock, LoginViewControllerRouterSpy) {
@@ -70,8 +69,9 @@ final class LoginViewControllerTests: XCTestCase {
 	}
 	
     private final class LoginViewControllerRouterSpy: AuthViewControllerRoutingLogic {
-        func goTo(destination: UIViewController, with navigationController: UINavigationController) {
-
+        
+        func navigateToSignUpPage() {
+            
         }
         
 		enum Message: Equatable {

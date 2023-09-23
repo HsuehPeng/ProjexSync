@@ -50,15 +50,13 @@ class LoginViewController: UIViewController {
     
 	@objc func didTapSignInButton(_ sender: UIButton) {
         if sender.titleLabel?.text == "Sign In" {
-        interactor.authWith(email: contentView.emailTextField.text, password: contentView.passwordTextField.text)
+            interactor.authWith(email: contentView.emailTextField.text, password: contentView.passwordTextField.text)
         }
 	}
 
     @objc func didTapSignupButton(_ sender: UIButton) {
         if sender.titleLabel?.text == "Sign Up" {
-            let vc = AuthSceneFactory().makeSignupScene()
-            guard let nav = navigationController else { return }
-            router?.goTo(destination: vc, with: nav)
+            router?.navigateToSignUpPage()
         }
     }
 }
