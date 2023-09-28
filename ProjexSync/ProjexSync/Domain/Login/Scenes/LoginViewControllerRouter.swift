@@ -1,5 +1,5 @@
 //
-//  LoginViewControllerRouter.swift
+//  AuthViewControllerRouter.swift
 //  ProjexSync
 //
 //  Created by Hsueh Peng Tseng on 2023/9/9.
@@ -7,19 +7,20 @@
 
 import UIKit
 
-protocol LoginViewControllerRoutingLogic: AnyObject {
+protocol AuthViewControllerRoutingLogic: AnyObject {
 	func showLoginFailureView(viewModel: String)
 	func showLoginSuccessView()
 	func dismiss()
+    func navigateToSignUpPage()
 }
 
-class LoginViewControllerRouter: LoginViewControllerRoutingLogic {
+class AuthViewControllerRouter: AuthViewControllerRoutingLogic {
 	weak var sourceView: UIViewController?
 	
 	func showLoginFailureView(viewModel: String) {
 		let action = UIAlertAction(title: "OK", style: .default)
 		let alertController = UIAlertController(
-			title: "Login Failure",
+			title: "Failure",
 			message: viewModel,
 			preferredStyle: .alert
 		)
@@ -33,7 +34,7 @@ class LoginViewControllerRouter: LoginViewControllerRoutingLogic {
 			self.dismiss()
 		}
 		let alertController = UIAlertController(
-			title: "Login Success",
+			title: "Success",
 			message: nil,
 			preferredStyle: .alert
 		)
@@ -45,5 +46,10 @@ class LoginViewControllerRouter: LoginViewControllerRoutingLogic {
 	func dismiss() {
 		sourceView?.dismiss(animated: true)
 	}
+    
+    func navigateToSignUpPage() {
+        let vc = AuthSceneFactory().makeSignupScene()
+        sourceView?.navigationController?.pushViewController(vc, animated: true)
+    }
 	
 }

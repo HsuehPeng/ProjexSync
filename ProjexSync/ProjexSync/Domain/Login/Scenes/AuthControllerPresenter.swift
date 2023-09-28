@@ -7,25 +7,25 @@
 
 import Foundation
 
-protocol LoginViewControllerPresentationLogic: AnyObject {
+protocol AuthViewControllerPresentationLogic: AnyObject {
 	func showLoginFailure(message: String)
 	func showLoginSuccess()
 	func loginLoadingIndicator(isLoading: Bool)
 }
 
-class LoginViewControllerPresenter: LoginViewControllerPresentationLogic {
-	weak var viewController: LoginViewControllerDisplayLogic?
+class AuthControllerPresenter: AuthViewControllerPresentationLogic {
+	weak var viewController: AuthDisplayLogic?
 	
 	func showLoginFailure(message: String) {
-		viewController?.showLoginFailureView(viewModel: message)
+		viewController?.showAutnFailureView(viewModel: message)
 	}
 	
 	func showLoginSuccess() {
-		viewController?.showLoginSuccessView()
+		viewController?.showAuthSuccessView()
 	}
 	
 	func loginLoadingIndicator(isLoading: Bool) {
-		viewController?.loginLoadingIndicator(shouldShow: isLoading)
+		viewController?.loadingIndicator(shouldShow: isLoading)
 	}
 	
 	

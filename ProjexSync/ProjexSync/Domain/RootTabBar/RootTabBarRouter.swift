@@ -10,17 +10,18 @@ import UIKit
 class RootTabBarRouter {
 	weak var source: UIViewController?
 	
-	private let loginSceneFactory: LoginSceneFactory
+	private let sceneFactory: AuthSceneFactory
 	
-	init(loginSceneFactory: LoginSceneFactory) {
-		self.loginSceneFactory = loginSceneFactory
+	init(sceneFactory: AuthSceneFactory) {
+		self.sceneFactory = sceneFactory
 	}
 }
 
 extension RootTabBarRouter {
 	func presentLoginScene() {
-		let loginVC = loginSceneFactory.makeLoginScene()
-		source?.modalPresentationStyle = .fullScreen
-		source?.present(loginVC, animated: true)
+		let loginVC = sceneFactory.makeLoginScene()
+        let nav = UINavigationController(rootViewController: loginVC)
+        source?.modalPresentationStyle = .fullScreen
+		source?.present(nav, animated: true)
 	}
 }

@@ -12,14 +12,14 @@ final class LoginWorkerTests: XCTestCase {
 	func test_login_loginWithWrongFormattedEmail_deliverWrongEmailFormateError() {
 		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: false, isPasswordValid: true)
 		let (sut, _) = makeSut(validator: emailPasswordValidator)
-		expect(sut, completeWith: .failure(LoginWorker.LoginError.email), when: {})
+		expect(sut, completeWith: .failure(AuthWorker.LoginError.email), when: {})
 	}
 	
 	func test_login_loginWithWrongFormattedPassword_deliverWrongPasswordFormateError() {
 		let emailPasswordValidator = EmailPasswordValidatorMock(isEmailValid: true, isPasswordValid: false)
 		let (sut, _) = makeSut(validator: emailPasswordValidator)
 		
-		expect(sut, completeWith: .failure(LoginWorker.LoginError.password), when: {})
+		expect(sut, completeWith: .failure(AuthWorker.LoginError.password), when: {})
 	}
 	
 	func test_login_loginWithCorrectFormattedEmailAndPassword_emailLoginClientCallsLogin() {
@@ -28,7 +28,7 @@ final class LoginWorkerTests: XCTestCase {
 		let anyEmail = anyEmail()
 		let anyPassword = anyPassword()
 
-		sut.login(email: anyEmail, password: anyPassword) { _ in }
+		sut.auth(email: anyEmail, password: anyPassword) { _ in }
 				
 		XCTAssertEqual(emailLoginClient.messages, [.login])
 	}
@@ -38,7 +38,7 @@ final class LoginWorkerTests: XCTestCase {
 		let (sut, emailLoginClient) = makeSut(validator: emailPasswordValidator)
 		let anyNSError = NSError(domain: "", code: 1)
 		
-		expect(sut, completeWith: .failure(LoginWorker.LoginError.auth), when: {
+		expect(sut, completeWith: .failure(AuthWorker.LoginError.auth), when: {
 			emailLoginClient.completeWith(.failure(anyNSError))
 		})
 	}
@@ -54,10 +54,10 @@ final class LoginWorkerTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(validator: EmailPasswordValidatorMock) -> (LoginWorker, EmailLoginClientSpy) {
+	private func makeSut(validator: EmailPasswordValidatorMock) -> (AuthWorker, EmailLoginClientSpy) {
 		let emailLoginClient = EmailLoginClientSpy()
 		let emailPasswordValidator = validator
-		let sut = LoginWorker(emailLoginClient: emailLoginClient, emailPasswordValidator: emailPasswordValidator)
+        let sut = AuthWorker(client: emailLoginClient, emailPasswordValidator: emailPasswordValidator)
 		
 		trackForMemoryleaks(emailLoginClient)
 		trackForMemoryleaks(emailPasswordValidator)
@@ -66,16 +66,16 @@ final class LoginWorkerTests: XCTestCase {
 		return (sut, emailLoginClient)
 	}
 	
-	private func expect(_ sut: LoginLogic, completeWith expectedResult: LoginLogic.LoginResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line ) {
+    private func expect(_ sut: AuthLogic, completeWith expectedResult: AuthLogic.AuthResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line ) {
 		let exp = expectation(description: "Wait for login completion")
 		let anyEmail = anyEmail()
 		let anyPassword = anyPassword()
 		
-		sut.login(email: anyEmail, password: anyPassword) { receivedResult in
+		sut.auth(email: anyEmail, password: anyPassword) { receivedResult in
 			switch (expectedResult, receivedResult) {
 			case (.success, .success):
 				XCTAssertTrue(true)
-			case let (.failure(expectedError as LoginWorker.LoginError), .failure(receivedError as LoginWorker.LoginError)):
+			case let (.failure(expectedError as AuthWorker.LoginError), .failure(receivedError as AuthWorker.LoginError)):
 				XCTAssertEqual(expectedError, receivedError, file: file, line: line)
 			default:
 				XCTFail("Expected result \(expectedResult), got \(receivedResult) instead")
@@ -90,20 +90,20 @@ final class LoginWorkerTests: XCTestCase {
 	}
 	
 	
-	final class EmailLoginClientSpy: EmailLoginClient {
+    final class EmailLoginClientSpy: AuthClient {
 		enum Message {
 			case login
 		}
 		
 		var messages = [Message]()
-		var completions = [LoginCompletion]()
+		var completions = [AuthCompletion]()
 		
-		func login(email: String, password: String, completion: @escaping LoginCompletion) {
+		func auth(email: String, password: String, completion: @escaping AuthCompletion) {
 			messages.append(.login)
 			completions.append(completion)
 		}
 		
-		func completeWith(_ completion: LoginResult, at index: Int = 0) {
+		func completeWith(_ completion: AuthResult, at index: Int = 0) {
 			completions[index](completion)
 		}
 	}

@@ -7,27 +7,28 @@
 
 import UIKit
 
-protocol LoginViewControllerDisplayLogic: AnyObject {
-	func showLoginFailureView(viewModel: String)
-	func showLoginSuccessView()
-	func loginLoadingIndicator(shouldShow: Bool)
+protocol AuthDisplayLogic: AnyObject {
+	func showAutnFailureView(viewModel: String)
+    // should change to dismissSelf later
+	func showAuthSuccessView()
+	func loadingIndicator(shouldShow: Bool)
 }
 
 class LoginViewController: UIViewController {
-	private let interactor: LoginViewControllerBusinessLogic
-	var router: LoginViewControllerRoutingLogic?
-	lazy var contentView = LoginViewControllerView()
+	private let interactor: AuthViewControllerBusinessLogic
+	var router: AuthViewControllerRoutingLogic?
+	lazy var contentView = AuthViewControllerView()
 	
 	// MARK: - LifeCycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		view = contentView
-		contentView.signInButton.addTarget(self, action: #selector(didTapSignInButton), for: .touchUpInside)
+        setupContentView()
+		contentView.authButton.addTarget(self, action: #selector(didTapSignInButton), for: .touchUpInside)
+        contentView.actionButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
 	}
 	
-	init(interactor: LoginViewControllerBusinessLogic) {
+	init(interactor: AuthViewControllerBusinessLogic) {
 		self.interactor = interactor
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -36,21 +37,40 @@ class LoginViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	@objc func didTapSignInButton() {
-		interactor.loginWith(email: contentView.emailTextField.text, password: contentView.passwordTextField.text)
+    private func setupContentView() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: view.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+	@objc func didTapSignInButton(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Sign In" {
+            interactor.authWith(email: contentView.emailTextField.text, password: contentView.passwordTextField.text)
+        }
 	}
+
+    @objc func didTapSignupButton(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Sign Up" {
+            router?.navigateToSignUpPage()
+        }
+    }
 }
 
-extension LoginViewController: LoginViewControllerDisplayLogic {
-	func showLoginFailureView(viewModel: String) {
+extension LoginViewController: AuthDisplayLogic {
+	func showAutnFailureView(viewModel: String) {
 		router?.showLoginFailureView(viewModel: viewModel)
 	}
 	
-	func showLoginSuccessView() {
+	func showAuthSuccessView() {
 		router?.showLoginSuccessView()
 	}
 	
-	func loginLoadingIndicator(shouldShow: Bool) {
+	func loadingIndicator(shouldShow: Bool) {
 		shouldShow ? contentView.loadingIndicator.startAnimating() : contentView.loadingIndicator.stopAnimating()
 	}
 }
