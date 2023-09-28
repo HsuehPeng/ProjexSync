@@ -12,6 +12,7 @@
 		B843CC012AA85EBF00C5DC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */; };
 		B843CC062AA85EC000C5DC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B843CC052AA85EC000C5DC1E /* Assets.xcassets */; };
 		B843CC092AA85EC000C5DC1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B843CC072AA85EC000C5DC1E /* LaunchScreen.storyboard */; };
+		B855BB8D2AC56E740019FB3D /* SignUpViewControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855BB8C2AC56E740019FB3D /* SignUpViewControllerRouter.swift */; };
 		B863810E2AB6D49000A5CF5C /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */; };
 		B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */; };
 		B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890857A2AAF064200F7AE4D /* ColorConstants.swift */; };
@@ -38,7 +39,6 @@
 		B8C1EF062AA9B257004ECCF2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B8C1EF052AA9B257004ECCF2 /* FirebaseStorage */; };
 		B8C1EF0D2AA9E39F004ECCF2 /* EmailAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0C2AA9E39F004ECCF2 /* EmailAuthClient.swift */; };
 		B8C1EF102AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF0F2AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift */; };
-		B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */; };
 		B8C1EF1A2AAB1E3F004ECCF2 /* AuthViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF192AAB1E3F004ECCF2 /* AuthViewControllerInteractor.swift */; };
 		B8C1EF1C2AAB1E55004ECCF2 /* AuthControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF1B2AAB1E55004ECCF2 /* AuthControllerPresenter.swift */; };
 		B8C1EF232AAB408E004ECCF2 /* AuthSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1EF222AAB408E004ECCF2 /* AuthSceneFactory.swift */; };
@@ -72,6 +72,7 @@
 		B843CC0A2AA85EC000C5DC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B843CC0F2AA85EC000C5DC1E /* ProjexSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjexSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B843CC2C2AA85F4800C5DC1E /* ProjexSync.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjexSync.xctestplan; sourceTree = SOURCE_ROOT; };
+		B855BB8C2AC56E740019FB3D /* SignUpViewControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerRouter.swift; sourceTree = "<group>"; };
 		B863810D2AB6D49000A5CF5C /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerRouter.swift; sourceTree = "<group>"; };
 		B890857A2AAF064200F7AE4D /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		B8C1EEFA2AA9AE1A004ECCF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8C1EF0C2AA9E39F004ECCF2 /* EmailAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthClient.swift; sourceTree = "<group>"; };
 		B8C1EF0F2AA9E413004ECCF2 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
-		B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+EmailPasswordAuthClient.swift"; sourceTree = "<group>"; };
 		B8C1EF192AAB1E3F004ECCF2 /* AuthViewControllerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerInteractor.swift; sourceTree = "<group>"; };
 		B8C1EF1B2AAB1E55004ECCF2 /* AuthControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthControllerPresenter.swift; sourceTree = "<group>"; };
 		B8C1EF222AAB408E004ECCF2 /* AuthSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSceneFactory.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 			path = HomePage;
 			sourceTree = "<group>";
 		};
-		B8C1EF072AA9BADF004ECCF2 /* Login */ = {
+		B8C1EF072AA9BADF004ECCF2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				B8C1EF222AAB408E004ECCF2 /* AuthSceneFactory.swift */,
@@ -232,7 +232,7 @@
 				B89085AE2AB0945800F7AE4D /* AuthViewControllerView.swift */,
 				B8C1EF182AAB1D59004ECCF2 /* Scenes */,
 			);
-			path = Login;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		B8C1EF0E2AA9E3FB004ECCF2 /* Helpers */ = {
@@ -249,7 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				B8C1EF0C2AA9E39F004ECCF2 /* EmailAuthClient.swift */,
-				B8C1EF112AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift */,
 			);
 			path = EmailPassword;
 			sourceTree = "<group>";
@@ -258,10 +257,9 @@
 			isa = PBXGroup;
 			children = (
 				ED34C6052ABEEEBE00039CE7 /* Managers */,
-				ED34C5F92ABEE7F600039CE7 /* Signup */,
 				B8C1EF282AAB4324004ECCF2 /* RootTabBar */,
 				B89D47142AAC44B4008AAB2E /* HomePage */,
-				B8C1EF072AA9BADF004ECCF2 /* Login */,
+				B8C1EF072AA9BADF004ECCF2 /* Auth */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -283,9 +281,11 @@
 			isa = PBXGroup;
 			children = (
 				B843CC002AA85EBF00C5DC1E /* LoginViewController.swift */,
-				B8C1EF192AAB1E3F004ECCF2 /* AuthViewControllerInteractor.swift */,
-				B8C1EF1B2AAB1E55004ECCF2 /* AuthControllerPresenter.swift */,
 				B89085522AAC983C00F7AE4D /* LoginViewControllerRouter.swift */,
+				ED34C5FB2ABEE82D00039CE7 /* SignupViewController.swift */,
+				B855BB8C2AC56E740019FB3D /* SignUpViewControllerRouter.swift */,
+				B8C1EF1B2AAB1E55004ECCF2 /* AuthControllerPresenter.swift */,
+				B8C1EF192AAB1E3F004ECCF2 /* AuthViewControllerInteractor.swift */,
 				B89A11A12AB6EA4B006814A5 /* AuthWorker.swift */,
 			);
 			path = Scenes;
@@ -343,22 +343,6 @@
 				B8C1EF2B2AAB4442004ECCF2 /* RootTabBarRouter.swift */,
 			);
 			path = RootTabBar;
-			sourceTree = "<group>";
-		};
-		ED34C5F92ABEE7F600039CE7 /* Signup */ = {
-			isa = PBXGroup;
-			children = (
-				ED34C5FA2ABEE81200039CE7 /* Scenes */,
-			);
-			path = Signup;
-			sourceTree = "<group>";
-		};
-		ED34C5FA2ABEE81200039CE7 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				ED34C5FB2ABEE82D00039CE7 /* SignupViewController.swift */,
-			);
-			path = Scenes;
 			sourceTree = "<group>";
 		};
 		ED34C6052ABEEEBE00039CE7 /* Managers */ = {
@@ -484,7 +468,6 @@
 			files = (
 				B89A11A22AB6EA4B006814A5 /* AuthWorker.swift in Sources */,
 				B89085532AAC983C00F7AE4D /* LoginViewControllerRouter.swift in Sources */,
-				B8C1EF122AAB012E004ECCF2 /* Auth+EmailPasswordAuthClient.swift in Sources */,
 				B8C1EF2C2AAB4442004ECCF2 /* RootTabBarRouter.swift in Sources */,
 				B89085A32AB05CA200F7AE4D /* HidableTextField.swift in Sources */,
 				B89085AB2AB088BB00F7AE4D /* ProjexSyncButton.swift in Sources */,
@@ -506,6 +489,7 @@
 				B890857F2AAF0C4000F7AE4D /* FontConstants.swift in Sources */,
 				B890857B2AAF064200F7AE4D /* ColorConstants.swift in Sources */,
 				ED34C5FC2ABEE82D00039CE7 /* SignupViewController.swift in Sources */,
+				B855BB8D2AC56E740019FB3D /* SignUpViewControllerRouter.swift in Sources */,
 				B89085AD2AB093F800F7AE4D /* ProgrammaticView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

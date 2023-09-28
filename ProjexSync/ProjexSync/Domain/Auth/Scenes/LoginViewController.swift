@@ -9,7 +9,6 @@ import UIKit
 
 protocol AuthDisplayLogic: AnyObject {
 	func showAutnFailureView(viewModel: String)
-    // should change to dismissSelf later
 	func showAuthSuccessView()
 	func loadingIndicator(shouldShow: Bool)
 }

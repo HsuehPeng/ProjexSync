@@ -27,7 +27,7 @@ class AuthSceneFactory {
         let signupWorker: AuthLogic = AuthWorker(client: SignupManager.shared, emailPasswordValidator: EmailPasswordValidator())
         let interactor = AuthViewControllerInteractor(presenter: presenter, loginWorker: signupWorker)
         let signupViewController = SignupViewController(interactor: interactor)
-        let router = AuthViewControllerRouter()
+        let router = SignUpViewControllerRouter()
         signupViewController.router = router
         router.sourceView = signupViewController
         presenter.viewController = signupViewController
