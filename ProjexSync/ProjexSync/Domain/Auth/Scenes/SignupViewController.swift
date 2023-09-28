@@ -21,7 +21,7 @@ class SignupViewController: UIViewController {
 		contentView.authButton.setTitle("Sign Up", for: .normal)
 		contentView.noticeLabel.text = "Already have an account?"
 		contentView.actionButton.setTitle("Log In", for: .normal)
-		contentView.actionButton.addTarget(self, action: #selector(didTapLogInButton), for: .touchUpInside)
+		contentView.actionButton.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
 		contentView.authButton.addTarget(self, action: #selector(didTapAuthSignupButton), for: .touchUpInside)
 	}
 	
@@ -49,7 +49,7 @@ class SignupViewController: UIViewController {
 		interactor.authWith(email: contentView.emailTextField.text, password: contentView.passwordTextField.text)
 	}
 
-	@objc func didTapLogInButton(_ sender: UIButton) {
+	@objc func didTapSignUpButton(_ sender: UIButton) {
 		router?.pop()
 	}
 }
