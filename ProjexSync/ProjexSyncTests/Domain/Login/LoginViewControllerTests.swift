@@ -11,8 +11,7 @@ import XCTest
 final class LoginViewControllerTests: XCTestCase {
 	func test_didTapSignInButton_interactorCallsLogin() {
 		let (sut, interactor, _) = makeSut()
-		
-		sut.didTapSignInButton()
+        sut.didTapSignInButton(sut.contentView.authButton)
 		
 		XCTAssertEqual(interactor.loginCallCount, 1)
 	}
@@ -22,8 +21,7 @@ final class LoginViewControllerTests: XCTestCase {
 		
 		let viewModel = "Failure"
 		let expectedMessage: [LoginViewControllerRouterSpy.Message] = [.showLoginFailureView(viewModel)]
-		sut.showLoginFailureView(viewModel: viewModel)
-		
+		sut.showAutnFailureView(viewModel: viewModel)
 		XCTAssertEqual(expectedMessage, router.messages)
 	}
 	
@@ -31,7 +29,7 @@ final class LoginViewControllerTests: XCTestCase {
 		let (sut, _, router) = makeSut()
 		
 		let expectedMessage: [LoginViewControllerRouterSpy.Message] = [.showLoginSuccessView]
-		sut.showLoginSuccessView()
+		sut.showAuthSuccessView()
 		
 		XCTAssertEqual(expectedMessage, router.messages)
 	}
@@ -41,13 +39,13 @@ final class LoginViewControllerTests: XCTestCase {
 		let isAnimating = true
 		let notAnimating = false
 		
-		sut.loginLoadingIndicator(shouldShow: isAnimating)
+		sut.loadingIndicator(shouldShow: isAnimating)
 		XCTAssertEqual(sut.contentView.loadingIndicator.isAnimating, isAnimating)
 		
-		sut.loginLoadingIndicator(shouldShow: notAnimating)
+		sut.loadingIndicator(shouldShow: notAnimating)
 		XCTAssertEqual(sut.contentView.loadingIndicator.isAnimating, notAnimating)
 	}
-	
+    
 	// MARK: - helpers
 	
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewController, LoginViewControllerInteractorMock, LoginViewControllerRouterSpy) {
@@ -62,15 +60,20 @@ final class LoginViewControllerTests: XCTestCase {
 		return (sut, interactor, router)
 	}
 	
-	private final class LoginViewControllerInteractorMock: LoginViewControllerBusinessLogic {
+	private final class LoginViewControllerInteractorMock: AuthViewControllerBusinessLogic {
 		var loginCallCount = 0
 		
-		func loginWith(email: String?, password: String?) {
+		func authWith(email: String?, password: String?) {
 			loginCallCount += 1
 		}
 	}
 	
-	private final class LoginViewControllerRouterSpy: LoginViewControllerRoutingLogic {
+    private final class LoginViewControllerRouterSpy: AuthViewControllerRoutingLogic {
+        
+        func navigateToSignUpPage() {
+            
+        }
+        
 		enum Message: Equatable {
 			case showLoginFailureView(String)
 			case showLoginSuccessView

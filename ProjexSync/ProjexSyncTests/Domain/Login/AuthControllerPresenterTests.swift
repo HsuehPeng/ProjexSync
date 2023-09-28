@@ -39,8 +39,8 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 	 
 	// MARK: - Helpers
 	
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerPresenter, LoginViewControllerSpy) {
-		let sut = LoginViewControllerPresenter()
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (AuthControllerPresenter, LoginViewControllerSpy) {
+		let sut = AuthControllerPresenter()
 		let loginViewControllerMock = LoginViewControllerSpy()
 		sut.viewController = loginViewControllerMock
 		
@@ -50,7 +50,7 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 		return (sut, loginViewControllerMock)
 	}
 	
-	private final class LoginViewControllerSpy: LoginViewControllerDisplayLogic {
+    private final class LoginViewControllerSpy: AuthDisplayLogic {
 		enum Message: Equatable {
 			case showLoginFailureView(String)
 			case showLoginSuccessView
@@ -60,15 +60,15 @@ final class LoginViewControllerPresenterTests: XCTestCase {
 		var loadingIndicatorIsLoading: Bool = false
 		var messages = [Message]()
 		
-		func showLoginFailureView(viewModel: String) {
+		func showAutnFailureView(viewModel: String) {
 			messages.append(.showLoginFailureView(viewModel))
 		}
 		
-		func showLoginSuccessView() {
+		func showAuthSuccessView() {
 			messages.append(.showLoginSuccessView)
 		}
 		
-		func loginLoadingIndicator(shouldShow: Bool) {
+		func loadingIndicator(shouldShow: Bool) {
 			messages.append(.loginLoadingIndicator(shouldShow))
 		}
 	}

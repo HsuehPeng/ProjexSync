@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class LoginViewControllerView: ProgrammaticView {
+final class AuthViewControllerView: ProgrammaticView {
 	let scrollView: UIScrollView = {
 		let scrollView = UIScrollView()
 		scrollView.translatesAutoresizingMaskIntoConstraints = false
 		return scrollView
 	}()
 	
-	let signinTitleLabel: UILabel = {
+	let titleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Sign In"
@@ -54,14 +54,14 @@ final class LoginViewControllerView: ProgrammaticView {
 		return textField
 	}()
 	
-	lazy var signInButton: ProjexSyncButton = {
+	lazy var authButton: ProjexSyncButton = {
 		let button = ProjexSyncButton(type: .primary, size: .large)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitle("Sign In", for: .normal)
 		return button
 	}()
 	
-	let noAccountLabel: UILabel = {
+	let noticeLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Don’t have an account?"
@@ -70,7 +70,7 @@ final class LoginViewControllerView: ProgrammaticView {
 		return label
 	}()
 	
-	let signUpButton: ProjexSyncButton = {
+	let actionButton: ProjexSyncButton = {
 		let button = ProjexSyncButton(type: .tertiary, size: .large)
 		button.setTitle("Sign Up", for: .normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -97,7 +97,7 @@ final class LoginViewControllerView: ProgrammaticView {
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	override func configure() {
+    override func configure() {
 		backgroundColor = .white
 		emailTextField.delegate = self
 		passwordTextField.delegate = self
@@ -112,12 +112,12 @@ final class LoginViewControllerView: ProgrammaticView {
 	
 	override func setupConstraint() {
 		addSubview(scrollView)
-		scrollView.addSubview(signinTitleLabel)
+		scrollView.addSubview(titleLabel)
 		scrollView.addSubview(emailAddressLabel)
 		scrollView.addSubview(emailTextField)
 		scrollView.addSubview(passwordLabel)
 		scrollView.addSubview(passwordTextField)
-		scrollView.addSubview(signInButton)
+		scrollView.addSubview(authButton)
 		scrollView.addSubview(signUpHsStack)
 		addSubview(loadingIndicator)
 		
@@ -129,14 +129,14 @@ final class LoginViewControllerView: ProgrammaticView {
 		])
 		
 		NSLayoutConstraint.activate([
-			signinTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 72),
-			signinTitleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-			signinTitleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-			signinTitleLabel.widthAnchor.constraint(equalTo: widthAnchor)
+            titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 72),
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: widthAnchor)
 		])
 		
 		NSLayoutConstraint.activate([
-			emailAddressLabel.topAnchor.constraint(equalTo: signinTitleLabel.bottomAnchor, constant: 60),
+			emailAddressLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 60),
 			emailAddressLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
 			emailAddressLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
 		])
@@ -162,16 +162,16 @@ final class LoginViewControllerView: ProgrammaticView {
 		])
 		
 		NSLayoutConstraint.activate([
-			signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 32),
-			signInButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
-			signInButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
-			signInButton.heightAnchor.constraint(equalToConstant: 56)
+            authButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 32),
+            authButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
+            authButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
+            authButton.heightAnchor.constraint(equalToConstant: 56)
 		])
 		
-		signUpHsStack.addArrangedSubview(noAccountLabel)
-		signUpHsStack.addArrangedSubview(signUpButton)
+		signUpHsStack.addArrangedSubview(noticeLabel)
+		signUpHsStack.addArrangedSubview(actionButton)
 		NSLayoutConstraint.activate([
-			signUpHsStack.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 32),
+			signUpHsStack.topAnchor.constraint(equalTo: authButton.bottomAnchor, constant: 32),
 			signUpHsStack.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 			signUpHsStack.heightAnchor.constraint(equalToConstant: 24),
 			signUpHsStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -16)
@@ -216,7 +216,7 @@ final class LoginViewControllerView: ProgrammaticView {
 	}
 }
 
-extension LoginViewControllerView: UITextFieldDelegate {
+extension AuthViewControllerView: UITextFieldDelegate {
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		guard let textField = textField as? BaseTextField else { return true }
 		let currentText = textField.text ?? ""

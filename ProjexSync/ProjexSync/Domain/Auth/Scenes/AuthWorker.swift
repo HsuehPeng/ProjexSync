@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol LoginLogic {
-	typealias LoginResult = Result<Bool, Error>
+protocol AuthLogic {
+	typealias AuthResult = Result<Bool, Error>
 	
-	func login(email: String?, password: String?, completion: @escaping (LoginResult) -> Void)
+	func auth(email: String?, password: String?, completion: @escaping (AuthResult) -> Void)
 }
 
-final class LoginWorker: LoginLogic {
-	let emailLoginClient: EmailLoginClient
+final class AuthWorker: AuthLogic {
+	let client: AuthClient
 	let emailPasswordValidator: EmailPasswordValidation
 	
 	enum LoginError: Error, LocalizedError {
@@ -34,7 +34,7 @@ final class LoginWorker: LoginLogic {
 		}
 	}
 	
-	func login(email: String?, password: String?, completion: @escaping (LoginResult) -> Void) {
+	func auth(email: String?, password: String?, completion: @escaping (AuthResult) -> Void) {
 		guard let email = email, emailPasswordValidator.isValidEmail(email) else {
 			completion(.failure(LoginError.email))
 			return
@@ -45,7 +45,7 @@ final class LoginWorker: LoginLogic {
 			return
 		}
 		
-		emailLoginClient.login(email: email, password: password) { result in
+        client.auth(email: email, password: password) { result in
 			switch result {
 			case .failure:
 				completion(.failure(LoginError.auth))
@@ -55,8 +55,8 @@ final class LoginWorker: LoginLogic {
 		}
 	}
 	
-	init(emailLoginClient: EmailLoginClient, emailPasswordValidator: EmailPasswordValidation) {
-		self.emailLoginClient = emailLoginClient
+	init(client: AuthClient, emailPasswordValidator: EmailPasswordValidation) {
+		self.client = client
 		self.emailPasswordValidator = emailPasswordValidator
 	}
 }

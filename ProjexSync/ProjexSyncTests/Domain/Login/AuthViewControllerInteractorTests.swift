@@ -12,8 +12,8 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	func test_login_loginWorkerDidNotCallTwiceLogin_WhenInteractorIsLoggingIn() {
 		let (sut, _, loginWorker) = makeSut()
 		
-		sut.loginWith(email: anyEmail(), password: anyPassword())
-		sut.loginWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
 
 		XCTAssertEqual(loginWorker.loginCallCount, 1)
 	}
@@ -21,9 +21,9 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	func test_login_loginWorkerCallTwiceLogin_WhenLoginWorkerCompletesLoginOnceAndCallLoginAgain() {
 		let (sut, _, loginWorker) = makeSut()
 		
-		sut.loginWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
 		loginWorker.completeLoginSuccess()
-		sut.loginWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
 
 		XCTAssertEqual(loginWorker.loginCallCount, 2)
 	}
@@ -31,7 +31,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	func test_login_loginWorkerDidCallLoginWithEmailAndPassword() {
 		let (sut, _, loginWorker) = makeSut()
 		
-		sut.loginWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
 		
 		XCTAssertEqual(loginWorker.loginCallCount, 1)
 	}
@@ -39,7 +39,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	func test_login_presenterShowLoginIndicatorWhenLoginNotFinish() {
 		let (sut, presenter, _) = makeSut()
 		
-		sut.loginWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
 
 		XCTAssertEqual(presenter.isIndicatorLoading, true)
 	}
@@ -47,7 +47,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	func test_login_presenterHideShowLoginIndicatorWhenLoginFinish() {
 		let (sut, presenter, loginWorker) = makeSut()
 		
-		sut.loginWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
 
 		loginWorker.completeLoginSuccess()
 		
@@ -57,7 +57,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	func test_login_presenterShowLoginInSuccessWhenLoginSuccess() {
 		let (sut, presenter, loginWorker) = makeSut()
 		
-		sut.loginWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
 
 		loginWorker.completeLoginSuccess()
 		
@@ -67,7 +67,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	func test_login_presenterShowLoginFailureWhenLoginFail() {
 		let (sut, presenter, loginWorker) = makeSut()
 		
-		sut.loginWith(email: anyEmail(), password: anyPassword())
+		sut.authWith(email: anyEmail(), password: anyPassword())
 
 		let loginError = NSError(domain: "", code: 1)
 		
@@ -79,9 +79,9 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	func test_login_loginClientDoesnotCallLoginWhenInteractorIsDeallocated() {
 		let presenter = LoginViewControllerPresenterMock()
 		let loginWorker = LoginWorkerSpy()
-		var sut: LoginViewControllerInteractor? = LoginViewControllerInteractor(presenter: presenter, loginWorker: loginWorker)
+		var sut: AuthViewControllerInteractor? = AuthViewControllerInteractor(presenter: presenter, loginWorker: loginWorker)
 
-		sut?.loginWith(email: anyEmail(), password: anyPassword())
+		sut?.authWith(email: anyEmail(), password: anyPassword())
 		sut = nil
 		loginWorker.completeLoginSuccess()
 		
@@ -91,10 +91,10 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (LoginViewControllerInteractor, LoginViewControllerPresenterMock, LoginWorkerSpy) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (AuthViewControllerInteractor, LoginViewControllerPresenterMock, LoginWorkerSpy) {
 		let presenter = LoginViewControllerPresenterMock()
 		let loginWorker = LoginWorkerSpy()
-		let sut = LoginViewControllerInteractor(presenter: presenter, loginWorker: loginWorker)
+		let sut = AuthViewControllerInteractor(presenter: presenter, loginWorker: loginWorker)
 		
 		trackForMemoryleaks(presenter, file: file, line: line)
 		trackForMemoryleaks(loginWorker, file: file, line: line)
@@ -103,7 +103,7 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		return (sut, presenter, loginWorker)
 	}
 	
-	private final class LoginViewControllerPresenterMock: LoginViewControllerPresentationLogic {
+	private final class LoginViewControllerPresenterMock: AuthViewControllerPresentationLogic {
 		var isIndicatorLoading = false
 		var showLoginSuccessCallCount = 0
 		var showLoginFailureCallCount = 0
@@ -121,13 +121,13 @@ final class LoginViewControllerInteractorTests: XCTestCase {
 		}
 	}
 	
-	private final class LoginWorkerSpy: LoginLogic {
-		typealias LoginCompletion = (LoginResult) -> Void
+    private final class LoginWorkerSpy: AuthLogic {
+		typealias LoginCompletion = (AuthResult) -> Void
 		
 		var loginCallCount = 0
 		var loginCompletions: [LoginCompletion] = []
 		
-		func login(email: String?, password: String?, completion: @escaping LoginCompletion) {
+		func auth(email: String?, password: String?, completion: @escaping LoginCompletion) {
 			loginCallCount += 1
 			loginCompletions.append(completion)
 		}

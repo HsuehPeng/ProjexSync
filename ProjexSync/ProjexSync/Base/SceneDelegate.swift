@@ -22,8 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		]
 		
 		let rootTabBarViewController = RootTabBarController(viewControllers: viewControllers)
-		let loginSceneFactory = LoginSceneFactory()
-		let rootTabBarRouter = RootTabBarRouter(loginSceneFactory: loginSceneFactory)
+		let loginSceneFactory = AuthSceneFactory()
+		let rootTabBarRouter = RootTabBarRouter(sceneFactory: loginSceneFactory)
+
 		rootTabBarViewController.router = rootTabBarRouter
 		rootTabBarRouter.source = rootTabBarViewController
 
